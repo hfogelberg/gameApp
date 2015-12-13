@@ -66,7 +66,6 @@
 			</div>
 		</div>
 
-
 		<div class='form-group'>
 			<label for='correctAnswers' class='col-sm-2'>Correct answers</label>
 			<div class='col-sm-10'>
@@ -80,9 +79,25 @@
 		</div>
 	</form>
 
+	<div>
+		<h4>Answers</h4>
+		<ul>
+			{{#each answers}}
+				{{answerTitle}}
+			{{/each}}
+		</ul>
+	</div>
+
+	<div>
+		<button class='btn' id='btnAddAnswer'>Add answer</button>
+	</div>
+
 	<div class='form-group'>
 		<div class='col-sm-offset-2 col-sm-10'>
-			<button class='btn btn-primary btnSaveQuestion'>Save</button>
+			<!-- <button class='btn btn-primary btnSaveQuestion'>Save</button> -->
+        <a href='/newAnswer/{{questionId}}' class='btn btnSaveQuestion'>Save question</a>
 		</div>
 	</div>
+
+	{{> newKidsAnswerTemplate}}
 </template>

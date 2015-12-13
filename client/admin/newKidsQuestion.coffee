@@ -2,17 +2,28 @@ $.cloudinary.config
 	cloud_name: Meteor.settings.public.cloud_name
 
 images = new Array()
-
+@answers = new Array()
 
 Template.newKidsQuestion.helpers
+	answers: ->
+		return answers
+		
 	files: ->
 		Cloudinary.collection.find()
 
 	complete: ->
 		@status is "complete"
+questionId = Random.id()
+
+Template.newQuestionTemplate.helpers
+  questionId: ->
+    questionId
 
 Template.newKidsQuestion.events
-	"change input.file_bag": (e) ->
+	'click #btnAddAnswer': (event) ->
+		$('#kidsAnswerModal').modal()
+
+	'change input.file_bag': (e) ->
 		console.log 'Files added'
 		files = e.currentTarget.files
 		console.log files
@@ -39,6 +50,7 @@ Template.newKidsQuestion.events
 		correctAnswersElem = $('input:radio[name=correctAnswers]:checked')
 
 		props = {
+			_id: questionId
 			title: $('#title').val()
 			images: images
 			showAnswerImg: $(showAnswerImgElem).val()
@@ -46,6 +58,7 @@ Template.newKidsQuestion.events
 			showAnswerTimer: $('#showTimer').val()
 			correctAnswers: $(correctAnswersElem).val()
 			level: KID
+			answers: answers
 			random: Random.fraction()
 			createdDate: new Date()
 			updatedDate: new Date()
@@ -58,3 +71,4 @@ Template.newKidsQuestion.events
 				console.log err
 			else
 				console.log 'OK!'
+
