@@ -1,6 +1,10 @@
 Template.levelNavTemplate.rendered = ->
 	Session.set('level', ADULT)
 
+Template.levelNavTemplate.helpers
+	level: ->
+		Session.get('level')
+
 Template.levelNavTemplate.events
 	'click .kidsLevel':->
 		console.log 'kidsLevel'

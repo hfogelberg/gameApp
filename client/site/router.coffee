@@ -12,6 +12,7 @@ Router.map ->
     path: '/admin'
 
   @route 'newQuestion',
-    template: 'newQuestion',
-    path: '/newQuestion'
+    template: 'newQuestionTemplate',
+    path: '/newQuestion/:level'
+      
 
