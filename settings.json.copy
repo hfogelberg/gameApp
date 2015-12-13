@@ -1,0 +1,8 @@
+{
+	"api_key": "YOUR_KEY",
+	"api_secret": "YOUR_SECRET_KEY",
+	"public": {
+		"cloud_name": "YOUR_BUCKET",
+		"folder": "game"
+	}
+}

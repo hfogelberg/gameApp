@@ -1,37 +1,9 @@
 <template name='newQuestionTemplate'>
 	<h2 class='capitalize'>Create {{level}}'s Question</h2>
-	
-	<form class="form-horizontal">
-		<div class='form-group'>
-			<label for='title' class='col-sm-2'>Question</label>
-			<div class='col-sm-10'>
-				<textarea class='form-control' name='question' id='question' rows='2'></textarea>
-			</div>
-		</div>
 
-		<div class='form-group'>
-			<label for='image' class='col-sm-2'>Image</label>
-			<div class='col-sm-offset-2 col-sm-10 picUploads'>
-				<input type='file' name='pic' accept='image/*' class='file_bag' multiple>
-			</div>
-		</div>
-
-		<div class='form-group'>
-			<button class='btn btn-primary btnSaveQuestion'>Save</button>
-			{{#each files}}
-				<div>
-					{{#if complete}}
-						<img src="https://res.cloudinary.com/ginkgo/image/upload/w_90/{{response.public_id}}">
-						<div class='deleteImage btn btn-danger'><i class='glyphicon glyphicon-trash'></i>Delete</div>
-					{{else}}
-						<div class="progress">
-							<div class="progress-bar" role="progressbar" aria-valuenow="{{percent_uploaded}}" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
-								{{percent_uploaded}} %
-							 </div>
-							</div>
-						{{/if}}
-					</div>
-				{{/each}}
-		</div>
-	</form>
+	{{#if isKid}}
+		{{> newKidsQuestion}}
+	{{else}}
+		<p>Adult - Not implemented</p>
+	{{/if}}
 </template>
