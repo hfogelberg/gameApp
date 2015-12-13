@@ -1,6 +1,14 @@
 <template name='questionsListTemplate'>
-	
-	{{#each questions}}
-		{{title}}
-	{{/each}}
+	<div class='questionsList'>
+		<table>
+			<tbody>
+				{{#each questions}}
+					<tr>
+						<td>{{title}}</td>
+						<td><a href='/question/{{_id}}'>Show</a></td>
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
 </template>
