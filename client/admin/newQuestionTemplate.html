@@ -1,7 +1,6 @@
 <template name='newQuestionTemplate'>
+	<a href='/admin' class='btn btn-default'><i class="fa fa-chevron-left"></i>Back</a>
 	<h2 class='capitalize'>Create {{level}}'s Question</h2>
-
-	{{isKid}}
 	{{#if isKid}}
 		{{> newKidsQuestion}}
 	{{else}}

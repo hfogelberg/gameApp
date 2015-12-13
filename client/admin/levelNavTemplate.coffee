@@ -1,6 +1,3 @@
-Template.levelNavTemplate.rendered = ->
-	Session.set('level', ADULT)
-
 Template.levelNavTemplate.helpers
 	level: ->
 		Session.get('level')

@@ -28,7 +28,7 @@ Template.newKidsQuestion.events
 					console.log res.public_id
 					Session.set('latesImageId', res.public_id)
 					images.push res.public_id
-
+					$('.btnSaveQuestion').removeAttr('disabled')
 
 Template.newKidsQuestion.events
 	'click .btnSaveQuestion': (template)->
