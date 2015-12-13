@@ -1,0 +1,6 @@
+.DS_Store
+
+.meteor/local
+.meteor/meteorite
+
+settings.json
