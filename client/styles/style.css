@@ -5,3 +5,7 @@
 .levelNav { 
 	margin-botton: 10px;
 }
+
+.capitalize {
+  text-transform: capitalize;
+}
