@@ -1,8 +1,8 @@
 Meteor.startup ->
-	Meteor.publish 'getQuestionById',(questionId) ->
+	Meteor.publish 'getQuestionById', (questionId) ->
 		console.log 'getQuestionById ' + questionId
-		Question.find
-			_id: _id
+		Questions.find
+			_id: questionId
 			{
 				limit: 1
 			}
