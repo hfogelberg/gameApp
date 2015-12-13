@@ -1,0 +1,2 @@
+@KID = 'KID'
+@ADULT = 'ADULT'

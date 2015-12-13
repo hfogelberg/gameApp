@@ -11,7 +11,7 @@ Router.map ->
     template: 'adminTemplate',
     path: '/admin'
 
-  @route 'newKidsQuestion',
-    template: 'newKidsQuestion',
-    path: '/newKidsQuestion'
+  @route 'newQuestion',
+    template: 'newQuestion',
+    path: '/newQuestion'
 
