@@ -1,6 +1,7 @@
 <template name='newQuestionTemplate'>
 	<h2 class='capitalize'>Create {{level}}'s Question</h2>
 
+	{{isKid}}
 	{{#if isKid}}
 		{{> newKidsQuestion}}
 	{{else}}

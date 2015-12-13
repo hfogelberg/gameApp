@@ -53,4 +53,8 @@ Template.newKidsQuestion.events
 
 		console.log props
 
-		Meteor
+		Meteor.call 'createQuestion', props, (err) ->
+			if err
+				console.log err
+			else
+				console.log 'OK!'
