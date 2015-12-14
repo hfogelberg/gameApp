@@ -68,3 +68,6 @@ Router.map ->
     data: question: ->
       Questions.findOne({"answers.answerId": Session.get('answerId')})
 
+  @route 'newAdultAnswer',
+    template: 'newAdultAnswerTemplate',
+    path: '/newAdultAnswer/:questionId'

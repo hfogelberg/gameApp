@@ -1,4 +1,3 @@
-
 $.cloudinary.config
 	cloud_name: Meteor.settings.public.cloud_name
 
@@ -75,7 +74,6 @@ Template.newKidsQuestion.events
 			showAnswerTimer: $('#showTimer').val()
 			correctAnswers: $(correctAnswersElem).val()
 			level: KID
-			answers: answers
 			random: Random.fraction()
 			createdDate: new Date()
 			updatedDate: new Date()

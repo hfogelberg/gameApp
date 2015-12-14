@@ -1,0 +1,31 @@
+<template name='newAdultQuestion'>
+	<form class="form-horizontal">
+		<div class='form-group'>
+			<label for='title' class='col-sm-2'>Question</label>
+			<div class='col-sm-10'>
+				<input type='text' class='form-control' id='title'/>
+			</div>
+		</div>
+
+		<div class='form-group'>
+			<label for='title' class='col-sm-2'>Explanation</label>
+			<div class='col-sm-10'>
+				<textarea id='explanation'></textarea>
+			</div>
+		</div>
+
+		<div class='form-group'>
+			<label for='title' class='col-sm-2'>Reason</label>
+			<div class='col-sm-10'>
+				<textarea id='reason'></textarea>
+			</div>
+		</div>
+
+		<div class='form-group'>
+			<div class='col-sm-offset-2 col-sm-10'>
+        <a href='/newAdultAnswer/{{questionId}}' class='btn btnSaveQuestion'>Save question</a>
+			</div>
+		</div>
+
+	</form>
+</template>
