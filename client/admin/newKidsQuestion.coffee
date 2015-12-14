@@ -65,6 +65,8 @@ Template.newKidsQuestion.events
 		showAnswerElem = $('input:radio[name=showAnswerElem]:checked')
 		correctAnswersElem = $('input:radio[name=correctAnswers]:checked')
 
+		alert $('#showTimer').val()
+
 		props = {
 			_id: questionId
 			title: $('#title').val()
