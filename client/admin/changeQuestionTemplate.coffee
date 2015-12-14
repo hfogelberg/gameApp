@@ -33,6 +33,17 @@ Template.changeQuestionTemplate.events
 					images.push res.public_id
 					$('.btnUpdateQuestion').removeAttr('disabled')
 
+	'click .btnDeleteImage': (template) ->
+		Cloudinary.delete this.image, (err,res) ->
+			console.log "Cloudinary Error: #{err}"
+			console.log "Cloudinary Result: #{res}"
+
+		Meteor.call 'deleteImageFromQuestion', this._id, (err) ->
+			if err
+				console.log err
+			else
+				console.log 'OK'
+
 	'click .btnUpdateQuestion': (template) ->
 		template.preventDefault
 

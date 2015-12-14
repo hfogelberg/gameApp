@@ -78,3 +78,12 @@ Meteor.methods
 				$push:
 					params
 			}
+
+	deleteImageFromQuestion: (questionId) ->
+		console.log 'deleteImageFromQuestion ' + questionId
+		Questions.update
+			_id: questionId
+			{
+				$set:
+					image: ''
+			}
