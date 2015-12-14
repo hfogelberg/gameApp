@@ -11,7 +11,6 @@ Template.newAdultQuestion.events
 		props = {
 			_id: questionId
 			title: $('#title').val()
-			explanation: $('#explanation').val()
 			level: ADULT
 			createdDate: new Date()
 			updatedDate: new Date()

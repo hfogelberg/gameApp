@@ -4,13 +4,13 @@ Template.newAdultAnswerTemplate.events
 		alert 'click'
 
 		isCorrectAnswer = false
-		if $('#isCorrectAnswer').checked then isCorrectAnswer = true
+		if $('#isCorrectAnswer').is(":checked") then isCorrectAnswer = true
 
 		params = {
 			answers: {
 				answerId: Random.id()
 				answerTitle: $('#answerTitle').val()
-				reason: $('#reason').val()
+				reason: $('#explanation').val()
 				isCorrectAnswer: isCorrectAnswer
 			}
 		}
