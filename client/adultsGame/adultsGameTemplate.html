@@ -7,7 +7,6 @@
 			<li class='question invisble'>
 				<!-- <h3>Question {{index}}</h3> -->
 				<h4>{{title}}</h4>
-				<p>{{_id}}</p>
 				{{#each answers}}
 					<div class='answer row-fluid'>
 						<button class= 'btnAnswer btn btn-unstyled' id='{{answerId}}'>
@@ -29,6 +28,6 @@
 	</ul> 											<!-- questionair -->
 
 	<div>
-		<button>Next</button>
+		<button id='btnNextQuestion'>Next</button>
 	</div>
 </template>
