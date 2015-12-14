@@ -1,10 +1,16 @@
+
 $.cloudinary.config
 	cloud_name: Meteor.settings.public.cloud_name
 
 images = new Array()
 @answers = new Array()
 
+questionId = Random.id()
+
 Template.newKidsQuestion.helpers
+	questionId: ->
+		return questionId
+
 	answers: ->
 		return answers
 		
@@ -13,11 +19,22 @@ Template.newKidsQuestion.helpers
 
 	complete: ->
 		@status is "complete"
-questionId = Random.id()
 
-Template.newQuestionTemplate.helpers
-  questionId: ->
-    questionId
+Template.newKidsQuestion.rendered =->
+	Session.set 'questionImageId', ''	
+
+Template.newKidsQuestion.helpers
+	answersList: ->
+		return answers
+
+	files: ->
+		Cloudinary.collection.find()
+
+	questionImage: ->
+		Session.get 'questionImageId'
+
+	questionImageComplete: ->
+		@status is "complete"
 
 Template.newKidsQuestion.events
 	'click #btnAddAnswer': (event) ->
@@ -52,7 +69,7 @@ Template.newKidsQuestion.events
 		props = {
 			_id: questionId
 			title: $('#title').val()
-			images: images
+			image: Session.get('questionImageId')
 			showAnswerImg: $(showAnswerImgElem).val()
 			showAnswer: $(showAnswerElem).val()
 			showAnswerTimer: $('#showTimer').val()

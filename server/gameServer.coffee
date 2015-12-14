@@ -23,3 +23,14 @@ Meteor.methods
 		console.log props
 
 		Questions.insert props
+
+	addAnswerToQuestion: (questionId, params) ->
+		console.log 'addAnswerToQuestion with id ' + questionId
+		console.log params
+
+		Questions.update
+			_id: questionId
+			{
+				$push:
+					params
+			}

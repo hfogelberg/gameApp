@@ -19,13 +19,17 @@ Router.map ->
     template: 'newQuestionTemplate',
     path: '/newQuestion/:level'
       
-  # @route 'newAnswer',
-  #   template: 'newAnswerTemplate',
-  #   path: '/newAnswer/:questionId'
-  #   waitOn: ->
-  #     @subscribe 'getQuestionById', Session.get('questionId')
-  #   data: question: ->
-  #     Questions.findOne({_id: Session.get('questionId')})
+  @route 'newKidsAnswer',
+    template: 'newKidsAnswerTemplate',
+    path: '/newKidsAnswer/:questionId'
+    onBeforeAction: ->
+      console.log @params.questionId
+      Session.set('questionId', @params.questionId)
+      this.next()
+    waitOn: ->
+      @subscribe 'getQuestionById', Session.get('questionId')
+    data: question: ->
+      Questions.findOne({_id: Session.get('questionId')})
 
   @route 'question',
     template: 'questionTemplate',
