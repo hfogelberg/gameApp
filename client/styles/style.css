@@ -13,3 +13,15 @@
 i {
 	margin-right: 5px;
 }
+
+.invisble {
+	display: none;
+}
+
+.visible {
+	display: block;
+}
+
+.answer {
+	display: inline-block;
+}

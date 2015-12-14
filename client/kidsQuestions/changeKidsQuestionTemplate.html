@@ -1,0 +1,121 @@
+<template name='changeQuestionTemplate'>
+	{{#with question}}
+		<h3>Change Question {{title}}</h3>
+		<form class="form-horizontal">
+			<div class='form-group'>
+				<label for='title' class='col-sm-2'>Question</label>
+				<div class='col-sm-10'>
+					<input type='text' class='form-control' id='title' value='{{title}}'/>
+				</div>
+			</div>
+
+			{{#if image}}
+				<img src="https://res.cloudinary.com/ginkgo/image/upload/w_90/{{image}}"><span><button class='btn btn-danger btnDeleteImage'>Delete</button></span>
+			{{/if}}
+
+			<div class='form-group'>
+				<label for='image' class='col-sm-2'>Image</label>
+				<div class='col-sm-offset-2 col-sm-10 picUploads'>
+					<input type='file' name='pic' accept='image/*' class='file_bag'>
+				</div>
+			</div>
+
+			<div class='form-group'>
+				<div class='col-sm-offset-2 col-sm-10'>
+					{{#each files}}
+						<div>
+							{{#if complete}}
+								<!-- ToDo: SHOULD BE A CONSTANT -->
+								<img src="https://res.cloudinary.com/ginkgo/image/upload/w_90/{{response.public_id}}">
+								<div class='deleteImage btn btn-danger'><i class='glyphicon glyphicon-trash'></i>Delete</div>
+							{{else}}
+								<div class="progress">
+									<div class="progress-bar" role="progressbar" aria-valuenow="{{percent_uploaded}}" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
+										{{percent_uploaded}} %
+									</div>
+								</div>
+							{{/if}}
+						</div>
+					{{/each}}
+				</div>
+			</div>
+			
+			<div class='form-group'>
+				<label for='showAnswerImg' class='col-sm-2'>Show answers image</label>
+				<div class='col-sm-10'>
+					{{#if equals showAnswerImg "YES"}}
+						<label class='radio-inline'>
+							<input type='radio' value='YES' name='showAnswerImg' checked>Yes
+						</label>
+						<label class='radio-inline'>
+							<input type='radio' value='NO' id='showImageNo' name='showAnswerImg'>No
+						</label>
+					{{else}}
+						<label class='radio-inline'>
+							<input type='radio' value='YES' name='showAnswerImg'>Yes
+						</label>
+						<label class='radio-inline'>
+							<input type='radio' value='NO' id='showImageNo' name='showAnswerImg' checked>No
+						</label>
+						{{/if}}
+				</div>
+			</div>
+
+			<div class='form-group'>
+				<label for='showAnswer' class='col-sm-2'>Show answers</label>
+				<div class='col-sm-10'>
+					{{#if equals showAnswer "YES"}}
+						<label class='radio-inline'>
+							<input type='radio' value='YES' name='showAnswer' checked>Yes
+						</label>
+						<label class='radio-inline'>
+							<input type='radio' value='NO' name='showAnswer'>No
+						</label>
+					{{else}}
+						<label class='radio-inline'>
+							<input type='radio' value='YES' name='showAnswer'>Yes
+						</label>
+						<label class='radio-inline'>
+							<input type='radio' value='NO' name='showAnswer' checked>No
+						</label>
+					{{/if}}
+				</div>
+			</div>
+
+			<div class='form-group'>
+				<label for='showTimer' class='col-sm-2'>Show timer</label>
+				<div class='col-sm-10'>
+					<input type='number' class='form-control' id='showTimer' value='{{showAnswerTimer}}'/>
+				</div>
+			</div>
+
+			<div class='form-group'>
+				<label for='correctAnswers' class='col-sm-2'>Correct answers</label>
+				<div class='col-sm-10'>
+					{{#if equals correctAnswers "ONE"}}
+						<label class='radio-inline'>
+							<input type='radio' value='ONE' name='correctAnswers' checked>One
+						</label>
+						<label class='radio-inline'>
+							<input type='radio' value='ALL' name='correctAnswers'>All
+						</label>
+					{{else}}
+						<label class='radio-inline'>
+							<input type='radio' value='ONE' name='correctAnswers'>One
+						</label>
+						<label class='radio-inline'>
+							<input type='radio' value='ALL' name='correctAnswers' checked>All
+						</label>
+					{{/if}}
+				</div>
+			</div>
+
+			<div class='form-group'>
+				<div class='col-sm-offset-2 col-sm-10'>
+					<a href='/question/{{_id}}' class='btn btn-primary btnUpdateQuestion'>Save</a>
+				</div>
+			</div>
+		</form>
+
+	{{/with}}
+</template>

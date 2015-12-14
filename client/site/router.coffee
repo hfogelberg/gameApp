@@ -116,3 +116,12 @@ Router.map ->
     data: question: ->
       Questions.findOne({"answers.answerId": Session.get('answerId')})
     
+
+  @route 'adultGame',
+    template: 'adultsGameTemplate',
+    route: '/adultGame'
+    waitOn: ->
+      console.log 'Getting adult questions'
+      @subscribe 'getAdultQuestions'
+    data: questions: ->
+      Questions.find()

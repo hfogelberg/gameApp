@@ -1,0 +1,18 @@
+<template name='adultsGameTemplate'>
+	<ul class='list-unstyled questionair'>
+		{{#each questions}}
+			<li class='question invisble'>
+				<!-- <h3>Question {{index}}</h3> -->
+				<h4>{{title}}</h4>
+				<p>{{_id}}</p>
+				{{#each answers}}
+					<div class='answer'>
+						<button id='{{answerId}}'>{{answerTitle}}</button>
+						<div class='comment invisbleComment'>{{reason}}</div>
+						<div class='correctAnswer'>{{isCorrectAnswer}}</div>
+					</div>
+				{{/each}}				<!-- answer -->
+			</li>							<!-- question -->
+		{{/each}}						<!-- question -->
+	</ul> 								<!-- questionair-->
+</template>
