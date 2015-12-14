@@ -73,4 +73,4 @@ Template.changeAnswerTemplate.events
 			else
 				console.log 'OK!'
 
-	
+		Router.go('/admin')

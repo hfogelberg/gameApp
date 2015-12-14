@@ -12,7 +12,6 @@ Template.levelNavTemplate.events
 		elem =$('.kidsLevel')
 		elem.addClass('active')
 
-
 	'click .adultLevel':->
 		console.log 'adultLevel'
 		Session.set('level', ADULT)

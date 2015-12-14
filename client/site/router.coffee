@@ -11,7 +11,7 @@ Router.map ->
     template: 'adminTemplate',
     path: '/admin'
     waitOn: ->
-      @subscribe 'getQuestionsTitleByLevel', Session.get('level')
+      @subscribe 'getQuestionsTitleByLevel', Session.get 'level'
     data: questions: ->
       Questions.find()
 
