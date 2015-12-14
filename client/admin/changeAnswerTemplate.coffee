@@ -5,6 +5,8 @@ images = new Array()
 @answers = new Array()
 
 Template.changeAnswerTemplate.helpers
+	questionId: ->
+		Session.get 'questionId'
 	id: ->
 		Session.get 'answerId'
 
@@ -53,8 +55,8 @@ Template.changeAnswerTemplate.events
 	'click .btnChangeAnswer': (event) ->
 		event.preventDefault
 		
-		isCorrectAnswer = false
-		if $('#isCorrectAnswer').checked then isCorrectAnswer = true
+		isCorrectAnswer = 'NO'
+		if $('#isCorrectAnswer').is(":checked") then isCorrectAnswer = 'YES'
 
 		params = {
 			answers:{
@@ -72,5 +74,3 @@ Template.changeAnswerTemplate.events
 				console.log err
 			else
 				console.log 'OK!'
-
-		Router.go('/admin')

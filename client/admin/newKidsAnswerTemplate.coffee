@@ -44,8 +44,8 @@ Template.newKidsAnswerTemplate.events
 	'click .btnSaveAnswer': (event) ->
 		event.preventDefault
 
-		isCorrectAnswer = false
-		if $('#isCorrectAnswer').checked then isCorrectAnswer = true
+		isCorrectAnswer = 'NO'
+		if $('#isCorrectAnswer').is(":checked") then isCorrectAnswer = 'YES'
 
 		params = {
 			answers:{

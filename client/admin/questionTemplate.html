@@ -1,4 +1,5 @@
 <template name='questionTemplate'>
+	<p><a href='/admin' class='btn'>Back</a></p>
 	{{#with question}}
 		<h3>Question</h3>
 		<p>Title: {{title}}</p>
@@ -16,6 +17,7 @@
 		<a href='/changeQuestion/{{_id}}'>Change question</a>
 
 		<div class='answers'>
+			<p><a href='/newKidsAnswer/{{questionId}}'>New answer</a></p>
 			<table>
 				<tbody>
 					{{#each answers}}
