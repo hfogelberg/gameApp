@@ -18,6 +18,17 @@ Meteor.startup ->
 			}
 
 Meteor.methods
+	changeQuestion: (questionId, props) ->
+		console.log 'changeQuestion ' + questionId
+		console.log props
+
+		Questions.update
+			_id: questionId
+			{
+				$set:
+					props
+			}
+
 	createQuestion: (props) ->
 		console.log 'createQuestion'
 		console.log props

@@ -42,3 +42,15 @@ Router.map ->
       @subscribe 'getQuestionById', Session.get('questionId')
     data: question: ->
       Questions.findOne({_id: Session.get('questionId')})
+
+  @route 'changeQuestion',
+    template: 'changeQuestionTemplate',
+    path: '/changeQuestion/:questionId'    
+    onBeforeAction: ->
+      console.log @params.questionId
+      Session.set('questionId', @params.questionId)
+      this.next()
+    waitOn: ->
+      @subscribe 'getQuestionById', Session.get('questionId')
+    data: question: ->
+      Questions.findOne({_id: Session.get('questionId')})

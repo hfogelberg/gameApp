@@ -13,6 +13,8 @@
 		<p>Level: {{level}}</p>
 		<p>Created date: {{formatDate createdDate}}</p>
 
+		<a href='/changeQuestion/{{_id}}'>Change question</a>
+
 		<div class='answers'>
 			<table>
 				<tbody>
@@ -26,6 +28,7 @@
 				</tbody>
 			</table>
 		</div>
-
 	{{/with}}
+
+	<a href='/admin' class='btn btn-lg'>Done</a>
 </template>
