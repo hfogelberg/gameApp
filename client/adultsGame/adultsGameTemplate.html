@@ -1,4 +1,7 @@
 <template name='adultsGameTemplate'>
+
+	<h4>Correct answers: {{correctAnswers}}</h4>
+
 	<ul class='list-unstyled questionair'>
 		{{#each questions}}
 			<li class='question invisble'>
@@ -6,13 +9,26 @@
 				<h4>{{title}}</h4>
 				<p>{{_id}}</p>
 				{{#each answers}}
-					<div class='answer'>
-						<button id='{{answerId}}'>{{answerTitle}}</button>
-						<div class='comment invisbleComment'>{{reason}}</div>
-						<div class='correctAnswer'>{{isCorrectAnswer}}</div>
+					<div class='answer row-fluid'>
+						<button class= 'btnAnswer btn btn-unstyled' id='{{answerId}}'>
+							{{answerTitle}}	
+						</button>
 					</div>
-				{{/each}}				<!-- answer -->
-			</li>							<!-- question -->
-		{{/each}}						<!-- question -->
-	</ul> 								<!-- questionair-->
+				{{/each}}							<!-- answer -->
+				
+				<div>
+					{{#each answers}} 		<!-- explanations -->
+						<div class='explanation hideAnswer' id='{{answerId}}'>
+							<div class='comment'>{{reason}}</div>
+							<div class='correctAnswer' value='{{isCorrectAnswer}}'>{{isCorrectAnswer}}</div>
+						</div>
+					{{/each}}
+				</div>
+			</li>										<!--   question  -->
+		{{/each}}									<!--   question  -->
+	</ul> 											<!-- questionair -->
+
+	<div>
+		<button>Next</button>
+	</div>
 </template>

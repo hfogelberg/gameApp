@@ -25,3 +25,19 @@ i {
 .answer {
 	display: inline-block;
 }
+
+.invisbleComment {
+	background-color: green;
+}
+
+.correctAnswerDisplay {
+	background-color: yellow;
+}
+
+.hideAnswer {
+	display: none;
+}
+
+.showAnswer {
+	display: inline-block;
+}
