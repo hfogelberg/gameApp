@@ -1,0 +1,11 @@
+<template name='showAdultQuestionTemplate'>
+	{{#with question}}
+		<h3>Question</h3>
+		<p>Title: {{title}}</p>
+		<p>Explanation: {{explanation}}</p>
+		<p>Reason: {{reason}}</p>
+		<p>Created date: {{formatDate createdDate}}</p>
+
+		<a href='/changeAdultQuestion/{{_id}}' class='btn btnChangeQuestion'>Change</a>
+	{{/with}}
+</template>

@@ -71,6 +71,14 @@ Router.map ->
   @route 'newAdultAnswer',
     template: 'newAdultAnswerTemplate',
     path: '/newAdultAnswer/:questionId'
+    onBeforeAction: ->
+      console.log @params.questionId
+      Session.set('questionId', @params.questionId)
+      this.next()
+    waitOn: ->
+      @subscribe 'getQuestionById', Session.get('questionId')
+    data: question: ->
+      Questions.findOne({_id: Session.get('questionId')})
 
   @route 'showAdultQuestion',
     template: 'showAdultQuestionTemplate',
