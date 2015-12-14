@@ -1,7 +1,10 @@
+Template.newAdultAnswerTemplate.helpers
+	questionId: ->
+		Session.get 'questionId'
+
 Template.newAdultAnswerTemplate.events
 	'click .btnAddAnswer':(event) ->
 		event.preventDefault
-		alert 'click'
 
 		isCorrectAnswer = false
 		if $('#isCorrectAnswer').is(":checked") then isCorrectAnswer = true
