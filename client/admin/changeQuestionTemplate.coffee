@@ -38,12 +38,6 @@ Template.changeQuestionTemplate.events
 			console.log "Cloudinary Error: #{err}"
 			console.log "Cloudinary Result: #{res}"
 
-		Meteor.call 'deleteImageFromQuestion', this._id, (err) ->
-			if err
-				console.log err
-			else
-				console.log 'OK'
-
 	'click .btnUpdateQuestion': (template) ->
 		template.preventDefault
 
