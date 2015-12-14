@@ -7,5 +7,18 @@
 		<p>Created date: {{formatDate createdDate}}</p>
 
 		<a href='/changeAdultQuestion/{{_id}}' class='btn btnChangeQuestion'>Change</a>
+
+		<div class = 'answers'>
+			<table>
+				<tbody>
+					{{#each answers}}
+						<tr>
+							<td>{{answerTitle}}</td>
+							<td><button class='btn btn-danger'>Remove</button></td>
+						</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
 	{{/with}}
 </template>
