@@ -5,7 +5,13 @@
 				{{#each questions}}
 					<tr>
 						<td>{{title}}</td>
-						<td><a href='/question/{{_id}}'>Show</a></td>
+						<td>
+							{{#if equals level KID}}
+								<a href='/question/{{_id}}'>Show</a>
+							{{else}}
+								<a href='/showAdultQuestion/{{_id}}'>Show</a>
+							{{/if}}
+						</td>
 					</tr>
 				{{/each}}
 			</tbody>

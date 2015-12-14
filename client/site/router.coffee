@@ -71,3 +71,29 @@ Router.map ->
   @route 'newAdultAnswer',
     template: 'newAdultAnswerTemplate',
     path: '/newAdultAnswer/:questionId'
+
+  @route 'showAdultQuestion',
+    template: 'showAdultQuestionTemplate',
+    path: '/showAdultQuestion/:questionId'
+    onBeforeAction: ->
+      console.log @params.questionId
+      Session.set('questionId', @params.questionId)
+      this.next()
+    waitOn: ->
+      @subscribe 'getQuestionById', Session.get('questionId')
+    data: question: ->
+      Questions.findOne({_id: Session.get('questionId')})
+
+  @route 'changeAdultQuestion',
+    template: 'changeAdultQuestionTemplate',
+    path: '/changeAdultQuestion/:questionId'
+    onBeforeAction: ->
+      console.log @params.questionId
+      Session.set('questionId', @params.questionId)
+      this.next()
+    waitOn: ->
+      @subscribe 'getQuestionById', Session.get('questionId')
+    data: question: ->
+      Questions.findOne({_id: Session.get('questionId')})
+
+  
