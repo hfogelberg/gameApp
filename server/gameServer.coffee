@@ -18,6 +18,16 @@ Meteor.startup ->
 			}
 
 Meteor.methods
+	removeAnswer: (questionId, answerId) ->
+		console.log 'removeAnswer questionId: ' + questionId + ' answerId: ' + answerId
+		Questions.update
+			_id: questionId
+			{
+				$pull:
+					answers:
+						answerId: answerId
+			}
+
 	changeQuestion: (questionId, props) ->
 		console.log 'changeQuestion ' + questionId
 		console.log props

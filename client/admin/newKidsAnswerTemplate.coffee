@@ -52,6 +52,7 @@ Template.newKidsAnswerTemplate.events
 				answerTitle: $('#answerTitle').val()
 				isCorrectAnswer: isCorrectAnswer
 				image: Session.get('answerImageId')
+				answerId : Random.id()
 			}
 		}
 

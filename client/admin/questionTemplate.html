@@ -21,8 +21,12 @@
 					{{#each answers}}
 						<tr>
 							<td>{{answerTitle}}</td>
-							<td><img src="https://res.cloudinary.com/ginkgo/image/upload/w_90/{{image}}"></td>
-							<td><button class='btn btn-danger'>Remove</button></td>
+							<td>
+								{{#if image}}
+									<img src="https://res.cloudinary.com/ginkgo/image/upload/w_90/{{image}}">
+								{{/if}}
+							</td>
+							<td><button class='btn btn-danger btnRemoveAnswer' id='{{answerId}}'>Remove</button></td>
 						</tr>
 					{{/each}}
 				</tbody>
