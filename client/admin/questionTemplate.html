@@ -1,5 +1,31 @@
 <template name='questionTemplate'>
 	{{#with question}}
-		<p><label>Title:</label> {{title}}</p>
+		<h3>Question</h3>
+		<p>Title: {{title}}</p>
+		<p>
+			{{#if image}}
+				<img src="https://res.cloudinary.com/ginkgo/image/upload/w_90/{{image}}">
+			{{/if}}
+		</p>
+		<p>Show answer image: {{showAnswerImg}}</p>
+		<p>Show answer timer: {{showAnswerTimer}}</p>
+		<p>Correct answers: {{correctAnswers}}</p>
+		<p>Level: {{level}}</p>
+		<p>Created date: {{formatDate createdDate}}</p>
+
+		<div class='answers'>
+			<table>
+				<tbody>
+					{{#each answers}}
+						<tr>
+							<td>{{answerTitle}}</td>
+							<td><img src="https://res.cloudinary.com/ginkgo/image/upload/w_90/{{image}}"></td>
+							<td><button class='btn btn-danger'>Remove</button></td>
+						</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+
 	{{/with}}
 </template>
