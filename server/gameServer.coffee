@@ -1,4 +1,8 @@
 Meteor.startup ->
+	Meteor.publish 'getAnswerById', (answerId) ->
+		console.log 'getAnswerById ' + answerId
+		Questions.find({"answers.answerId": answerId})
+
 	Meteor.publish 'getQuestionById', (questionId) ->
 		console.log 'getQuestionById ' + questionId
 		Questions.find
@@ -18,6 +22,25 @@ Meteor.startup ->
 			}
 
 Meteor.methods
+	changeAnswerToQuestion: (questionId, answerId, params) ->
+		console.log 'changeAnswerToQuestion ' + answerId
+		console.log params
+
+		Questions.update
+			_id: questionId
+			{
+				$pull:
+					answers:
+						answerId: answerId
+			}
+
+		Questions.update
+			_id: questionId
+			{
+				$push:
+					params
+			}
+
 	removeAnswer: (questionId, answerId) ->
 		console.log 'removeAnswer questionId: ' + questionId + ' answerId: ' + answerId
 		Questions.update

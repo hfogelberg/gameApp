@@ -1,3 +1,7 @@
+Template.questionTemplate.helpers
+	questionId: ->
+		Session.get('questionId')
+
 Template.questionTemplate.events
 	'click .btnRemoveAnswer': (event) ->
 		event.preventDefault

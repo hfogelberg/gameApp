@@ -26,7 +26,12 @@
 									<img src="https://res.cloudinary.com/ginkgo/image/upload/w_90/{{image}}">
 								{{/if}}
 							</td>
-							<td><button class='btn btn-danger btnRemoveAnswer' id='{{answerId}}'>Remove</button></td>
+							<td>
+								<a href='/changeAnswer/{{questionId}}/{{answerId}}' class='btn btnChangeAnswer' id='{{answerId}}'>Change</a>
+							</td>
+							<td>
+								<button class='btn btn-danger btnRemoveAnswer' id='{{answerId}}'>Remove</button>
+							</td>
 						</tr>
 					{{/each}}
 				</tbody>

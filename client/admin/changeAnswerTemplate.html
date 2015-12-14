@@ -1,0 +1,71 @@
+<template name='changeAnswerTemplate'>
+	<h3>Change Answer</h3>
+	
+	{{#with question}}
+		<label>Question: {{title}}</label>
+		<div>
+			{{#each answers}}
+				{{#if equals answerId id}}
+					<form class="form-horizontal" id='answerForm'>
+						<div class='form-group'>
+							<label for='title' class='col-sm-2'>Answer</label>
+							<div class='col-sm-10'>
+								<input type='text' class='form-control' id='answerTitle' value='{{answerTitle}}'/>
+							</div>
+						</div>
+
+						<div class='form-group'>
+							<label for='isCorrectAnswer' class='col-sm-2'>Correct answer</label>
+							<div class='col-sm-10'>
+								{{#if equals isCorrectAnswer "YES"}}
+									<input type='checkbox' class='form-control' id='isCorrectAnswer' checked>
+								{{else}}
+									<input type='checkbox' class='form-control' id='isCorrectAnswer' checked>
+								{{/if}}
+							</div>
+						</div>
+
+
+						<div class='form-group'>
+							<label for='image' class='col-sm-2'>Image</label>
+							<div class='col-sm-offset-2 col-sm-10 picUploads'>
+								<input type='file' name='pic' accept='image/*' class='answers_file_bag'>
+							</div>
+						</div>
+
+						{{#if image}}
+							<img src="https://res.cloudinary.com/ginkgo/image/upload/w_90/{{image}}"><span><button class='btn btn-danger btnDeleteImage'>Delete</button></span>
+						{{/if}}
+
+						<div class='form-group'>
+							<div class='col-sm-offset-2 col-sm-10'>
+								{{#each files}}
+									<div>
+										{{#if complete}}
+											<!-- ToDo: SHOULD BE A CONSTANT -->
+											<img src="https://res.cloudinary.com/ginkgo/image/upload/w_90/{{response.public_id}}">
+											<div class='deleteImage btn btn-danger'><i class='glyphicon glyphicon-trash'></i>Delete</div>
+										{{else}}
+											<div class="progress">
+												<div class="progress-bar" role="progressbar" aria-valuenow="{{percent_uploaded}}" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
+													{{percent_uploaded}} %
+												</div>
+											</div>
+										{{/if}}
+									</div>
+								{{/each}}
+							</div>
+						</div>
+
+						<div class='form-group'>
+							<div class='col-sm-offset-2 col-sm-10'>
+								<button class='btn btn-primary btnChangeAnswer'>Change answer</button>
+							</div>
+						</div>
+					</form>
+				{{/if}}
+			{{/each}}
+		</div>
+	{{/with}}
+
+</template>
