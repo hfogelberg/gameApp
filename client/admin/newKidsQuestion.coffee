@@ -62,10 +62,10 @@ Template.newKidsQuestion.events
 		template.preventDefault
 
 		showAnswerImgElem = $('input:radio[name=showAnswerImg]:checked')
-		showAnswerElem = $('input:radio[name=showAnswerElem]:checked')
+		showAnswerElem = $('input:radio[name=showAnswer]:checked')
 		correctAnswersElem = $('input:radio[name=correctAnswers]:checked')
 
-		alert $('#showTimer').val()
+		alert $(showAnswerElem).val()
 
 		props = {
 			_id: questionId
