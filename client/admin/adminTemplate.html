@@ -1,14 +1,9 @@
 <template name='adminTemplate'>
-	<ul class="nav navbar-nav navbar-right">
-    {{> loginButtons}}
-  </ul>
-
 	{{> adminNavTemplate}}
 
-	<h3>Manage questions</h3>
-
 	{{> levelNavTemplate}}
-	<div class='col-sm-offset2 col-sm-8'>
+
+	<div>
 		{{> questionsListTemplate}}
 	</div>
 </template>

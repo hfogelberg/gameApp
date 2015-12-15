@@ -1,5 +1,5 @@
 <head>
-  <title>Game app</title>
+  <title>Questionnaire Game</title>
   <meta name="description" content="Some SEO-friendly description here">
   <meta charset='utf-8'>
   <meta lang='en'>
@@ -7,10 +7,13 @@
 </head>
 
 <template name='layout'>
+
+  {{> navbar}}
+
   <div class='container-fluid'>
-    <header>
-      <h1>Awesome game</h1>
-    </header>
-    {{> yield}}
+      {{> yield}}
   </div>
+  
+  {{> footer}}
+
 </template>

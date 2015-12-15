@@ -3,10 +3,13 @@ Template.adultsGameTemplate.rendered =->
 	$('ul.questionair li:first').removeClass('invisible')
 	$('ul.questionair li:first').addClass('visible')
 	Session.set('correctAnswers', 0)
+	Session.set('nbrAskedQuestions', 0)
 
 Template.adultsGameTemplate.helpers
 	correctAnswers:->
 		Session.get 'correctAnswers'
+	nbrAskedQuestions:->
+		Session.get 'nbrAskedQuestions'
 
 Template.adultsGameTemplate.events
 	'click #btnNextQuestion': (event) ->
@@ -37,4 +40,7 @@ Template.adultsGameTemplate.events
 			Session.set('correctAnswers', correctAnswers)
 		else
 			console.log 'Ouch. Wrong'
+
+		nbrAskedQuestions = Session.get('nbrAskedQuestions') + 1
+		Session.set('nbrAskedQuestions', nbrAskedQuestions)
 

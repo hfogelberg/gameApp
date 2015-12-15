@@ -1,17 +1,30 @@
 <template name='questionsListTemplate'>
 	<div class='questionsList'>
-		<table>
+		<table class="table table-striped table-hover table-questions">
+		   	<thead>
+				<tr>
+					
+					<th>Question</th>
+					<th>Date created</th>
+					<th></th>
+					<th></th>
+				</tr>
+    		</thead>
 			<tbody>
 				{{#each questions}}
 					<tr>
 						<td>{{title}}</td>
+						<td>{{createdDate}}</td>
 						<td>
 							{{#if equals level 'KID'}}
-								<a href='/question/{{_id}}'>Show</a>
+							<td><a href="/question/{{_id}}"><i class="fa fa-pencil-square-o"></i>
+ Edit</a></td>
 							{{else}}
-								<a href='/showAdultQuestion/{{_id}}'>Show</a>
+								<td><a href="/showAdultQuestion/{{_id}}"><i class="fa fa-pencil-square-o"></i>
+Edit</a></td>
 							{{/if}}
 						</td>
+						<td><a href="#"><i class="fa fa-times"></i> Delete</a></td>
 					</tr>
 				{{/each}}
 			</tbody>

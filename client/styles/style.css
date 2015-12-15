@@ -41,3 +41,37 @@ i {
 .showAnswer {
 	display: inline-block;
 }
+
+html, body {
+  height: 100%;
+}
+
+.vertical-center {
+  height:100%;
+  width:100%;
+  text-align: center;  /* align the inline(-block) elements horizontally */
+  font: 0/0 a;         /* remove the gap between inline(-block) elements */
+}
+
+.vertical-center:before {    /* create a full-height inline block pseudo=element */
+  content: ' ';
+  display: inline-block;
+  vertical-align: middle;  /* vertical alignment of the inline element */
+  height: 100%;
+}
+
+.vertical-center > .container {
+  max-width: 100%;
+  display: inline-block;
+  vertical-align: middle;  /* vertical alignment of the inline element */
+}
+
+footer {
+   position:fixed;
+   left:0px;
+   bottom:0px;
+   height:50px;
+   width:100%;
+   background-color: #F8F8F8;
+   border-color: #E7E7E7;
+}

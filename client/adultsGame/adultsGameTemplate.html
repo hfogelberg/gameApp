@@ -9,7 +9,7 @@
 				<h4>{{title}}</h4>	
 				{{#each answers}}
 					<div class='answer row-fluid'>
-						<button class= 'btnAnswer btn btn-unstyled' id='{{answerId}}'>
+						<button class= 'btnAnswer btn btn-unstyled btn-lg' id='{{answerId}}'>
 							{{answerTitle}}	
 						</button>
 					</div>
@@ -30,4 +30,9 @@
 	<div>
 		<button id='btnNextQuestion'>Next</button>
 	</div>
+
+	<div class="progress">
+	   <div class="progress-bar" role="progressbar" aria-valuenow="{{correctAnswers}}" aria-valuemin="0" aria-valuemax="10">
+	   </div>
+    </div>
 </template>
