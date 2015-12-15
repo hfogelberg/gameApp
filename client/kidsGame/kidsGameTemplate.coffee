@@ -3,16 +3,12 @@ timeLeft = ->
   if clock > 0
     clock--
     Session.set "time", clock
-    console.log clock
+    # console.log clock
   else
-    console.log "That's All Folks"
+    # console.log "That's All Folks"
     Meteor.clearInterval interval
 
 interval = Meteor.setInterval(timeLeft, 1000)
-
-
-# Template.timer.time = ->
-#  	Session.get "time"
 
 Meteor.methods 
 	'getQuestionParams': (res) ->
@@ -22,29 +18,9 @@ Meteor.methods
 		Session.set('showAnswerTimer', res.showAnswerTimer)
 		Session.set('correctAnswersParam', res.correctAnswers)
 
-		# countdown.set(5)
-		
-
 		if res.showAnswerTimer
-			clock = 5
+			clock = res.showAnswerTimer
 			interval = Meteor.setInterval(clock, 1000)
-		# 	console.log 'calling start timer'
-		# 	Meteor.call 'starTimer', ->
-
-	'timerComplete': ()->
-  	console.log  'Timer complete'
-
-	'starTimer': () ->
-		console.log 'starTimer'
-		console.log 'Timer interval ' + Session.get('showAnswerTimer')
-		interval = Session.get('showAnswerTimer')
-
-		if interval
-			console.log 'Have interval. Staring timer'
-			# countdown.stop()
-			# countdown.add(5)
-			countdown.start() ->
-				alert 'TIMER DONE'
 
 Template.kidsGameTemplate.rendered =->
 	console.log 'rendered'
@@ -53,10 +29,6 @@ Template.kidsGameTemplate.rendered =->
 	Session.set('correctAnswers', 0)
 	Session.set('nbrAskedQuestions', 0)
 	Session.set('answerGiven', false)
-
-	# countdown.add(3)
-	# countdown.start ->
-	# 	alert 'done'
 
 	id = $('ul li.visible').attr('id')
 	Meteor.call 'getOneQuestionById', id, (err, res) ->
@@ -89,13 +61,6 @@ Template.kidsGameTemplate.events
 		elem.next().addClass('visible')
 
 		elem = $('ul li.visible .questionProps .showAnswerTimer')
-
-		timer = elem.text()
-		if timer
-			#alert 'timer: ' + timer
-
-			Session.set('timerInterval', pareseInt(timer))
-			countdown.start()
 
 	'click .btnAnswer': (event) ->
 		event.preventDefault
