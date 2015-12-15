@@ -54,6 +54,7 @@ Template.changeQuestionTemplate.events
 			questionType: $(questionTypeElem).val()
 			showAnswerTimer: $('#showTimer').val()
 			correctAnswers: $(correctAnswersElem).val()
+			oneAnswerText: $('#oneAnswerText').val()
 			level: KID
 			updatedDate: new Date()
 		}

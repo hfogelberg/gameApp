@@ -74,6 +74,7 @@ Template.newKidsQuestion.events
 			showAnswer: $(showAnswerElem).val()
 			showAnswerTimer: $('#showTimer').val()
 			correctAnswers: $(correctAnswersElem).val()
+			oneAnswerText: $('#oneAnswerText').val()
 			questionType: $(questionTypeElem).val()
 			level: KID
 			random: Random.fraction()
