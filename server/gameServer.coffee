@@ -1,9 +1,11 @@
 Meteor.startup ->
 	Meteor.publish 'getQuestionsForGame', (level, numQuestions) ->
 		console.log 'getQuestionsForGame ' + level
+		console.log 'numQuestions ' + numQuestions
 
 		r = Random.fraction()
 		console.log 'Random number: ' + r
+		console.log 'Found ' + Questions.find({level: level, random:{$gte:r}}, {limit: numQuestions}).count()
 		Questions.find({level: level, random:{$gte:r}}, {limit: numQuestions})
 
 	Meteor.publish 'getAnswerById', (answerId) ->

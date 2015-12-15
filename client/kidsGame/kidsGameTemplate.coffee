@@ -11,6 +11,11 @@ timeLeft = ->
     	elem = $('.answerTitle')
 			elem.removeClass('invisible')
 
+		if Session.get('correctAnswersParam') is 'ONE'
+			str = '.btnAnswer:not("#' + Session.get('correctAnswerId') + '")'
+			alert str
+			$(str).addClass('invisible')
+
 interval = Meteor.setInterval(timeLeft, 1000)
 
 Meteor.methods 
@@ -21,6 +26,11 @@ Meteor.methods
 		Session.set('questionType', res.questionType)
 		Session.set('showAnswerTimer', res.showAnswerTimer)
 		Session.set('correctAnswersParam', res.correctAnswers)
+
+		for answer in res.answers 
+			if answer.isCorrectAnswer is YES
+				console.log 'Correct Answer: ' + answer.answerId
+				Session.set('correctAnswerId', answer.answerId)
 
 		if res.showAnswer
 			elem = $('.answerTitle')

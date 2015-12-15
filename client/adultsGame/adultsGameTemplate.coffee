@@ -43,11 +43,17 @@ Template.adultsGameTemplate.events
 
 		if isCorrect is YES
 			console.log 'Horay!'
-			correctAnswers = Session.get('correctAnswers') + 1
+			correctAnswers = Session.get('correctAnswers')
+			correctAnswers = correctAnswers + 1
 			Session.set('correctAnswers', correctAnswers)
 		else
 			console.log 'Ouch. Wrong'
 
 		nbrAskedQuestions = Session.get('nbrAskedQuestions') + 1
 		Session.set('nbrAskedQuestions', nbrAskedQuestions)
+
+		console.log 'Number og asked questions ' + nbrAskedQuestions
+		if parseInt(nbrAskedQuestions) == NUM_ADULT_QUESTIONS
+			console.log 'Redirect'
+			Router.go('/')
 
