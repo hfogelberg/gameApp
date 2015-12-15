@@ -8,8 +8,7 @@
 
 	<ul class='list-unstyled questionair'>
 		{{#each questions}}
-			<li class='question invisble'>
-				<!-- <h3>Question {{index}}</h3> -->
+			<li class='question invisible'>
 				<h4 class='questionTitle'>{{title}}</h4>	
 				<div class='answer evenly row-fluid'>
 					{{#each answers}}
@@ -23,7 +22,7 @@
 					{{#each answers}} 		<!-- explanations -->
 						<div class='explanation' id='{{answerId}}'>
 							<div class='{{answerId}} comment hideAnswer'>{{reason}}</div>
-							<div class='{{answerId}} correctAnswer hideAnswer' value='{{isCorrectAnswer}}'>{{isCorrectAnswer}}</div>
+							<div class='{{answerId}} correctAnswer hidden' value='{{isCorrectAnswer}}'>{{isCorrectAnswer}}</div>
 						</div>
 					{{/each}}
 				</div>
@@ -40,11 +39,11 @@
 	   </div>
   </div> -->
 
-  <div>
+<!--   <div>
   	<div class="progress progress-striped active">
   		<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
     		<span class="sr-only">40% Complete (success)</span>
   		</div>
 		</div>
-	</div>
+	</div> -->
 </template>

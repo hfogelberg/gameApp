@@ -62,7 +62,7 @@ i {
 }
 
 /*SHOULD NOT BE OUTCOMMENTED*/
-hideAnswer {
+.hideAnswer {
 	display: none;
 }
 
