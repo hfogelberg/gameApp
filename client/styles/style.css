@@ -27,6 +27,15 @@ i {
   font-family: sans-serif;
 }
 
+.centerImage {
+  margin: 0 auto;
+}
+
+.imageContainer {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
 .invisble {
 	display: none;
 }
@@ -52,10 +61,11 @@ i {
   margin-top: 200;
 }
 
-.hideAnswer {
+/*SHOULD NOT BE OUTCOMMENTED*/
+/*.hideAnswer {
 	display: none;
 }
-
+*/
 .showAnswer {
 	display: inline-block;
 }
