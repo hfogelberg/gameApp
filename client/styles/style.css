@@ -53,6 +53,7 @@ i {
 
 h4.questionTitle {
   font-size: 180%;
+  text-transform: capitalize;
 }
 
 /*Center the questions horizontall*/
@@ -64,20 +65,20 @@ h4.questionTitle {
 }
 
 /*Distribute questions evenly*/
-/*.answer {
-  display:flex;
-  justify-content:space-between;
-}
-*/
 .evenly {
   display:flex;
   justify-content:space-between;
 }
 
-/*.evenly.btnAnswer {
-  white-space:nowrap;
-  background:gray;
-}*/
+.btnAnswer {
+  border: none;
+}
+
+.comment {
+  text-align: center;
+  text-transform: capitalize;;
+  font-size: 200%;
+}
 
 .vertical-center {
   height:100%;

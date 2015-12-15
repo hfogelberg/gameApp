@@ -9,7 +9,7 @@
 				<h4 class='questionTitle'>{{title}}</h4>	
 				<div class='answer evenly row-fluid'>
 					{{#each answers}}
-						<button class='btnAnswer btn btn-unstyled btn-lg' id='{{answerId}}'>
+						<button class='btnAnswer btn btn-default btn-lg' id='{{answerId}}'>
 							{{answerTitle}}	
 						</button>
 					{{/each}}		
@@ -17,9 +17,9 @@
 				
 				<div>
 					{{#each answers}} 		<!-- explanations -->
-						<div class='explanation hideAnswer' id='{{answerId}}'>
-							<div class='comment'>{{reason}}</div>
-							<div class='correctAnswer' value='{{isCorrectAnswer}}'>{{isCorrectAnswer}}</div>
+						<div class='explanation' id='{{answerId}}'>
+							<div class='{{answerId}} comment hideAnswer'>{{reason}}</div>
+							<div class='{{answerId}} correctAnswer hideAnswer' value='{{isCorrectAnswer}}'>{{isCorrectAnswer}}</div>
 						</div>
 					{{/each}}
 				</div>

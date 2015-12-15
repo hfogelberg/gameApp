@@ -27,12 +27,13 @@ Template.adultsGameTemplate.events
 		answerId = event.currentTarget.id
 
 		console.log  'Selected answer: ' + answerId
-		elem = '.explanation#' + answerId
+		elem = '.' + answerId + '.comment'
 		$(elem).removeClass('hideAnswer')
 		$(elem).addClass('showAnswer')
 
-		isCorrectDiv = '#' + answerId + ' > div.correctAnswer'
+		isCorrectDiv = '.' + answerId + '.correctAnswer'
 		isCorrect = $(isCorrectDiv).text()
+		
 		if isCorrect is YES
 			console.log 'Horay!'
 			correctAnswers = Session.get('correctAnswers') + 1
