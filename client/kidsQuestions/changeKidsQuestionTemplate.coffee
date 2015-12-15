@@ -44,12 +44,14 @@ Template.changeQuestionTemplate.events
 		showAnswerImgElem = $('input:radio[name=showAnswerImg]:checked')
 		showAnswerElem = $('input:radio[name=showAnswerElem]:checked')
 		correctAnswersElem = $('input:radio[name=correctAnswers]:checked')
+		questionTypeElem = $('input:radio[name=questionType]:checked')
 
 		props = {
 			title: $('#title').val()
 			image: Session.get('questionImageId')
 			showAnswerImg: $(showAnswerImgElem).val()
 			showAnswer: $(showAnswerElem).val()
+			questionType: $(questionTypeElem).val()
 			showAnswerTimer: $('#showTimer').val()
 			correctAnswers: $(correctAnswersElem).val()
 			level: KID

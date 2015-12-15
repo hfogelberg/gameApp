@@ -64,6 +64,7 @@ Template.newKidsQuestion.events
 		showAnswerImgElem = $('input:radio[name=showAnswerImg]:checked')
 		showAnswerElem = $('input:radio[name=showAnswer]:checked')
 		correctAnswersElem = $('input:radio[name=correctAnswers]:checked')
+		questionTypeElem = $('input:radio[name=questionType]:checked')
 
 		props = {
 			_id: questionId
@@ -73,6 +74,7 @@ Template.newKidsQuestion.events
 			showAnswer: $(showAnswerElem).val()
 			showAnswerTimer: $('#showTimer').val()
 			correctAnswers: $(correctAnswersElem).val()
+			questionType: $(questionTypeElem).val()
 			level: KID
 			random: Random.fraction()
 			createdDate: new Date()

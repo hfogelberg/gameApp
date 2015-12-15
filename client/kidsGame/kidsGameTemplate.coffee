@@ -15,6 +15,7 @@ Meteor.methods
 		console.log res
 		Session.set('showAnswer', res.showAnswer)
 		Session.set('showAnswerImg', res.showAnswerImg)
+		Session.set('questionType', res.questionType)
 		Session.set('showAnswerTimer', res.showAnswerTimer)
 		Session.set('correctAnswersParam', res.correctAnswers)
 
