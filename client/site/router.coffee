@@ -119,13 +119,21 @@ Router.map ->
       @subscribe 'getAnswerById', Session.get('answerId')
     data: question: ->
       Questions.findOne({"answers.answerId": Session.get('answerId')})
-    
 
   @route 'adultGame',
     template: 'adultsGameTemplate',
     route: '/adultGame'
     waitOn: ->
-      console.log 'Getting adult questions'
-      @subscribe 'getAdultQuestions'
+      @subscribe 'getQuestionsForGame', ADULT
     data: questions: ->
       Questions.find()
+
+  @route 'kidsGame',
+    template: 'kidsGameTemplate',
+    route: '/kidsGame'
+    waitOn: ->
+      @subscribe 'getQuestionsForGame', KID
+    data: questions: ->
+      Questions.find()
+
+

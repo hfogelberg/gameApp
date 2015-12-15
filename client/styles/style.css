@@ -23,6 +23,8 @@ i {
   height: 50px;
   width: 150px;
   margin-right: 5px;
+  line-height: 30px;
+  font-family: sans-serif;
 }
 
 .invisble {
@@ -45,6 +47,11 @@ i {
 	background-color: yellow;
 }
 */
+
+.startContainer {
+  margin-top: 200;
+}
+
 .hideAnswer {
 	display: none;
 }
