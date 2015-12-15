@@ -58,7 +58,7 @@ Template.adultsGameTemplate.events
 
 			props = {
 				correctAnswers: Session.get('correctAnswers')
-				level: kid
+				level: ADULT
 				createdDate: new Date()
 			}
 

@@ -1,0 +1,16 @@
+<template name='statsTemplate'>
+	<h2>Statistics</h2>
+
+	<table class='table'>
+		<tbody>
+			{{#each stats}}
+				<tr>
+					<td>{{correctAnswers}}</td>
+					<td>{{level}}</td>
+					<td>{{formatDate createdDate}}</td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
+
+</template>

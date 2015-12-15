@@ -16,44 +16,11 @@ timeLeft = ->
 			$(str).addClass('invisible')
 			$('.oneAnswerText').removeClass('invisible')
 
+
 interval = Meteor.setInterval(timeLeft, 1000)
 
 Meteor.methods 
-	# 'getQuestionParams': (res) ->
-	# 	console.log res
-	# 	Session.set('showAnswer', res.showAnswer)
-	# 	Session.set('showAnswerImg', res.showAnswerImg)
-	# 	Session.set('questionType', res.questionType)
-	# 	Session.set('showAnswerTimer', res.showAnswerTimer)
-	# 	Session.set('correctAnswersParam', res.correctAnswers)
-
-	# 	for answer in res.answers 
-	# 		if answer.isCorrectAnswer is YES
-	# 			console.log 'Correct Answer: ' + answer.answerId
-	# 			Session.set('correctAnswerId', answer.answerId)
-
-	# 	if res.showAnswer
-	# 		elem = $('.answerTitle')
-	# 		elem.addClass('invisible')
-
-	# 	if res.showAnswerTimer
-	# 		console.log 'starting timer'
-	# 		clock = res.showAnswerTimer
-	# 		interval = Meteor.setInterval(clock, 1000)
-
-Template.kidsGameTemplate.rendered =->
-	console.log 'rendered'
-	$('ul.questionair li:first').removeClass('invisible')
-	$('ul.questionair li:first').addClass('visible')
-	Session.set('correctAnswers', 0)
-	Session.set('nbrAskedQuestions', 0)
-	Session.set('answerGiven', false)
-
-	$('.answerTitle').removeClass('invisible')
-	$('.oneAnswerText').addClass('invisible')
-
-	id = $('ul li.visible').attr('id')
-	Meteor.call 'getOneQuestionById', id, (err, res) ->
+	'getQuestionParams': (res) ->
 		console.log res
 		Session.set('showAnswer', res.showAnswer)
 		Session.set('showAnswerImg', res.showAnswerImg)
@@ -70,14 +37,24 @@ Template.kidsGameTemplate.rendered =->
 			elem = $('.answerTitle')
 			elem.addClass('invisible')
 
-		if res.showAnswerTimer
-			console.log 'starting timer'
+Template.kidsGameTemplate.rendered =->
+	console.log 'rendered'
+	$('ul.questionair li:first').removeClass('invisible')
+	$('ul.questionair li:first').addClass('visible')
+	Session.set('correctAnswers', 0)
+	Session.set('nbrAskedQuestions', 0)
+	Session.set('answerGiven', false)
+
+	$('.answerTitle').removeClass('invisible')
+	$('.oneAnswerText').addClass('invisible')
+
+	id = $('ul li.visible').attr('id')
+	Meteor.call 'getOneQuestionById', id, (err, res) ->
+		Meteor.call 'getQuestionParams', res, ->
+		if Session.get('showAnswerTimer')
+			console.log 'starting timer with interva ' + res.showAnswerTimer
 			clock = res.showAnswerTimer
 			interval = Meteor.setInterval(clock, 1000)
-		# if err
-		# 	alert err
-		# else
-		# 	Meteor.call 'getQuestionParams', res, ->
 
 Template.kidsGameTemplate.helpers
 	getCountdown:->
@@ -102,35 +79,15 @@ Template.kidsGameTemplate.events
 		elem.next().removeClass('invisible')
 		elem.next().addClass('visible')
 
-		#elem = $('ul li.visible .questionProps .showAnswerTimer')
-
 		id = $('ul li.visible').attr('id')
 		console.log 'Next question id: ' + id
 		Meteor.call 'getOneQuestionById', id, (err, res) ->
-			console.log res
-			Session.set('showAnswer', res.showAnswer)
-			Session.set('showAnswerImg', res.showAnswerImg)
-			Session.set('questionType', res.questionType)
-			Session.set('showAnswerTimer', res.showAnswerTimer)
-			Session.set('correctAnswersParam', res.correctAnswers)
+			Meteor.call 'getQuestionParams', res, ->
 
-			for answer in res.answers 
-				if answer.isCorrectAnswer is YES
-					console.log 'Correct Answer: ' + answer.answerId
-					Session.set('correctAnswerId', answer.answerId)
-
-			if res.showAnswer
-				elem = $('.answerTitle')
-				elem.addClass('invisible')
-
-			if res.showAnswerTimer
-				console.log 'starting timer'
+			if Session.get('showAnswerTimer')
+				console.log 'starting timer with interval ' + res.showAnswerTimer
 				clock = res.showAnswerTimer
 				interval = Meteor.setInterval(clock, 1000)
-			# if err
-			# 	alert err
-			# else
-			# 	Meteor.call 'getQuestionParams', res, ->
 
 	'click .btnAnswer': (event) ->
 		event.preventDefault
@@ -165,7 +122,7 @@ Template.kidsGameTemplate.events
 
 			props = {
 				correctAnswers: Session.get('correctAnswers')
-				level: kid
+				level: KID
 				createdDate: new Date()
 			}
 
