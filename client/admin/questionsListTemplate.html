@@ -14,7 +14,7 @@
 				{{#each questions}}
 					<tr>
 						<td>{{title}}</td>
-						<td>{{createdDate}}</td>
+						<td>{{formatDate createdDate}}</td>
 						<td>
 							{{#if equals level 'KID'}}
 							<td><a href="/question/{{_id}}"><i class="fa fa-pencil-square-o"></i>
