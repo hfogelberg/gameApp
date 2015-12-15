@@ -1,45 +1,50 @@
 <template name='questionTemplate'>
-	<p><a href='/admin' class='btn'>Back</a></p>
-	{{#with question}}
-		<h3>Question</h3>
-		<p>Title: {{title}}</p>
-		<p>
-			{{#if image}}
-				<img src="https://res.cloudinary.com/ginkgo/image/upload/w_90/{{image}}">
-			{{/if}}
-		</p>
-		<p>Show answer image: {{showAnswerImg}}</p>
-		<p>Show answer timer: {{showAnswerTimer}}</p>
-		<p>Correct answers: {{correctAnswers}}</p>
-		<p>Level: {{level}}</p>
-		<p>Created date: {{formatDate createdDate}}</p>
+	<div class='adminQuestionContainer'>
+		<p><a href='/admin' class='btn btn-md btn-default'><i class="fa fa-chevron-left"></i>Back</a></p>
+		{{#with question}}
+			<h2 class='questionTitle'>Question</h2>
+			<div class='well'>
 
-		<a href='/changeQuestion/{{_id}}'>Change question</a>
+				<a href='/changeQuestion/{{_id}}' class='btnChangeQuestion btn btn-default pull-right'>Change question</a>
+				
+				<p><label>Title: </label> {{title}}</p>
+				<p>
+					{{#if image}}
+						<img src="https://res.cloudinary.com/ginkgo/image/upload/w_90/{{image}}">
+					{{/if}}
+				</p>
+				<p><label>Show answer image: </label> {{showAnswerImg}}</p>
+				<p><label>Show answer timer: </label> {{showAnswerTimer}}</p>
+				<p><label>Correct answers: </label> {{correctAnswers}}</p>
+				<p><label>Level: </label> {{level}}</p>
+				<p><label>Created date: </label> {{formatDate createdDate}}</p>
+			</div>
 
-		<div class='answers'>
-			<p><a href='/newKidsAnswer/{{questionId}}'>New answer</a></p>
-			<table>
-				<tbody>
-					{{#each answers}}
-						<tr>
-							<td>{{answerTitle}}</td>
-							<td>
-								{{#if image}}
-									<img src="https://res.cloudinary.com/ginkgo/image/upload/w_90/{{image}}">
-								{{/if}}
-							</td>
-							<td>
-								<a href='/changeAnswer/{{questionId}}/{{answerId}}' class='btn btnChangeAnswer' id='{{answerId}}'>Change</a>
-							</td>
-							<td>
-								<button class='btn btn-danger btnRemoveAnswer' id='{{answerId}}'>Remove</button>
-							</td>
-						</tr>
-					{{/each}}
-				</tbody>
-			</table>
-		</div>
-	{{/with}}
+			<div class='answersAdminList'>
+				<p><a href='/newKidsAnswer/{{questionId}}' class='pull-right'><i class="fa fa-plus"></i>Add new answer</a></p>
+				<table class='table'>
+					<tbody>
+						{{#each answers}}
+							<tr>
+								<td>{{answerTitle}}</td>
+								<td>
+									{{#if image}}
+										<img src="https://res.cloudinary.com/ginkgo/image/upload/w_90/{{image}}">
+									{{/if}}
+								</td>
+								<td>
+									<a href='/changeAnswer/{{questionId}}/{{answerId}}' class='btn btnChangeAnswer' id='{{answerId}}'>Change</a>
+								</td>
+								<td>
+									<button class='btn btn-danger btnRemoveAnswer' id='{{answerId}}'>Remove</button>
+								</td>
+							</tr>
+						{{/each}}
+					</tbody>
+				</table>
+			</div>
+		{{/with}}
 
-	<a href='/admin' class='btn btn-lg'>Done</a>
+		<a href='/admin' class='btn btn-lg'>Done</a>
+	</div>
 </template>

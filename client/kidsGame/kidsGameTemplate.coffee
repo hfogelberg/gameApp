@@ -5,7 +5,23 @@ countdown = new ReactiveCountdown(
 )
 
 Meteor.methods 'timerComplete': ->
-  console.log 'Timer complete'
+  console.log  'Timer complete'
+
+	# if Session.get 'showAnswer' is YES
+
+	# elem = $('li.visible div.answer button.btnAnswer div.answerTitle')
+	elem = $('ul.questionair li.visible div.answer button.btnAnswer div.answerTitle')
+	alert 'answerTitle ' + elem.text()
+
+
+# 	elem.removeClass('invisible')
+
+# 	elem = $('ul li.visible .questionProps .showAnswer')
+# 	alert 'showAnswer ' + elem.text()
+
+# 	# if showAnswer is YES
+# 	# 	elem = $('ul li.visible .answer .showAnswerTimer .answertTitle').removeClass('invisible')
+
 
 Template.kidsGameTemplate.rendered =->
 	console.log 'rendered'
@@ -15,11 +31,15 @@ Template.kidsGameTemplate.rendered =->
 	Session.set('nbrAskedQuestions', 0)
 	Session.set('answerGiven', false)
 
-	# elem = $('.visible.questionPropsshowAnswerTimer')
-	# timer = elem.text()
-	# alert timer
+	elem = $('ul li.visible .questionProps .showAnswerTimer')
+	timer = elem.text()
 
-	# countdown.add(timer)
+	elem = $('ul li.visible .questionProps .showAnswer')
+	showAnswer = elem.text()
+
+	Session.set('showAnswer', showAnswer)
+
+	# Session.set('timerInterval', pareseInt(timer))
 	countdown.start()
 
 
@@ -43,6 +63,15 @@ Template.kidsGameTemplate.events
 		elem.addClass('invisible')
 		elem.next().removeClass('invisible')
 		elem.next().addClass('visible')
+
+		elem = $('ul li.visible .questionProps .showAnswerTimer')
+
+		timer = elem.text()
+		if timer
+			alert 'timer: ' + timer
+
+			Session.set('timerInterval', pareseInt(timer))
+			countdown.start()
 
 	'click .btnAnswer': (event) ->
 		event.preventDefault

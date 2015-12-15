@@ -10,7 +10,6 @@
 	<ul class='list-unstyled questionair'>
 		{{#each questions}}
 			<li class='question invisble'>
-				<!-- <h3>Question {{index}}</h3> -->
 				<h4 class='questionTitle'>{{title}}</h4>	
 				<div class='questionProps' id='{{_id}}'>
 					<div class='showAnswerImg'>{{showAnswerImg}}</div>
@@ -25,15 +24,17 @@
 				<div class='answer evenly row-fluid'>
 					{{#each answers}}
 						<button class='btnAnswer btn btn-default btn-lg' id='{{answerId}}'>
-							<div>
+							<div class='answerImage'>
 								{{#if image}}
 									<img class='centerImage img-responsive' src="https://res.cloudinary.com/ginkgo/image/upload/w_180/{{image}}" alt='{{title}}'>
 								{{/if}}
 							</div>
-							{{answerTitle}}	
+							<div class='answerTitle {{_id}}'>
+								{{answerTitle}}	
+							</div>
 						</button>
 					{{/each}}		
-				</div>					<!-- answer -->
+				</div>									<!-- answer -->
 				
 				<div>
 					{{#each answers}} 		<!-- explanations -->
@@ -43,9 +44,9 @@
 						</div>
 					{{/each}}
 				</div>
-			</li>										<!--   question  -->
-		{{/each}}									<!--   question  -->
-	</ul> 											<!-- questionair -->
+			</li>											<!--   question  -->
+		{{/each}}										<!--   question  -->
+	</ul> 												<!-- questionair -->
 
 	<div class='nextQuestionContainer pull-right'>
 		<button type='button' class='btn btn-primary btn-lg' id='btnNextQuestion'>Next</button>
