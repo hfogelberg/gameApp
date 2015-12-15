@@ -1,3 +1,7 @@
+html, body {
+  height: 100%;
+}
+
 .adminNav {
 	margin-bottom: 10px;
 }
@@ -42,9 +46,38 @@ i {
 	display: inline-block;
 }
 
-html, body {
-  height: 100%;
+
+.questionair {
+  width: 80%;
 }
+
+h4.questionTitle {
+  font-size: 180%;
+}
+
+/*Center the questions horizontall*/
+.question {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px;
+  text-align: center;
+}
+
+/*Distribute questions evenly*/
+/*.answer {
+  display:flex;
+  justify-content:space-between;
+}
+*/
+.evenly {
+  display:flex;
+  justify-content:space-between;
+}
+
+/*.evenly.btnAnswer {
+  white-space:nowrap;
+  background:gray;
+}*/
 
 .vertical-center {
   height:100%;

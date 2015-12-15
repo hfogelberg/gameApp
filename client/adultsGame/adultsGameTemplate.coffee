@@ -32,7 +32,6 @@ Template.adultsGameTemplate.events
 		$(elem).addClass('showAnswer')
 
 		isCorrectDiv = '#' + answerId + ' > div.correctAnswer'
-		alert isCorrectDiv
 		isCorrect = $(isCorrectDiv).text()
 		if isCorrect is YES
 			console.log 'Horay!'

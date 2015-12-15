@@ -6,14 +6,14 @@
 		{{#each questions}}
 			<li class='question invisble'>
 				<!-- <h3>Question {{index}}</h3> -->
-				<h4>{{title}}</h4>	
-				{{#each answers}}
-					<div class='answer row-fluid'>
-						<button class= 'btnAnswer btn btn-unstyled btn-lg' id='{{answerId}}'>
+				<h4 class='questionTitle'>{{title}}</h4>	
+				<div class='answer evenly row-fluid'>
+					{{#each answers}}
+						<button class='btnAnswer btn btn-unstyled btn-lg' id='{{answerId}}'>
 							{{answerTitle}}	
 						</button>
-					</div>
-				{{/each}}							<!-- answer -->
+					{{/each}}		
+				</div>					<!-- answer -->
 				
 				<div>
 					{{#each answers}} 		<!-- explanations -->
