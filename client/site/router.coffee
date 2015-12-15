@@ -124,7 +124,7 @@ Router.map ->
     template: 'adultsGameTemplate',
     route: '/adultGame'
     waitOn: ->
-      @subscribe 'getQuestionsForGame', ADULT
+      @subscribe 'getQuestionsForGame', ADULT, NUM_ADULT_QUESTIONS
     data: questions: ->
       Questions.find()
 
@@ -132,7 +132,7 @@ Router.map ->
     template: 'kidsGameTemplate',
     route: '/kidsGame'
     waitOn: ->
-      @subscribe 'getQuestionsForGame', KID
+      @subscribe 'getQuestionsForGame', KID, NUM_KIDS_QUESTIONS
     data: questions: ->
       Questions.find()
 

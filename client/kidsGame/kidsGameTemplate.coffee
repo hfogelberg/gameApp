@@ -65,6 +65,8 @@ Template.kidsGameTemplate.events
 	'click .btnAnswer': (event) ->
 		event.preventDefault
 
+		Meteor.clearInterval interval
+		
 		$('.btnAnswer').attr('disabled', 'disabled')
 
 		answerId = event.currentTarget.id
