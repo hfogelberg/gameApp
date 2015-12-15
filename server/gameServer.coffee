@@ -1,4 +1,7 @@
 Meteor.startup ->
+	Meteor.publish 'getStats', ->
+		Stats.find()
+
 	Meteor.publish 'getQuestionsForGame', (level, numQuestions) ->
 		console.log 'getQuestionsForGame ' + level
 		console.log 'numQuestions ' + numQuestions
@@ -34,6 +37,10 @@ Meteor.startup ->
 			}
 
 Meteor.methods
+	createStats: (props) ->
+		console.log 'Create stats'
+		Stats.insert props
+
 	getOneQuestionById: (questionId) ->
 		console.log 'getOneQuestionById ' + questionId
 		Questions.findOne

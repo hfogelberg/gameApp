@@ -19,6 +19,14 @@ Router.map ->
     data: questions: ->
       Questions.find()
 
+  @route 'stats',
+    template: 'statsTemplate',
+    route: '/admin/stats'
+    waitOn: ->
+      @subscribe 'getStats'
+    data: stats:->
+      Stats.find()
+
   @route 'newQuestion',
     template: 'newQuestionTemplate',
     path: '/newQuestion/:level'
@@ -135,5 +143,3 @@ Router.map ->
       @subscribe 'getQuestionsForGame', KID, NUM_KIDS_QUESTIONS
     data: questions: ->
       Questions.find()
-
-

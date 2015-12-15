@@ -55,5 +55,18 @@ Template.adultsGameTemplate.events
 		console.log 'Number of asked questions ' + nbrAskedQuestions
 		if parseInt(nbrAskedQuestions) == NUM_ADULT_QUESTIONS
 			console.log 'Redirect'
+
+			props = {
+				correctAnswers: Session.get('correctAnswers')
+				level: kid
+				createdDate: new Date()
+			}
+
+			Meteor.call 'createStats', props, (err) ->
+			
 			Router.go('/')
+
+			Router.go('/')
+
+
 
