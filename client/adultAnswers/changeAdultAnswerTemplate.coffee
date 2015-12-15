@@ -1,7 +1,9 @@
 Template.changeAdultAnswerTemplate.helpers
-	id: () ->
+	id: ->
 		Session.get 'answerId'
 
+	questionId: ->
+		Session.get 'questionId'
 
 Template.changeAdultAnswerTemplate.events
 	'click .btnChangeAnswer': (event) ->
