@@ -9,9 +9,9 @@
 
 	<ul class='list-unstyled questionair'>
 		{{#each questions}}
-			<li class='question invisble'>
+			<li class='question invisible'>
 				<h4 class='questionTitle'>{{title}}</h4>	
-				<div class='questionProps' id='{{_id}}'>
+				<div class='questionProps invisible' id='{{_id}}'>
 					<div class='showAnswerImg'>{{showAnswerImg}}</div>
 					<div class='showAnswer'>{{showAnswer}}</div>
 					<div class='showAnswerTimer'>{{showAnswerTimer}}</div>
@@ -38,7 +38,7 @@
 				
 				<div>
 					{{#each answers}} 		<!-- explanations -->
-						<div class='explanation' id='{{answerId}}'>
+						<div class='explanation invisible' id='{{answerId}}'>
 							<div class='{{answerId}} comment hideAnswer'>{{reason}}</div>
 							<div class='{{answerId}} correctAnswer hideAnswer' value='{{isCorrectAnswer}}'>{{isCorrectAnswer}}</div>
 						</div>

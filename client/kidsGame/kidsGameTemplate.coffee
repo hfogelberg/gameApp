@@ -11,7 +11,7 @@ Meteor.methods 'timerComplete': ->
 
 	# elem = $('li.visible div.answer button.btnAnswer div.answerTitle')
 	elem = $('ul.questionair li.visible div.answer button.btnAnswer div.answerTitle')
-	alert 'answerTitle ' + elem.text()
+	# alert 'answerTitle ' + elem.text()
 
 
 # 	elem.removeClass('invisible')
@@ -68,7 +68,7 @@ Template.kidsGameTemplate.events
 
 		timer = elem.text()
 		if timer
-			alert 'timer: ' + timer
+			#alert 'timer: ' + timer
 
 			Session.set('timerInterval', pareseInt(timer))
 			countdown.start()
