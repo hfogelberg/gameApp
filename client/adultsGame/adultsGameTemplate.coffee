@@ -52,7 +52,7 @@ Template.adultsGameTemplate.events
 		nbrAskedQuestions = Session.get('nbrAskedQuestions') + 1
 		Session.set('nbrAskedQuestions', nbrAskedQuestions)
 
-		console.log 'Number og asked questions ' + nbrAskedQuestions
+		console.log 'Number of asked questions ' + nbrAskedQuestions
 		if parseInt(nbrAskedQuestions) == NUM_ADULT_QUESTIONS
 			console.log 'Redirect'
 			Router.go('/')

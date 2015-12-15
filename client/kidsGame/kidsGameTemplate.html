@@ -7,19 +7,26 @@
 		<a href='/start' type='button' class='btn btn-danger btn-md' id='btnStopQuiz'>Quit game</a>
 	</div>
 
+	<div class='nextQuestionContainer pull-right'>
+		<button type='button' class='btn btn-primary btn-lg' id='btnNextQuestion'>Next</button>
+	</div>
+	
 	<ul class='list-unstyled questionair'>
 		{{#each questions}}
 			<li class='question invisible' id='{{_id}}'>
 				<h4 class='questionTitle'>{{title}}</h4>	
-				<div class='questionProps invisible'>
+<!-- 				<div class='questionProps invisible'>
 					<div class='showAnswerImg'>{{showAnswerImg}}</div>
 					<div class='showAnswer'>{{showAnswer}}</div>
 					<div class='showAnswerTimer'>{{showAnswerTimer}}</div>
-				</div>
+				</div> -->
 				<div class='imageContainer'>
 					{{#if image}}
 						<img class='centerImage img-responsive' src="https://res.cloudinary.com/ginkgo/image/upload/w_180/{{image}}" alt='{{title}}'>
 					{{/if}}
+				</div>
+				<div class='oneAnswerContainer invisible'>
+					{{oneAnswerText}}
 				</div>
 				<div class='answer evenly row-fluid'>
 					{{#each answers}}
@@ -47,10 +54,6 @@
 			</li>											<!--   question  -->
 		{{/each}}										<!--   question  -->
 	</ul> 												<!-- questionair -->
-
-	<div class='nextQuestionContainer pull-right'>
-		<button type='button' class='btn btn-primary btn-lg' id='btnNextQuestion'>Next</button>
-	</div>
 
 <!-- 	<div class="progress">
 	   <div class="progress-bar" role="progressbar" aria-valuenow="{{correctAnswers}}" aria-valuemin="0" aria-valuemax="10">
