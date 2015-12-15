@@ -80,6 +80,17 @@ h4.questionTitle {
   font-size: 200%;
 }
 
+.nextQuestionContainer {
+  height: 80px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.progress {
+  margin-top: 10px;
+  padding: 10px;
+}
+
 .vertical-center {
   height:100%;
   width:100%;
