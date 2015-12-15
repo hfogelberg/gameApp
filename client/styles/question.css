@@ -1,0 +1,18 @@
+.adminQuestionContainer {
+	margin: 10px;
+}
+
+h2.questionTitle {
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+.btnChangeQuestion {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.answersAdminList {
+	margin-top: 20px;
+	padding: 20px;
+}
