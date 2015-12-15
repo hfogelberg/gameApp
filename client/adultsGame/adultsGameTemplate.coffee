@@ -4,17 +4,20 @@ Template.adultsGameTemplate.rendered =->
 	$('ul.questionair li:first').addClass('visible')
 	Session.set('correctAnswers', 0)
 	Session.set('nbrAskedQuestions', 0)
+	Session.set('answerGiven', false)
 
 Template.adultsGameTemplate.helpers
+	answerGiven:->
+		Session.get 'answerGiven'
+
 	correctAnswers:->
 		Session.get 'correctAnswers'
-	nbrAskedQuestions:->
-		Session.get 'nbrAskedQuestions'
 
 Template.adultsGameTemplate.events
 	'click #btnNextQuestion': (event) ->
 		event.preventDefault
 
+		$('.btnAnswer').removeAttr('disabled')
 		elem = $('ul.questionair li.visible').addClass('visible')
 		elem.removeClass('visible')
 		elem.addClass('invisible')
@@ -23,6 +26,8 @@ Template.adultsGameTemplate.events
 
 	'click .btnAnswer': (event) ->
 		event.preventDefault
+
+		$('.btnAnswer').attr('disabled', 'disabled')
 
 		answerId = event.currentTarget.id
 
@@ -33,7 +38,7 @@ Template.adultsGameTemplate.events
 
 		isCorrectDiv = '.' + answerId + '.correctAnswer'
 		isCorrect = $(isCorrectDiv).text()
-		
+
 		if isCorrect is YES
 			console.log 'Horay!'
 			correctAnswers = Session.get('correctAnswers') + 1
