@@ -58,9 +58,11 @@ Template.kidsGameTemplate.events
 		event.preventDefault
 
 		$('.btnAnswer').removeAttr('disabled')
-		elem = $('ul.questionair li.visible').addClass('visible')
+		elem = $('ul.questionair li.visible')
 		elem.removeClass('visible')
 		elem.addClass('invisible')
+		elem.addClass('noHeight')
+		
 		elem.next().removeClass('invisible')
 		elem.next().addClass('visible')
 
