@@ -7,6 +7,9 @@ timeLeft = ->
   else
     # console.log "That's All Folks"
     Meteor.clearInterval interval
+    if Session.get('showAnswer')
+    	elem = $('.answerTitle')
+			elem.removeClass('invisible')
 
 interval = Meteor.setInterval(timeLeft, 1000)
 
@@ -18,6 +21,10 @@ Meteor.methods
 		Session.set('questionType', res.questionType)
 		Session.set('showAnswerTimer', res.showAnswerTimer)
 		Session.set('correctAnswersParam', res.correctAnswers)
+
+		if res.showAnswer
+			elem = $('.answerTitle')
+			elem.addClass('invisible')
 
 		if res.showAnswerTimer
 			clock = res.showAnswerTimer
