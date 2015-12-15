@@ -1,7 +1,7 @@
 <template name='kidsGameTemplate'>
 	<h4>Correct answers: {{correctAnswers}}</h4>
 
-	<p id='timer'><big>{{getCountdown}}</big> seconds left!</p>
+	<p id='timer'><big>{{getCountdown}}</big> seconds left</p>
 
 	<div class='stopQuizzContainer pull-right'>
 		<a href='/start' type='button' class='btn btn-danger btn-md' id='btnStopQuiz'>Quit game</a>
@@ -9,9 +9,9 @@
 
 	<ul class='list-unstyled questionair'>
 		{{#each questions}}
-			<li class='question invisible'>
+			<li class='question invisible' id='{{_id}}'>
 				<h4 class='questionTitle'>{{title}}</h4>	
-				<div class='questionProps invisible' id='{{_id}}'>
+				<div class='questionProps invisible'>
 					<div class='showAnswerImg'>{{showAnswerImg}}</div>
 					<div class='showAnswer'>{{showAnswer}}</div>
 					<div class='showAnswerTimer'>{{showAnswerTimer}}</div>

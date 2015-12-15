@@ -29,6 +29,11 @@ Meteor.startup ->
 			}
 
 Meteor.methods
+	getOneQuestionById: (questionId) ->
+		console.log 'getOneQuestionById ' + questionId
+		Questions.findOne
+			_id: questionId
+
 	changeAnswerToQuestion: (questionId, answerId, params) ->
 		console.log 'changeAnswerToQuestion ' + answerId
 		console.log params

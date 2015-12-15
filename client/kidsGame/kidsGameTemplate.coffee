@@ -1,27 +1,50 @@
-countdown = new ReactiveCountdown(
-	5,
-	completed: ->
-		Meteor.call 'timerComplete', ->
-)
+clock = 0
+timeLeft = ->
+  if clock > 0
+    clock--
+    Session.set "time", clock
+    console.log clock
+  else
+    console.log "That's All Folks"
+    Meteor.clearInterval interval
 
-Meteor.methods 'timerComplete': ->
-  console.log  'Timer complete'
-
-	# if Session.get 'showAnswer' is YES
-
-	# elem = $('li.visible div.answer button.btnAnswer div.answerTitle')
-	elem = $('ul.questionair li.visible div.answer button.btnAnswer div.answerTitle')
-	# alert 'answerTitle ' + elem.text()
+interval = Meteor.setInterval(timeLeft, 1000)
 
 
-# 	elem.removeClass('invisible')
+# Template.timer.time = ->
+#  	Session.get "time"
 
-# 	elem = $('ul li.visible .questionProps .showAnswer')
-# 	alert 'showAnswer ' + elem.text()
+Meteor.methods 
+	'getQuestionParams': (res) ->
+		console.log res
+		Session.set('showAnswer', res.showAnswer)
+		Session.set('showAnswerImg', res.showAnswerImg)
+		Session.set('showAnswerTimer', res.showAnswerTimer)
+		Session.set('correctAnswersParam', res.correctAnswers)
 
-# 	# if showAnswer is YES
-# 	# 	elem = $('ul li.visible .answer .showAnswerTimer .answertTitle').removeClass('invisible')
+		# countdown.set(5)
+		
 
+		if res.showAnswerTimer
+			clock = 5
+			interval = Meteor.setInterval(clock, 1000)
+		# 	console.log 'calling start timer'
+		# 	Meteor.call 'starTimer', ->
+
+	'timerComplete': ()->
+  	console.log  'Timer complete'
+
+	'starTimer': () ->
+		console.log 'starTimer'
+		console.log 'Timer interval ' + Session.get('showAnswerTimer')
+		interval = Session.get('showAnswerTimer')
+
+		if interval
+			console.log 'Have interval. Staring timer'
+			# countdown.stop()
+			# countdown.add(5)
+			countdown.start() ->
+				alert 'TIMER DONE'
 
 Template.kidsGameTemplate.rendered =->
 	console.log 'rendered'
@@ -31,21 +54,20 @@ Template.kidsGameTemplate.rendered =->
 	Session.set('nbrAskedQuestions', 0)
 	Session.set('answerGiven', false)
 
-	elem = $('ul li.visible .questionProps .showAnswerTimer')
-	timer = elem.text()
+	# countdown.add(3)
+	# countdown.start ->
+	# 	alert 'done'
 
-	elem = $('ul li.visible .questionProps .showAnswer')
-	showAnswer = elem.text()
-
-	Session.set('showAnswer', showAnswer)
-
-	# Session.set('timerInterval', pareseInt(timer))
-	countdown.start()
-
+	id = $('ul li.visible').attr('id')
+	Meteor.call 'getOneQuestionById', id, (err, res) ->
+		if err
+			alert err
+		else
+			Meteor.call 'getQuestionParams', res, ->
 
 Template.kidsGameTemplate.helpers
 	getCountdown:->
-		return countdown.get()
+		Session.get 'time'
 
 	answerGiven:->
 		Session.get 'answerGiven'
