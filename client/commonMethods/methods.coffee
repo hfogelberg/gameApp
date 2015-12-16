@@ -28,7 +28,6 @@ Meteor.methods
 		$('.wrongAnswer').addClass('invisible')
 
 	'displayAnswerType4': ()->
-		alert 'type 4'
 		$('.btnAnswer').removeClass('invisible')
 		$('.btnAnswer').removeAttr('disabled')
 		$('.wrongAnswer').removeClass('invisible')
