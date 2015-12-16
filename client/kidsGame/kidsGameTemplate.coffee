@@ -5,7 +5,6 @@ timeLeft = ->
     Session.set "time", clock
     # console.log clock
   else
-    # console.log "That's All Folks"
     Meteor.clearInterval interval
     if Session.get('showAnswer')
     	elem = $('.answerTitle')
@@ -69,6 +68,8 @@ Template.kidsGameTemplate.helpers
 Template.kidsGameTemplate.events
 	'click #btnNextQuestion': (event) ->
 		event.preventDefault
+
+		Meteor.clearInterval interval
 
 		$('.btnAnswer').removeAttr('disabled')
 		elem = $('ul.questionair li.visible')
