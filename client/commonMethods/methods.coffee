@@ -42,53 +42,42 @@ Meteor.methods
 
 		# Time to check what kind of question it is and hide/show divs
 	'findQuestionType': ->
-		console.log 'findQuestionType'
-
 		questions = Session.get('questions')
-		question = questions[Session.get('questionsCounter')]
-
-		console.log question
+		question = questions[Session.get('counter')]
 
 		len = question.oneAnswerText.length
-		console.log 'Length of text: ' + len
-
-		#Set default
-		Session.set('questionType', QUESTION_TYPE_4)
-
 		# Type 1
 		if question.showAnswer is NO
 			if question.questionType is SHOW
-				if len == 0
+				if question.oneAnswerText.length == 0
 					if question.correctAnswers is ALL
-						console.log 'questionType is ' + QUESTION_TYPE_1
+						console.log('questionType is ' + QUESTION_TYPE_1)
 						Session.set('questionType', QUESTION_TYPE_1)
 
 		#Type 2
 		if question.showAnswer is NO
 			if question.questionType is SHOW
-				if len > 0
+				if question.oneAnswerText.length > 0
 					if question.correctAnswers is ALL
-						console.log 'questionType is ' + QUESTION_TYPE_2
+						console.log('questionType is ' + QUESTION_TYPE_2)
 						Session.set('questionType', QUESTION_TYPE_2)
 
 		#Type 3
 		if question.showAnswer is NO
 			if question.questionType is SHOW
 				if question.correctAnswers is ONE
-					console.log 'questionType is ' + QUESTION_TYPE_3
+					console.log('questionType is ' + QUESTION_TYPE_3)
 					Session.set('questionType', QUESTION_TYPE_3)
 
-		# #Type 4
-		# if question.showAnswerImg is YES
-		# 	if question.showAnswer is YES
-		# 		if question.questionType is CHOOSE
-		# 			if question.correctAnswers is ONE
-		# 				console.log 'questionType is ' + QUESTION_TYPE_4
-		# 				Session.set('questionType', QUESTION_TYPE_4)
-
-		console.log 'questionType is ' + Session.get('questionType')
+		#Type 4
+		if question.showAnswer is YES
+			if question.questionType is CHOOSE
+				if question.correctAnswers is ONE
+					console.log('questionType is ' + QUESTION_TYPE_4)
+					Session.set('questionType', QUESTION_TYPE_4)		
 
 		if Session.get('questionType') is 1
 			Meteor.call 'setupQuestionType1', () ->
 		if Session.get('questionType') is 2
 			Meteor.call 'setupQuestionType2', () ->
+

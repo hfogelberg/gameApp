@@ -52,26 +52,13 @@ i {
 	display: inline-block;
 }
 
-/*.invisbleComment {
-	background-color: green;
-}
 
-.correctAnswerDisplay {
-	background-color: yellow;
-}
-*/
-
-/*SHOULD NOT BE OUTCOMMENTED*/
 .hideAnswer {
 	display: none;
 }
 
 .showAnswer {
 	display: inline-block;
-}
-
-
-.questionair {
 }
 
 h4.questionTitle {
