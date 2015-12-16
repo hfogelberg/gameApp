@@ -17,7 +17,6 @@ timeLeft = (t)->
   	if questionType == QUESTION_TYPE_4
   		Meteor.call 'displayAnswerType4', ->
   	if questionType != QUESTION_TYPE_4
-  		alert questionType
   		$('.btnAnswer').attr('disabled', 'disabled')
 
 Meteor.setInterval(timeLeft, 1000)

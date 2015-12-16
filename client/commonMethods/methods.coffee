@@ -73,9 +73,10 @@ Meteor.methods
 		#Type 3
 		if question.showAnswer is NO
 			if question.questionType is SHOW
-				if question.correctAnswers is ONE
-					console.log('questionType is ' + QUESTION_TYPE_3)
-					Session.set('questionType', QUESTION_TYPE_3)
+				if question.showAnswerTimer
+					if question.correctAnswers is ONE
+						console.log('questionType is ' + QUESTION_TYPE_3)
+						Session.set('questionType', QUESTION_TYPE_3)
 
 		#Type 4
 		if question.showAnswer is YES
