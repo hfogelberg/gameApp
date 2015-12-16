@@ -57,10 +57,6 @@ i {
 }
 */
 
-.startContainer {
-  margin-top: 200;
-}
-
 /*SHOULD NOT BE OUTCOMMENTED*/
 .hideAnswer {
 	display: none;
@@ -72,7 +68,6 @@ i {
 
 
 .questionair {
-  width: 80%;
 }
 
 h4.questionTitle {
@@ -104,47 +99,44 @@ h4.questionTitle {
   font-size: 200%;
 }
 
-.nextQuestionContainer {
-  height: 80px;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
 .progress {
   margin-top: 10px;
   padding: 10px;
 }
 
-.vertical-center {
-  height:100%;
-  width:100%;
-  text-align: center;  /* align the inline(-block) elements horizontally */
-  font: 0/0 a;         /* remove the gap between inline(-block) elements */
-}
-
-.vertical-center:before {    /* create a full-height inline block pseudo=element */
-  content: ' ';
-  display: inline-block;
-  vertical-align: middle;  /* vertical alignment of the inline element */
-  height: 100%;
-}
-
-.vertical-center > .container {
-  max-width: 100%;
-  display: inline-block;
-  vertical-align: middle;  /* vertical alignment of the inline element */
-}
-
 footer {
-   position:fixed;
-   left:0px;
-   bottom:0px;
-   height:50px;
-   width:100%;
-   background-color: #F8F8F8;
-   border-color: #E7E7E7;
+padding: 50px 0;
+}
+
+footer p {
+margin: 0;
 }
 
 .noHeight {
   height: 0;
+}
+
+.intro {
+  display: table;
+  width: 100%;
+  height: auto;
+  padding: 70px 0;
+  text-align: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+.intro .intro-body {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.intro .intro-body .brand-heading {
+  font-size: 40px;
+}
+
+.intro .intro-body .intro-text {
+  font-size: 18px;
 }
