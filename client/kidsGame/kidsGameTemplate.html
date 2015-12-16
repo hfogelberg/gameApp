@@ -5,7 +5,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-8">
-							<!-- <p class='correctAnswersCounter'>Correct answers: {{correctAnswers}}</p> -->
+			<!-- 				<p class='correctAnswersCounter'>Correct answers: {{correctAnswers}}</p> -->
 							<p id='timer'><big>{{getCountdown}}</big> seconds left</p>
 							<h4 class='brand-heading questionTitle'>{{title}}</h4>	
 							<div class='imageContainer'>
@@ -19,7 +19,7 @@
 								{{#each answers}}<!-- 
 									<button class='btnAnswer btn btn-default btn-lg {{getAnswerStatusClass isCorrectAnswer}}' id='{{answerId}}'> -->
 										
-									<button class='btnAnswer btn btn-default btn-lg {{getAnswerStatusClass isCorrectAnswer}}' id='{{answerId}}'>
+									<button class='btnAnswer btn btn-default btn-lg {{getAnswerStatusClass isCorrectAnswer}}' id='{{answerId}}' data-toggle="modal" data-target="#explanationModal">
 										<div class='answerImage'>
 											{{#if image}}
 												<img class='centerImage img-responsive' src="https://res.cloudinary.com/ginkgo/image/upload/w_180/{{image}}" alt='{{title}}'>
@@ -43,7 +43,7 @@
 							</div>	
 
 							<!-- <div class='nextQuestionContainer pull-right'> -->
-								<button type='button' class='btn btn-success btn-lg' id='btnNextQuestion'>Question suivante</button>
+				<!-- 				<button type='button' class='btn btn-success btn-lg' id='btnNextQuestion'>Question suivante</button> -->
 							<!-- </div> -->
 
 							<br>
@@ -57,5 +57,21 @@
 				</div>
 			</div>
 		</header>
+
+		<div class="modal fade" tabindex="-1" role="dialog" id='explanationModal'>
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-body">
+        		<h4 class="modal-title" id="myModalLabel">{{isRightAnswer}}</h4>
+						<div class='comment'>{{explanation}}</div>
+		      </div>
+		      <div class="modal-footer">
+		      	<!-- <div class='nextQuestionContainer pull-right'> -->
+						<button type='button' class='btn btn-success btn-lg' id='btnNextQuestion' data-dismiss="modal">Question suivante</button>
+						<!-- <button type='button' class='btn btn-success btn-lg' id='btnNextQuestion' data-dismiss="modal">Question suivante</button> -->
+		      </div>
+		    </div>
+		  </div>
+		</div>
 	{{/with}}
 </template>

@@ -22,7 +22,7 @@ timeLeft = (t)->
 Meteor.setInterval(timeLeft, 1000)
 
 Template.kidsGameTemplate.created = ->
-	Session.set('questionsCounter', 0)
+	Session.set('counter', 0)
 	Session.set('time', 0)
 	Session.set('correctAnswersCounter', 0)
 
@@ -34,9 +34,18 @@ Template.kidsGameTemplate.created = ->
 				Session.set('questions', result)
 
 Template.kidsGameTemplate.helpers
+	numQuestions: ->
+		Session.get('questions').length
+
+	explanation: ->
+		Session.get 'explanation'
+
+	isRightAnswer: ->
+		Session.get 'isRightAnswer'
+
 	question:->
 		questions = Session.get('questions')
-		question = questions[Session.get('questionsCounter')]
+		question = questions[Session.get('counter')]
 		
 	questionType: ->
 		Session.get 'questionType'
@@ -58,7 +67,7 @@ Template.kidsGameTemplate.helpers
 		
 	question:->
 		questions = Session.get('questions')
-		question = questions[Session.get('questionsCounter')]
+		question = questions[Session.get('counter')]
 
 		Meteor.call 'findQuestionType', ->
 
@@ -75,8 +84,8 @@ Template.kidsGameTemplate.events
 		event.preventDefault
 
 		# Meteor.clearInterval interval
-		i = Session.get('questionsCounter') + 1
-		Session.set('questionsCounter', i)
+		i = Session.get('counter') + 1
+		Session.set('counter', i)
 
 		if i >= Session.get('questions').length		
 			Router.go('/thanks')

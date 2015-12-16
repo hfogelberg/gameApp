@@ -31,12 +31,9 @@ Meteor.methods
 		question = questions[Session.get('counter')]
 		for answer in question.answers
 			if answer.answerId is answerId
-				console.log 'Found answer'
 				Session.set('explanation', answer.reason)
 				if answer.isCorrectAnswer is YES
 					Session.set('isRightAnswer', CORRECT_ANSWER_TEXT)
-
-					console.log 'Found correct answer'
 					n = Session.get('correctAnswersCounter') + 1
 					console.log 'Number of correct answers: ' + n
 					Session.set('correctAnswersCounter', n)
