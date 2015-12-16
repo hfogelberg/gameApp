@@ -7,9 +7,6 @@ timeLeft = (t)->
     console.log clock
   else
   	#Check type of question and display divs with answer
-  	if questionType != QUESTION_TYPE_4
-  		$('.btnAnswer').removeAttr('disabled')
-
   	questionType = Session.get('questionType')
   	if questionType == QUESTION_TYPE_1
   		Meteor.call 'displayAnswerType1', ->
@@ -17,11 +14,12 @@ timeLeft = (t)->
   		Meteor.call 'displayAnswerType2', ->
   	if questionType == QUESTION_TYPE_3
   		Meteor.call 'displayAnswerType3', ->
+  	if questionType == QUESTION_TYPE_4
+  		Meteor.call 'displayAnswerType4', ->
+  	if questionType != QUESTION_TYPE_4
+  		alert questionType
+  		$('.btnAnswer').attr('disabled', 'disabled')
 
-  	# Meteor.clearInterval(interval)
-  	# Meteor.call 'resetDivs', ()->
-
-# interval = Meteor.setInterval(timeLeft, 1000)
 Meteor.setInterval(timeLeft, 1000)
 
 Template.kidsGameTemplate.created = ->
@@ -71,6 +69,7 @@ Template.kidsGameTemplate.helpers
 	question:->
 		questions = Session.get('questions')
 		question = questions[Session.get('counter')]
+		Meteor.call 'resetDivs', ->
 
 		Meteor.call 'findQuestionType', ->
 
@@ -85,8 +84,6 @@ Template.kidsGameTemplate.helpers
 Template.kidsGameTemplate.events
 	'click #btnNextQuestion': (event) ->
 		event.preventDefault
-
-		Meteor.call 'resetDivs', ->
 
 		# Meteor.clearInterval interval
 		i = Session.get('counter') + 1

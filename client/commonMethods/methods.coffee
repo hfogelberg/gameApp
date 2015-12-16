@@ -24,8 +24,14 @@ Meteor.methods
 
 	#Fade out wrong answers
 	'displayAnswerType3': ()->
-		console.log 'displayAnswerType2'
+		console.log 'displayAnswerType3'
 		$('.wrongAnswer').addClass('invisible')
+
+	'displayAnswerType4': ()->
+		alert 'type 4'
+		$('.btnAnswer').removeClass('invisible')
+		$('.btnAnswer').removeAttr('disabled')
+		$('.wrongAnswer').removeClass('invisible')
 
 	# Check if answer is correct and increment scores counter
 	'countScores': (answerId) ->
