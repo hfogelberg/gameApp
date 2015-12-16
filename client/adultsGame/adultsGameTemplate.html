@@ -25,10 +25,10 @@
 					</div>
 				</div>
 			</div>
+<!-- 			<br>
 			<br>
-			<br>
-			<br>
-			<button type='button' class='btn btn-success btn-lg' id='btnNextQuestion'>Question suivante</button>
+			<br> -->
+			<!-- <button type='button' class='btn btn-success btn-lg' id='btnNextQuestion'>Question suivante</button> -->
 			<br>
 			<br>
 			<br>
@@ -40,16 +40,30 @@
 		<div class="modal fade" tabindex="-1" role="dialog" id='explanationModal'>
 		  <div class="modal-dialog">
 		    <div class="modal-content">
+		    	<div class="modal-header">
+        		<h4 class="modal-title" id="myModalLabel">{{isRightAnswer}}</h4>
+      		</div>
 		      <div class="modal-body">
-		      	{{#each answers}} 
-							<p class='explanation hidden' id='explanation_{{answerId}}'>
-							<div class='{{answerId}} comment'>{{reason}}</div>
-							</p>
-						{{/each}}
+						<div class='comment'>{{explanation}}</div>
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		        <button type="button" class="btn btn-primary">Save changes</button>
+						<button type='button' class='btn btn-success btn-lg' id='btnNextQuestion' data-dismiss="modal">Question suivante</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+			<div class="modal fade" tabindex="-1" role="dialog" id='thankYouModal'>
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		    	<div class="modal-header">
+        		<h4 class="modal-title" id="myModalLabel">Thanks for doing the quiz!</h4>
+      		</div>
+		      <div class="modal-body">
+						<div class='modalText'>You had {{correctAnswers}} out of {{numQuestions}} </div>
+		      </div>
+		      <div class="modal-footer">
+        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 		      </div>
 		    </div>
 		  </div>

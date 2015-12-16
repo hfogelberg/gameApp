@@ -10,6 +10,15 @@ Template.adultsGameTemplate.created = ->
 				Session.set('questions', result)
 
 Template.adultsGameTemplate.helpers
+	numQuestions: ->
+		Session.get('questions').length
+
+	explanation: ->
+		Session.get 'explanation'
+
+	isRightAnswer: ->
+		Session.get 'isRightAnswer'
+
 	questionType: ->
 		Session.get 'questionType'
 		
@@ -28,6 +37,9 @@ Template.adultsGameTemplate.events
 	'click #btnNextQuestion': ->
 		i = Session.get('counter') + 1
 		Session.set('counter', i)
+
+		if i >= Session.get('questions').length
+			$('#thankYouModal').modal('show')
 
 	'click .btnAnswer': (event)->
 		console.log 'btnAnswer'

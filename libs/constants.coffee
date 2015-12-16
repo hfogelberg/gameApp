@@ -23,3 +23,6 @@
 @WRONG_ANSWER = 'wrongAnswer'
 
 @THUMB_ROOT = 'https://res.cloudinary.com/ginkgo/image/upload/w_90/game/'
+
+@CORRECT_ANSWER_TEXT = 'Good answer'
+@WRONG_ANSWER_TEXT = 'Bad answer'

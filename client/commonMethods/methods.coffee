@@ -32,12 +32,16 @@ Meteor.methods
 		for answer in question.answers
 			if answer.answerId is answerId
 				console.log 'Found answer'
+				Session.set('explanation', 'reason')
 				if answer.isCorrectAnswer is YES
+					Session.set('isRightAnswer', CORRECT_ANSWER_TEXT)
+
 					console.log 'Found correct answer'
 					n = Session.get('correctAnswersCounter') + 1
 					console.log 'Number of correct answers: ' + n
 					Session.set('correctAnswersCounter', n)
-
+				else
+					Session.set('isRightAnswer', WRONG_ANSWER_TEXT)
 
 		# Time to check what kind of question it is and hide/show divs
 	'findQuestionType': ->
