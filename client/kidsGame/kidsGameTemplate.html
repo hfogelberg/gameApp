@@ -1,49 +1,61 @@
 <template name='kidsGameTemplate'>
-	<h2>Kids game</h2>
-
-	<p class='correctAnswersCounter'>Correct answers: {{correctAnswers}}</p>
-	<p id='timer'><big>{{getCountdown}}</big> seconds left</p>
-
 	{{#with question}}
-		<h4 class='questionTitle'>{{title}}</h4>	
-		<div class='imageContainer'>
-			{{#if image}}
-				<img class='centerImage img-responsive' src="https://res.cloudinary.com/ginkgo/image/upload/w_180/{{image}}" alt='{{title}}'>
-			{{/if}}
-		</div>
+		<header class="intro">
+			<div class="intro-body">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-8">
+							<p class='correctAnswersCounter'>Correct answers: {{correctAnswers}}</p>
+							<p id='timer'><big>{{getCountdown}}</big> seconds left</p>
+							<h4 class='brand-heading questionTitle'>{{title}}</h4>	
+							<div class='imageContainer'>
+								{{#if image}}
+									<img class='centerImage img-responsive' src="https://res.cloudinary.com/ginkgo/image/upload/w_180/{{image}}" alt='{{title}}'>
+								{{/if}}
+							</div>
+							<br>
+							<br>
+							<div class='answers evenly row-fluid'>
+								{{#each answers}}<!-- 
+									<button class='btnAnswer btn btn-default btn-lg {{getAnswerStatusClass isCorrectAnswer}}' id='{{answerId}}'> -->
+										
+									<button class='btnAnswer btn btn-default btn-lg {{getAnswerStatusClass isCorrectAnswer}}' id='{{answerId}}'>
+										<div class='answerImage'>
+											{{#if image}}
+												<img class='centerImage img-responsive' src="https://res.cloudinary.com/ginkgo/image/upload/w_180/{{image}}" alt='{{title}}'>
+											{{/if}}
+										</div>
+										{{#if equals questionType 1}}
+											<div class='answerTitle invisible'>
+												{{answerTitle}}	
+											</div>
+										{{else}}
+											<div class='answerTitle'>
+												{{answerTitle}}	
+											</div>
+										{{/if}}
+									</button>
+								{{/each}}	
+							</div>
 
-		<div class='answers evenly row-fluid'>
-			{{#each answers}}
-				<button class='btnAnswer btn btn-default btn-lg {{getAnswerStatusClass isCorrectAnswer}}' id='{{answerId}}'>
-					<div class='answerImage'>
-						{{#if image}}
-							<img class='centerImage img-responsive' src="https://res.cloudinary.com/ginkgo/image/upload/w_180/{{image}}" alt='{{title}}'>
-						{{/if}}
+							<div class='oneAnswerContainer'>
+								{{oneAnswerText}}
+							</div>	
+
+							<!-- <div class='nextQuestionContainer pull-right'> -->
+								<button type='button' class='btn btn-success btn-lg' id='btnNextQuestion'>Question suivante</button>
+							<!-- </div> -->
+
+							<br>
+							<br>
+							<br>
+							<!-- <div class='stopQuizzContainer'> -->
+								<a href='/start' type='button' class='btn btn-danger btn-lg' id='btnStopQuiz'>Quitter</a>
+							<!-- </div> -->
+						</div>
 					</div>
-					{{#if equals questionType 1}}
-						<div class='answerTitle invisible'>
-							{{answerTitle}}	
-						</div>
-					{{else}}
-						<div class='answerTitle'>
-							{{answerTitle}}	
-						</div>
-					{{/if}}
-				</button>
-			{{/each}}	
-		</div>
-
-		<div class='oneAnswerContainer'>
-			{{oneAnswerText}}
-		</div>	
+				</div>
+			</div>
+		</header>
 	{{/with}}
-
-	<div class='nextQuestionContainer pull-right'>
-		<button type='button' class='btn btn-primary btn-lg' id='btnNextQuestion'>Next</button>
-	</div>
-
-	<div class='stopQuizzContainer'>
-		<a href='/start' type='button' class='btn btn-danger btn-md' id='btnStopQuiz'>Quit game</a>
-	</div>
-
 </template>
