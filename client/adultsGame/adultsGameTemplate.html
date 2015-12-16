@@ -7,35 +7,34 @@
 					<div class="col-md-8">
 					<p class='correctAnswersCounter'>Correct answers: {{correctAnswers}}</p>
 						<ul class='questionair'>
-								<li class='question'>
-									<h4 class='brand-heading questionTitle'>{{title}}</h4>
-									<br>
-									<br>	
-									<div>
-										{{#each answers}}
-											<br>
-											<button class='btnAnswer btn btn-primary btn-lg btn-block' id='{{answerId}}'>
-												{{answerTitle}}	
-											</button>
-											<br>
-										{{/each}}		
-									</div>					<!-- answer -->
-									<br>
-									<br>
-									<div>
-										{{#each answers}} 		explanations
-											<p class='explanation bg-info' id='{{answerId}}'>
-												<div class='{{answerId}} comment hideAnswer'>{{reason}}</div>
-												<div class='{{answerId}} correctAnswer hidden' value='{{isCorrectAnswer}}'>{{isCorrectAnswer}}</div>
-											</p>
-										{{/each}}
-									</div>
-								</li>										<!--   question  -->
-							<!--   question  -->
+							<li class='question'>
+								<h4 class='brand-heading questionTitle'>{{title}}</h4>
+								<br>
+								<br>	
+								<div>
+									{{#each answers}}
+										<br>
+										<button class='btnAnswer btn btn-primary btn-lg btn-block' id='{{answerId}}'>
+											{{answerTitle}}	
+										</button>
+										<br>
+									{{/each}}		
+								</div>					<!-- answer -->
+								<br>
+								<br>
+								{{#each answers}} 
+									<p class='explanation bg-info hidden' id='explanation_{{answerId}}'>
+									<div class='{{answerId}} comment'>{{reason}}</div>
+									</p>
+								{{/each}}
+							</li>										
 						</ul>
 					</div>
 				</div>
 			</div>
+			<br>
+			<br>
+			<br>
 			<button type='button' class='btn btn-success btn-lg' id='btnNextQuestion'>Question suivante</button>
 			<br>
 			<br>

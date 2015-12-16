@@ -32,4 +32,7 @@ Template.adultsGameTemplate.events
 	'click .btnAnswer': (event)->
 		console.log 'btnAnswer'
 		answerId = event.currentTarget.id
+		elem = $('#explanation_' + answerId)
+		elem.removeClass('hidden')
 		Meteor.call 'countScores', (answerId), ->
+
