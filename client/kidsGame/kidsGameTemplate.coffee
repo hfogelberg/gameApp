@@ -6,6 +6,7 @@ timeLeft = ->
     Session.set "time", clock
     console.log clock
   else
+<<<<<<< HEAD
   	console.log "That's All Folks"
   	#Check type of question and display divs with answer
   	questionType = Session.get('questionType')
@@ -18,6 +19,18 @@ timeLeft = ->
 
   	Meteor.clearInterval(interval)
   	# Meteor.call 'resetDivs', ()->
+=======
+    Meteor.clearInterval interval
+    if Session.get('showAnswer')
+    	elem = $('.answerTitle')
+			elem.removeClass('invisible')
+
+		if Session.get('correctAnswersParam') is 'ONE'
+			str = '.btnAnswer:not("#' + Session.get('correctAnswerId') + '")'
+			$(str).addClass('invisible')
+			$('.oneAnswerText').removeClass('invisible')
+
+>>>>>>> 23490714eae2a060187ea644283c7873c4785716
 
 interval = Meteor.setInterval(timeLeft, 1000)
 
@@ -109,6 +122,36 @@ Meteor.methods
 Template.kidsGameTemplate.helpers
 	questionType: ->
 		Session.get 'questionType'
+
+	getCountdown:->
+		Session.get 'time'
+
+	answerGiven:->
+		Session.get 'answerGiven'
+
+	correctAnswers:->
+		Session.get 'correctAnswers'
+
+Template.kidsGameTemplate.events
+	'click #btnNextQuestion': (event) ->
+		event.preventDefault
+
+		Meteor.clearInterval interval
+
+		$('.btnAnswer').removeAttr('disabled')
+		elem = $('ul.questionair li.visible')
+		elem.removeClass('visible')
+		elem.addClass('invisible')
+		elem.addClass('noHeight')
+		
+		elem.next().removeClass('invisible')
+		elem.next().addClass('visible')
+
+		id = $('ul li.visible').attr('id')
+		console.log 'Next question id: ' + id
+		Meteor.call 'getOneQuestionById', id, (err, res) ->
+			Meteor.call 'getQuestionParams', res, ->
+>>>>>>> 23490714eae2a060187ea644283c7873c4785716
 
 	correctAnswers: ->
 		Session.get('correctAnswersCounter')

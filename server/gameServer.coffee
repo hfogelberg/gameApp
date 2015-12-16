@@ -11,8 +11,8 @@ Meteor.startup ->
 		console.log 'Found ' + Questions.find({level: level, random:{$gte:r}}, {limit: numQuestions}).count()
 
 		# ToDo: Outcommented during dev
-		Questions.find({level: level, random:{$gte:r}}, {limit: numQuestions})
-		# Questions.find({level: level}, {limit: numQuestions})
+		# Questions.find({level: level, random:{$gte:r}}, {limit: numQuestions})
+		Questions.find({level: level}, {limit: numQuestions})
 
 	Meteor.publish 'getAnswerById', (answerId) ->
 		console.log 'getAnswerById ' + answerId
