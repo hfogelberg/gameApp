@@ -78,6 +78,9 @@ Template.kidsGameTemplate.events
 		i = Session.get('questionsCounter') + 1
 		Session.set('questionsCounter', i)
 
+		if i >= Session.get('questions').length		
+			Router.go('/thanks')
+
 	'click .btnAnswer': (event)->
 		console.log 'btnAnswer'
 		answerId = event.currentTarget.id
