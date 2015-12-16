@@ -2,6 +2,8 @@ Meteor.methods
 	'resetDivs': ()->
 		$('.oneAnswerContainer').removeClass('invisible')
 		$('.answerTitle').removeClass('invisible')
+		$('.btnAnswer').removeAttr('disabled')
+		$('.btnAnswer').removeClass('invisible')
 
 	'setupQuestionType1': ()->
 		console.log 'setupQuestionType1'
