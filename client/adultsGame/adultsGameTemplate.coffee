@@ -35,20 +35,17 @@ Template.adultsGameTemplate.helpers
 
 Template.adultsGameTemplate.events
 	'click .btnEndGame': ->
-		$('.modal').modal('hide')
-		$('body').removeClass('modal');
-		$('.modal-backdrop').remove();
+		$('#explanationModal').on('hidden.bs.modal').modal('hide')
 		Router.go('/')
-
+	
 	'click #btnNextQuestion': ->
 		i = Session.get('counter') + 1
 		Session.set('counter', i)
-
+		console.log 'Counter: ' + i 
+		console.log 'NUm questions: ' + Session.get('questions').length
+		
 		if i >= Session.get('questions').length		
-			$('body').on 'hidden.bs.modal', '.modal', ->
-			  $(this).removeData 'bs.modal'
 			Router.go('/thanks')
-			# $('#thankYouModal').modal('show')
 
 	'click .btnAnswer': (event)->
 		console.log 'btnAnswer'

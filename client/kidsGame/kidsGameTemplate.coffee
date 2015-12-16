@@ -1,6 +1,6 @@
 clock = 0
 
-timeLeft = ->
+timeLeft = (t)->
   if clock > 0
     clock--
     Session.set "time", clock

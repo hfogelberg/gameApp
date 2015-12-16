@@ -44,15 +44,15 @@ Meteor.methods
 
 	getAdultQuestions: ->
 		console.log 'getAdultQuestions'
-		r = Random.fraction()
-		console.log 'Returning ' +  Questions.find({level: 'ADULT'}, {limit: 4}).count()
-		Questions.find({level: 'ADULT'}, {limit: 4}).fetch()
+		# r = Random.fraction()
+		# console.log 'Returning ' +  Questions.find({level: 'ADULT'}, {limit: 4}).count()
+		Questions.find({level: 'ADULT'}, {limit: 10}).fetch()
 
 	getKidsQuestions: ->
 		console.log 'getKidsQuestions'
 		r = Random.fraction()
-		console.log 'Returning ' +  Questions.find({level: 'KID'}, {limit: 4}).count()
-		Questions.find({level: 'KID'}, {limit: 4}).fetch()
+		# console.log 'Returning ' +  Questions.find({level: 'KID'}, {limit: 4}).count()
+		Questions.find({level: 'KID'}, {limit: 8}).fetch()
 
 	createStats: (props) ->
 		console.log 'Create stats'
