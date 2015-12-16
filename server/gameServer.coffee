@@ -37,6 +37,11 @@ Meteor.startup ->
 			}
 
 Meteor.methods
+	deleteQuestionWithId: (questionId) ->
+		console.log 'deleteQuestionWithId ' + questionId
+		Questions.remove
+			_id: questionId
+
 	getAdultQuestions: ->
 		console.log 'getAdultQuestions'
 		r = Random.fraction()
