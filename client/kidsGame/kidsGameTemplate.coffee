@@ -15,10 +15,11 @@ timeLeft = ->
   	if questionType == @QUESTION_TYPE_3
   		Meteor.call 'displayAnswerType3', ->
 
-  	Meteor.clearInterval(interval)
+  	# Meteor.clearInterval(interval)
   	# Meteor.call 'resetDivs', ()->
 
-interval = Meteor.setInterval(timeLeft, 1000)
+# interval = Meteor.setInterval(timeLeft, 1000)
+Meteor.setInterval(timeLeft, 1000)
 
 Template.kidsGameTemplate.created = ->
 	Session.set('questionsCounter', 0)
@@ -63,7 +64,8 @@ Template.kidsGameTemplate.helpers
 
 		if question.showAnswerTimer
 			clock = question.showAnswerTimer
-			interval = Meteor.setInterval(clock, 1000)
+			# interval = Meteor.setInterval(clock, 1000)
+			Meteor.setInterval(clock, 1000)
 		else
 			console.log 'No need to start timer'
 		return question
@@ -72,7 +74,7 @@ Template.kidsGameTemplate.events
 	'click #btnNextQuestion': (event) ->
 		event.preventDefault
 
-		Meteor.clearInterval interval
+		# Meteor.clearInterval interval
 		i = Session.get('questionsCounter') + 1
 		Session.set('questionsCounter', i)
 
@@ -80,3 +82,8 @@ Template.kidsGameTemplate.events
 		console.log 'btnAnswer'
 		answerId = event.currentTarget.id
 		Meteor.call 'countScores', (answerId), ->
+
+		if Session.get 'questionType' == QUESTION_TYPE_3
+  		Meteor.call 'displayAnswerType3', ->
+
+ 

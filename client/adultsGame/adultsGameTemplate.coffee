@@ -34,12 +34,21 @@ Template.adultsGameTemplate.helpers
 		question = questions[Session.get('counter')]
 
 Template.adultsGameTemplate.events
+	'click .btnEndGame': ->
+		$('.modal').modal('hide')
+		$('body').removeClass('modal');
+		$('.modal-backdrop').remove();
+		Router.go('/')
+
 	'click #btnNextQuestion': ->
 		i = Session.get('counter') + 1
 		Session.set('counter', i)
 
-		if i >= Session.get('questions').length
-			$('#thankYouModal').modal('show')
+		if i >= Session.get('questions').length		
+			$('body').on 'hidden.bs.modal', '.modal', ->
+			  $(this).removeData 'bs.modal'
+			Router.go('/thanks')
+			# $('#thankYouModal').modal('show')
 
 	'click .btnAnswer': (event)->
 		console.log 'btnAnswer'

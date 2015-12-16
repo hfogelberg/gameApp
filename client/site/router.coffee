@@ -143,3 +143,7 @@ Router.map ->
     #   @subscribe 'getQuestionsForGame', KID, NUM_KIDS_QUESTIONS
     # data: questions: ->
     #   Questions.find()
+
+  @route 'thanks',
+    template: 'thanks',
+    route: '/thanks'

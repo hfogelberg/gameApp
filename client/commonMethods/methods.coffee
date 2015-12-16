@@ -32,7 +32,7 @@ Meteor.methods
 		for answer in question.answers
 			if answer.answerId is answerId
 				console.log 'Found answer'
-				Session.set('explanation', 'reason')
+				Session.set('explanation', answer.reason)
 				if answer.isCorrectAnswer is YES
 					Session.set('isRightAnswer', CORRECT_ANSWER_TEXT)
 
