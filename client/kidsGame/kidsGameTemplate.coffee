@@ -10,14 +10,17 @@ timeLeft = (t)->
   	questionType = Session.get('questionType')
   	if questionType == QUESTION_TYPE_1
   		Meteor.call 'displayAnswerType1', ->
-  	if questionType == QUESTION_TYPE_2
-  		Meteor.call 'displayAnswerType2', ->
-  	if questionType == QUESTION_TYPE_3
-  		Meteor.call 'displayAnswerType3', ->
-  	if questionType == QUESTION_TYPE_4
-  		Meteor.call 'displayAnswerType4', ->
-  	if questionType != QUESTION_TYPE_4
   		$('.btnAnswer').attr('disabled', 'disabled')
+  	else if questionType == QUESTION_TYPE_2
+  		Meteor.call 'displayAnswerType2', ->
+  		$('.btnAnswer').attr('disabled', 'disabled')
+  	else if questionType == QUESTION_TYPE_3
+  		Meteor.call 'displayAnswerType3', ->
+  		$('.btnAnswer').attr('disabled', 'disabled')
+  	else if questionType == QUESTION_TYPE_4
+  		Meteor.call 'displayAnswerType4', ->
+  	else
+  		$('.btnAnswer').removeAttr('disabled')
 
 Meteor.setInterval(timeLeft, 1000)
 
