@@ -1,72 +1,35 @@
-Template.adultsGameTemplate.rendered =->
-	console.log 'rendered'
-	$('ul.questionair li:first').removeClass('invisible')
-	$('ul.questionair li:first').addClass('visible')
-	Session.set('correctAnswers', 0)
-	Session.set('nbrAskedQuestions', 0)
-	Session.set('answerGiven', false)
+Template.adultsGameTemplate.created = ->
+	Session.set('counter', 0)
+	Session.set('correctAnswersCounter', 0)
+
+	Deps.autorun ->
+		Meteor.call 'getAdultQuestions', (error, result) ->
+			if error
+				alert 'Error'
+			else
+				Session.set('questions', result)
 
 Template.adultsGameTemplate.helpers
-	answerGiven:->
-		Session.get 'answerGiven'
+	questionType: ->
+		Session.get 'questionType'
+		
+	correctAnswers: ->
+		console.log Session.get 'correctAnswersCounter'
+		Session.get('correctAnswersCounter')
 
-	correctAnswers:->
-		Session.get 'correctAnswers'
+	getCountdown: ->
+		Session.get('time')
+		
+	question:->
+		questions = Session.get('questions')
+		question = questions[Session.get('counter')]
 
 Template.adultsGameTemplate.events
-	'click #btnNextQuestion': (event) ->
-		event.preventDefault
+	'click #btnNextQuestion': ->
+		i = Session.get('counter') + 1
+		Session.set('counter', i)
 
-		$('.btnAnswer').removeAttr('disabled')
-		elem = $('ul.questionair li.visible')
-		elem.removeClass('visible')
-		elem.addClass('invisible')
-		elem.addClass('noHeight')
-		
-		elem.next().removeClass('invisible')
-		elem.next().addClass('visible')
-
-	'click .btnAnswer': (event) ->
-		event.preventDefault
-
-		$('.btnAnswer').attr('disabled', 'disabled')
-
+	'click .btnAnswer': (event)->
+		console.log 'btnAnswer'
 		answerId = event.currentTarget.id
-
-		console.log  'Selected answer: ' + answerId
-		elem = '.' + answerId + '.comment'
-		$(elem).removeClass('hideAnswer')
-		$(elem).addClass('showAnswer')
-
-		isCorrectDiv = '.' + answerId + '.correctAnswer'
-		isCorrect = $(isCorrectDiv).text()
-
-		if isCorrect is YES
-			console.log 'Horay!'
-			correctAnswers = Session.get('correctAnswers')
-			correctAnswers = correctAnswers + 1
-			Session.set('correctAnswers', correctAnswers)
-		else
-			console.log 'Ouch. Wrong'
-
-		nbrAskedQuestions = Session.get('nbrAskedQuestions') + 1
-		Session.set('nbrAskedQuestions', nbrAskedQuestions)
-
-		console.log 'Number of asked questions ' + nbrAskedQuestions
-		if parseInt(nbrAskedQuestions) == NUM_ADULT_QUESTIONS
-			console.log 'Redirect'
-
-			props = {
-				correctAnswers: Session.get('correctAnswers')
-				level: ADULT
-				createdDate: new Date()
-			}
-
-			Meteor.call 'createStats', props, (err) ->
-			
-			Router.go('/')
-
-			Router.go('/')
-
-
-
+		Meteor.call 'countScores', (answerId), ->

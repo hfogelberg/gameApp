@@ -6,8 +6,8 @@ Template.newAdultAnswerTemplate.events
 	'click .btnAddAnswer':(event) ->
 		event.preventDefault
 
-		isCorrectAnswer = false
-		if $('#isCorrectAnswer').is(":checked") then isCorrectAnswer = true
+		isCorrectAnswer = NO
+		if $('#isCorrectAnswer').is(":checked") then isCorrectAnswer = YES
 
 		params = {
 			answers: {

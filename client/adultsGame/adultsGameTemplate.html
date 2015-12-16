@@ -1,14 +1,13 @@
 <template name='adultsGameTemplate'>
-
-	 <!-- Intro Header -->
+	{{#with question}}
 	<header class="intro">
 		<div class="intro-body">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8">
+					<p class='correctAnswersCounter'>Correct answers: {{correctAnswers}}</p>
 						<ul class='questionair'>
-							{{#each questions}}
-								<li class='question invisible'>
+								<li class='question'>
 									<h4 class='brand-heading questionTitle'>{{title}}</h4>
 									<br>
 									<br>	
@@ -24,7 +23,7 @@
 									<br>
 									<br>
 									<div>
-										{{#each answers}} 		<!-- explanations -->
+										{{#each answers}} 		explanations
 											<p class='explanation bg-info' id='{{answerId}}'>
 												<div class='{{answerId}} comment hideAnswer'>{{reason}}</div>
 												<div class='{{answerId}} correctAnswer hidden' value='{{isCorrectAnswer}}'>{{isCorrectAnswer}}</div>
@@ -32,7 +31,7 @@
 										{{/each}}
 									</div>
 								</li>										<!--   question  -->
-							{{/each}}									<!--   question  -->
+							<!--   question  -->
 						</ul>
 					</div>
 				</div>
@@ -45,32 +44,5 @@
 		</div>
 
 	</header>
-
-	<!-- <h4>Correct answers: {{correctAnswers}}</h4> -->
-
-										<!-- questionair -->
-
-<!-- modal
-										<div id='{{answerId}}' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-										  <div class="modal-dialog modal-sm">
-										    <div class="modal-content">
-										      <div class='{{answerId}} comment hideAnswer'>{{reason}}</div>
-												<div class='{{answerId}} correctAnswer hidden' value='{{isCorrectAnswer}}'>{{isCorrectAnswer}}</div>
-										    </div>
-										  </div>
-										</div>
-	-->									
-
-<!-- 	<div class="progress">
-	   <div class="progress-bar" role="progressbar" aria-valuenow="{{correctAnswers}}" aria-valuemin="0" aria-valuemax="10">
-	   </div>
-  </div> -->
-
-<!--   <div>
-  	<div class="progress progress-striped active">
-  		<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-    		<span class="sr-only">40% Complete (success)</span>
-  		</div>
-		</div>
-	</div> -->
+	{{/with}}
 </template>
