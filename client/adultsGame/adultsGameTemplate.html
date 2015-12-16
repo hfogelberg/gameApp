@@ -1,38 +1,65 @@
 <template name='adultsGameTemplate'>
 
-	<h4>Correct answers: {{correctAnswers}}</h4>
-
-	<div class='stopQuizzContainer pull-right'>
-		<a href='/start' type='button' class='btn btn-danger btn-md' id='btnStopQuiz'>Quit game</a>
-	</div>
-
-	<ul class='list-unstyled questionair'>
-		{{#each questions}}
-			<li class='question invisible'>
-				<h4 class='questionTitle'>{{title}}</h4>	
-				<div class='answer evenly row-fluid'>
-					{{#each answers}}
-						<button class='btnAnswer btn btn-default btn-lg' id='{{answerId}}'>
-							{{answerTitle}}	
-						</button>
-					{{/each}}		
-				</div>					<!-- answer -->
-				
-				<div>
-					{{#each answers}} 		<!-- explanations -->
-						<div class='explanation' id='{{answerId}}'>
-							<div class='{{answerId}} comment hideAnswer'>{{reason}}</div>
-							<div class='{{answerId}} correctAnswer hidden' value='{{isCorrectAnswer}}'>{{isCorrectAnswer}}</div>
-						</div>
-					{{/each}}
+	 <!-- Intro Header -->
+	<header class="intro">
+		<div class="intro-body">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8">
+						<ul class='questionair'>
+							{{#each questions}}
+								<li class='question invisible'>
+									<h4 class='brand-heading questionTitle'>{{title}}</h4>
+									<br>
+									<br>	
+									<div>
+										{{#each answers}}
+											<br>
+											<button class='btnAnswer btn btn-primary btn-lg btn-block' id='{{answerId}}'>
+												{{answerTitle}}	
+											</button>
+											<br>
+										{{/each}}		
+									</div>					<!-- answer -->
+									<br>
+									<br>
+									<div>
+										{{#each answers}} 		<!-- explanations -->
+											<p class='explanation bg-info' id='{{answerId}}'>
+												<div class='{{answerId}} comment hideAnswer'>{{reason}}</div>
+												<div class='{{answerId}} correctAnswer hidden' value='{{isCorrectAnswer}}'>{{isCorrectAnswer}}</div>
+											</p>
+										{{/each}}
+									</div>
+								</li>										<!--   question  -->
+							{{/each}}									<!--   question  -->
+						</ul>
+					</div>
 				</div>
-			</li>										<!--   question  -->
-		{{/each}}									<!--   question  -->
-	</ul> 											<!-- questionair -->
+			</div>
+			<button type='button' class='btn btn-success btn-lg' id='btnNextQuestion'>Question suivante</button>
+			<br>
+			<br>
+			<br>
+			<a href='/start' type='button' class='btn btn-danger btn-lg' id='btnStopQuiz'>Quitter</a>
+		</div>
 
-	<div class='nextQuestionContainer pull-right'>
-		<button type='button' class='btn btn-primary btn-lg' id='btnNextQuestion'>Next</button>
-	</div>
+	</header>
+
+	<!-- <h4>Correct answers: {{correctAnswers}}</h4> -->
+
+										<!-- questionair -->
+
+<!-- modal
+										<div id='{{answerId}}' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+										  <div class="modal-dialog modal-sm">
+										    <div class="modal-content">
+										      <div class='{{answerId}} comment hideAnswer'>{{reason}}</div>
+												<div class='{{answerId}} correctAnswer hidden' value='{{isCorrectAnswer}}'>{{isCorrectAnswer}}</div>
+										    </div>
+										  </div>
+										</div>
+	-->									
 
 <!-- 	<div class="progress">
 	   <div class="progress-bar" role="progressbar" aria-valuenow="{{correctAnswers}}" aria-valuemin="0" aria-valuemax="10">
