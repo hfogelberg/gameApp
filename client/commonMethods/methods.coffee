@@ -54,6 +54,9 @@ Meteor.methods
 		question = questions[Session.get('counter')]
 
 		len = question.oneAnswerText.length
+
+		Session.set('questionType', QUESTION_TYPE_4)
+
 		# Type 1
 		if question.showAnswer is NO
 			if question.questionType is SHOW
@@ -73,17 +76,17 @@ Meteor.methods
 		#Type 3
 		if question.showAnswer is NO
 			if question.questionType is SHOW
-				if question.showAnswerTimer
+				if question.showAnswerTimer.length > 0
 					if question.correctAnswers is ONE
 						console.log('questionType is ' + QUESTION_TYPE_3)
 						Session.set('questionType', QUESTION_TYPE_3)
 
-		#Type 4
-		if question.showAnswer is YES
-			if question.questionType is CHOOSE
-				if question.correctAnswers is ONE
-					console.log('questionType is ' + QUESTION_TYPE_4)
-					Session.set('questionType', QUESTION_TYPE_4)		
+		# #Type 4
+		# if question.showAnswer is YES
+		# 	if question.questionType is CHOOSE
+		# 		if question.correctAnswers is ONE
+		# 			console.log('questionType is ' + QUESTION_TYPE_4)
+		# 			Session.set('questionType', QUESTION_TYPE_4)	
 
 		if Session.get('questionType') is 1
 			Meteor.call 'setupQuestionType1', () ->
