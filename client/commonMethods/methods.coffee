@@ -55,6 +55,9 @@ Meteor.methods
 		len = question.oneAnswerText.length
 		console.log 'Length of text: ' + len
 
+		#Set default
+		Session.set('questionType', QUESTION_TYPE_4)
+
 		# Type 1
 		if question.showAnswerImg is YES
 			if question.showAnswer is NO
@@ -81,13 +84,13 @@ Meteor.methods
 						console.log 'questionType is ' + QUESTION_TYPE_3
 						Session.set('questionType', QUESTION_TYPE_3)
 
-		#Type 4
-		if question.showAnswerImg is YES
-			if question.showAnswer is YES
-				if question.questionType is CHOOSE
-					if question.correctAnswers is ONE
-						console.log 'questionType is ' + QUESTION_TYPE_3
-						Session.set('questionType', QUESTION_TYPE_3)
+		# #Type 4
+		# if question.showAnswerImg is YES
+		# 	if question.showAnswer is YES
+		# 		if question.questionType is CHOOSE
+		# 			if question.correctAnswers is ONE
+		# 				console.log 'questionType is ' + QUESTION_TYPE_4
+		# 				Session.set('questionType', QUESTION_TYPE_4)
 
 		console.log 'questionType is ' + Session.get('questionType')
 
