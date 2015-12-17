@@ -33,13 +33,15 @@ Meteor.methods
 			_id: questionId
 
 	getAdultQuestions: ->
+		# ToDo Use this code instead for fetching data when enough questions in Db
 		# r = Random.fraction()
-		# console.log 'Returning ' +  Questions.find({level: 'ADULT'}, {limit: 4}).count()
+		# Questions.find({level: ADULT, random:{$gte:r}}, {limit: NUM_ADULT_QUESTIONS})
 		Questions.find({level: 'ADULT'}, {limit: 10}).fetch()
 
 	getKidsQuestions: ->
-		r = Random.fraction()
-		# console.log 'Returning ' +  Questions.find({level: 'KID'}, {limit: 4}).count()
+		# ToDo Use this code instead for fetching data when enough questions in Db
+		# r = Random.fraction()
+		# Questions.find({level: KID, random:{$gte:r}}, {limit: NUM_KIDS_QUESTIONS})
 		Questions.find({level: 'KID'}, {limit: 8}).fetch()
 
 	createStats: (props) ->

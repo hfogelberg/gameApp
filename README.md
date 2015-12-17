@@ -1,6 +1,6 @@
 #GameApp
 
-##ToDo before deploying to production
+##1. Before deploying to production
 
 The app uses Cloudinary for image storage
 
@@ -25,3 +25,11 @@ meteor deploy --settings settings.json
 		"image_root": "https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/w_180/"
 	}
 }
+
+##2. Picking random questions
+Randomizing questions doesn't work with so few questions in the Db. There should be at least 50 or so per category.
+The functions 	getAdultQuestions and getKidsQuestions in gameServer.coffee should be changed when enough questions have been added. See the outcommented code.
+
+It could also be a good idea with a loop to check than enough questions are fetched? Unfortunately Meteor/Mongo doesn't have a good method to fetch random posts yet.
+
+
