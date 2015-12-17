@@ -4,22 +4,23 @@
 			<div class="intro-body">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-8">
-							<p>{{questionType}}</p>
-							<p id='timer'><big>{{getCountdown}}</big> seconds left</p>
-							<h4 class='brand-heading questionTitle'>{{title}}</h4>	
+						<div>
+							
+							<p id='timer'><big>{{getCountdown}}</big> temps restants</p>
+							
 							<div class='imageContainer'>
 								{{#if image}}
 									<img class='centerImage img-responsive' src="https://res.cloudinary.com/ginkgo/image/upload/w_180/{{image}}" alt='{{title}}'>
 								{{/if}}
 							</div>
+							<h4 class='brand-heading questionTitle'>{{title}}</h4>	
 							<br>
 							<br>
 							<div class='answers evenly row-fluid'>
 								{{#each answers}}<!-- 
 									<button class='btnAnswer btn btn-default btn-lg {{getAnswerStatusClass isCorrectAnswer}}' id='{{answerId}}'> -->
 										
-									<button class='btnChildAnswer btn btn-default btn-lg {{getAnswerStatusClass isCorrectAnswer}}' id='{{answerId}}' data-toggle="modal" data-target="#explanationModal">
+									<button class='btnChildAnswer btn btn-default btn-lg {{getAnswerStatusClass isCorrectAnswer}}' disabled=true id='{{answerId}}' data-toggle="modal" data-target="#explanationModal">
 										<div class='answerImage'>
 											{{#if image}}
 												<img class='centerImage img-responsive' src="https://res.cloudinary.com/ginkgo/image/upload/w_180/{{image}}" alt='{{title}}'>
@@ -38,14 +39,18 @@
 								{{/each}}	
 							</div>
 
+							<br>
+							
 							<div class='oneAnswerContainer'>
 								{{oneAnswerText}}
 							</div>	
 
+							<br>
+							<br>
+			
 							<!-- <div class='nextQuestionContainer pull-right'> -->
-								<button type='button' class='btn btn-success btn-lg' id='btnNextQuestion'>Question suivante</button>
+								<button type='button' class='btn btn-success btn-lg' id='btnNextQuestion' disabled=true>Question suivante</button>
 							<!-- </div> -->
-
 							<br>
 							<br>
 							<br>
@@ -63,7 +68,6 @@
 		    <div class="modal-content">
 		      <div class="modal-body">
         		<h4 class="modal-title" id="myModalLabel">{{isRightAnswer}}</h4>
-						<div class='comment'>{{explanation}}</div>
 		      </div>
 		      <div class="modal-footer">
 		      	<!-- <div class='nextQuestionContainer pull-right'> -->

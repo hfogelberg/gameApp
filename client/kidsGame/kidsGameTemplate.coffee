@@ -8,22 +8,16 @@ timeLeft = (t)->
   else
   	#Check type of question and display divs with answer
   	questionType = Session.get('questionType')
-  	# $('.btnChildAnswer').removeAttr('disabled')
-  	$('btnNextQuestion').removeAttr('disabled')
+
   	if questionType == QUESTION_TYPE_1
-  		# Meteor.call 'displayAnswerType1', ->
-  		#$('.btnChildAnswer').attr('disabled', 'disabled')
-  		$('.answerTitle').removeClass('invisible')
+  		Meteor.call 'displayAnswerType1', ->
   	else if questionType == QUESTION_TYPE_2
   		Meteor.call 'displayAnswerType2', ->
-  		$('.btnChildAnswer').attr('disabled', 'disabled')
   	else if questionType == QUESTION_TYPE_3
   		Meteor.call 'displayAnswerType3', ->
-  		$('.btnChildAnswer').attr('disabled', 'disabled')
-  	# else if questionType == QUESTION_TYPE_4
-  	# 	Meteor.call 'dibtnChildAnswersplayAnswerType4', ->
-  	# else
-  	# 	$('.btnAnswer').removeAttr('disabled')
+  	else if questionType == QUESTION_TYPE_4
+  	 	Meteor.call 'dibtnChildAnswersplayAnswerType4', ->
+
 
 Meteor.setInterval(timeLeft, 1000)
 
@@ -38,15 +32,10 @@ Template.kidsGameTemplate.created = ->
 				alert 'Error'
 			else
 				Session.set('questions', result)
-				$('.btnChildAnswer').attr('disabled', 'disabled')
-				$('btnNextQuestion').attr('disabled', 'disabled')
 
 Template.kidsGameTemplate.helpers
 	numQuestions: ->
 		Session.get('questions').length
-
-	explanation: ->
-		Session.get 'explanation'
 
 	isRightAnswer: ->
 		Session.get 'isRightAnswer'
@@ -86,17 +75,10 @@ Template.kidsGameTemplate.helpers
 		else
 			console.log 'No need to start timer'
 
-		# if question.questionType == QUESTION_TYPE_4
-		# 	$('.btnChildAnswer').attr('disabled', 'disabled')
-		# 	$('btnNextQuestion').attr('disabled', 'disabled')
-		# else
-		# 	$('.btnChildAnswer').removeAttr('disabled')
-		# 	$('btnNextQuestion').removeAttr('disabled')
-
 		return question
 
 Template.kidsGameTemplate.events
-	'click #btnNextQuestion': (event) ->
+	'click #btnNextQuestion:enabled': (event) ->
 		event.preventDefault
 
 		# Meteor.clearInterval interval
@@ -106,7 +88,7 @@ Template.kidsGameTemplate.events
 		if i >= Session.get('questions').length		
 			Router.go('/thanks')
 
-	'click .btnChildAnswer': (event)->
+	'click .btnChildAnswer:enabled': (event)->
 		answerId = event.currentTarget.id
 		Meteor.call 'countScores', (answerId), ->
 

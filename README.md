@@ -22,3 +22,17 @@
 	-Tabs acts weird on admin.
 	-Better form to add answer kids/adults on admin (probably also use modal instead).
 	-WoW factor.
+
+17/12/2015 : Overview.
+
+- Make the adult game stable and working (production ready) is a priority. Done.
+- Make the kid game stable and working (production ready) is a priority. Done.
+
+- Make the application WoW factor (animation on game, UI placement, feedback).
+
+- Other features/fixes/bugs by priority order (TODO)
+	-- Feature : Random order when we get questions.
+	-- Feature : Stats page (look at the mock up).
+	-- Bug known: Tabs acts weird on manage question (in admin).
+	-- Fixes : Better form UI on question creation. (answers).
+	-- We good ! 
