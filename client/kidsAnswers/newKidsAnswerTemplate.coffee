@@ -46,8 +46,6 @@ Template.newKidsAnswerTemplate.events
 		isCorrectAnswer = 'NO'
 		if $('#isCorrectAnswer').is(":checked") then isCorrectAnswer = 'YES'
 
-		alert Session.get 'answerImageId'
-
 		params = {
 			answers:{
 				answerTitle: $('#answerTitle').val()

@@ -10,15 +10,21 @@ Meteor.methods
 		$('.oneAnswerContainer').addClass('invisible')
 		$('.btnChildAnswer').attr('disabled', true)
 		$('#btnNextQuestion').attr('disabled', true)
+		$('#btnNextQuestion').removeClass('invisible')
+		$('#timer').removeClass('invisible')
 
 	'setupQuestionType2': ()->
 		$('.oneAnswerContainer').addClass('invisible')
 		$('.btnChildAnswer').attr('disabled', true)
 		$('#btnNextQuestion').attr('disabled', true)
+		$('#btnNextQuestion').removeClass('invisible')
+		$('#timer').removeClass('invisible')
 
 	'setupQuestionType3': ()->
 		$('.btnChildAnswer').attr('disabled', true)
 		$('#btnNextQuestion').attr('disabled', true)
+		$('#btnNextQuestion').removeClass('invisible')
+		$('#timer').removeClass('invisible')
 
 	'setupQuestionType4': ()->
 		$('.btnChildAnswer').attr('disabled', false)
