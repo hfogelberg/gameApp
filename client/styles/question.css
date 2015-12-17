@@ -7,6 +7,14 @@ h2.questionTitle {
 	margin-bottom: 15px;
 }
 
+h2.questionTitle {
+	text-transform: lowercase;
+}
+
+h2.questionTitle:first-letter{
+  text-transform: capitalize
+}
+
 .btnChangeQuestion {
 	margin-top: 10px;
 	margin-bottom: 10px;

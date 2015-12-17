@@ -2,20 +2,32 @@ Meteor.methods
 	'resetDivs': ()->
 		$('.oneAnswerContainer').removeClass('invisible')
 		$('.answerTitle').removeClass('invisible')
-		$('.btnAnswer').removeAttr('disabled')
-		$('.btnAnswer').removeClass('invisible')
+		# $('.btnAnswer').removeAttr('disabled')
+		$('.btnChildAnswer').removeClass('invisible')
 
 	'setupQuestionType1': ()->
 		console.log 'setupQuestionType1'
 		$('.answerTitle').addClass('invisible')
 		$('.oneAnswerContainer').addClass('invisible')
+		$('.btnChildAnswer').attr('disabled', 'disabled')
 
 	'setupQuestionType2': ()->
 		console.log 'setupQuestionType2'
 		$('.oneAnswerContainer').addClass('invisible')
+		$('.btnChildAnswer').attr('disabled', 'disabled')
+
+	'setupQuestionType3': ()->
+		console.log 'setupQuestionType3'
+		$('.btnChildAnswer').attr('disabled', 'disabled')
+
+	'setupQuestionType4': ()->
+		console.log 'setupQuestionType4'
+		$('.btnChildAnswer').removeAttr('disabled')
+		$('btnNextQuestion').removeAttr('disabled')
 
 	'displayAnswerType1': ()->
 		console.log 'displayAnswerType1'
+		$('.btnChildAnswer').removeAttr('disabled')
 		$('.answerTitle').removeClass('invisible')
 
 	'displayAnswerType2': ()->
@@ -28,9 +40,10 @@ Meteor.methods
 		$('.wrongAnswer').addClass('invisible')
 
 	'displayAnswerType4': ()->
-		$('.btnAnswer').removeClass('invisible')
-		$('.btnAnswer').removeAttr('disabled')
+		$('.btnChildAnswer').removeClass('invisible')
+		$('.btnChildAnswer').removeAttr('disabled')
 		$('.wrongAnswer').removeClass('invisible')
+
 
 	# Check if answer is correct and increment scores counter
 	'countScores': (answerId) ->
@@ -87,8 +100,12 @@ Meteor.methods
 		# 			console.log('questionType is ' + QUESTION_TYPE_4)
 		# 			Session.set('questionType', QUESTION_TYPE_4)	
 
-		if Session.get('questionType') is 1
+		if Session.get('questionType') is QUESTION_TYPE_1
 			Meteor.call 'setupQuestionType1', () ->
-		if Session.get('questionType') is 2
+		if Session.get('questionType') is QUESTION_TYPE_2
 			Meteor.call 'setupQuestionType2', () ->
+		if Session.get('questionType') is QUESTION_TYPE_3
+			Meteor.call 'setupQuestionType3', () ->
+		if Session.get('questionType') is QUESTION_TYPE_4
+			Meteor.call 'setupQuestionType4', () ->
 
