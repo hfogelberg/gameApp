@@ -24,5 +24,5 @@
 
 @THUMB_ROOT = 'https://res.cloudinary.com/ginkgo/image/upload/w_90/game/'
 
-@CORRECT_ANSWER_TEXT = 'Good answer'
-@WRONG_ANSWER_TEXT = 'Bad answer'
+@CORRECT_ANSWER_TEXT = 'Bonne reponse !'
+@WRONG_ANSWER_TEXT = 'Mauvaise reponse !'

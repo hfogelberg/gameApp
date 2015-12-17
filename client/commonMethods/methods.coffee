@@ -9,39 +9,49 @@ Meteor.methods
 		console.log 'setupQuestionType1'
 		$('.answerTitle').addClass('invisible')
 		$('.oneAnswerContainer').addClass('invisible')
-		$('.btnChildAnswer').attr('disabled', 'disabled')
+		$('.btnChildAnswer').attr('disabled', true)
+		$('#btnNextQuestion').attr('disabled', true)
 
 	'setupQuestionType2': ()->
 		console.log 'setupQuestionType2'
 		$('.oneAnswerContainer').addClass('invisible')
-		$('.btnChildAnswer').attr('disabled', 'disabled')
+		$('.btnChildAnswer').attr('disabled', true)
+		$('#btnNextQuestion').attr('disabled', true)
 
 	'setupQuestionType3': ()->
 		console.log 'setupQuestionType3'
-		$('.btnChildAnswer').attr('disabled', 'disabled')
+		$('.btnChildAnswer').attr('disabled', true)
+		$('#btnNextQuestion').attr('disabled', true)
 
 	'setupQuestionType4': ()->
 		console.log 'setupQuestionType4'
-		$('.btnChildAnswer').removeAttr('disabled')
-		$('btnNextQuestion').removeAttr('disabled')
+		$('.btnChildAnswer').attr('disabled', false)
+		$('#btnNextQuestion').addClass('invisible')
+		$('#btnNextQuestion').attr('disabled', true)
+		$('#timer').addClass('invisible')
 
 	'displayAnswerType1': ()->
 		console.log 'displayAnswerType1'
-		$('.btnChildAnswer').removeAttr('disabled')
 		$('.answerTitle').removeClass('invisible')
+		$('.btnChildAnswer').attr('disabled', true)
+		$('#btnNextQuestion').attr('disabled', false)
 
 	'displayAnswerType2': ()->
 		console.log 'displayAnswerType2'
 		$('.oneAnswerContainer').removeClass('invisible')
+		$('.btnChildAnswer').attr('disabled', true)
+		$('#btnNextQuestion').attr('disabled', false)
 
 	#Fade out wrong answers
 	'displayAnswerType3': ()->
 		console.log 'displayAnswerType3'
+		$('.btnChildAnswer').attr('disabled', true)
 		$('.wrongAnswer').addClass('invisible')
+		$('#btnNextQuestion').attr('disabled', false)
 
 	'displayAnswerType4': ()->
 		$('.btnChildAnswer').removeClass('invisible')
-		$('.btnChildAnswer').removeAttr('disabled')
+		$('.btnChildAnswer').attr('disabled', false)
 		$('.wrongAnswer').removeClass('invisible')
 
 
@@ -78,27 +88,24 @@ Meteor.methods
 						Session.set('questionType', QUESTION_TYPE_1)
 
 		#Type 2
-		if question.showAnswer is NO
-			if question.questionType is SHOW
-				if question.oneAnswerText.length > 0
-					if question.correctAnswers is ALL
-						console.log('questionType is ' + QUESTION_TYPE_2)
-						Session.set('questionType', QUESTION_TYPE_2)
+		if question.questionType is SHOW
+			if question.oneAnswerText.length > 0
+				if question.correctAnswers is ALL
+					console.log('questionType is ' + QUESTION_TYPE_2)
+					Session.set('questionType', QUESTION_TYPE_2)
 
 		#Type 3
-		if question.showAnswer is NO
-			if question.questionType is SHOW
-				if question.showAnswerTimer.length > 0
-					if question.correctAnswers is ONE
-						console.log('questionType is ' + QUESTION_TYPE_3)
-						Session.set('questionType', QUESTION_TYPE_3)
+		if question.questionType is SHOW
+			if question.showAnswerTimer.length > 0
+				if question.correctAnswers is ONE
+					console.log('questionType is ' + QUESTION_TYPE_3)
+					Session.set('questionType', QUESTION_TYPE_3)
 
 		# #Type 4
-		# if question.showAnswer is YES
-		# 	if question.questionType is CHOOSE
-		# 		if question.correctAnswers is ONE
-		# 			console.log('questionType is ' + QUESTION_TYPE_4)
-		# 			Session.set('questionType', QUESTION_TYPE_4)	
+	 	if question.questionType is CHOOSE
+	 		if question.correctAnswers is ONE
+	 			console.log('questionType is ' + QUESTION_TYPE_4)
+	 			Session.set('questionType', QUESTION_TYPE_4)	
 
 		if Session.get('questionType') is QUESTION_TYPE_1
 			Meteor.call 'setupQuestionType1', () ->
