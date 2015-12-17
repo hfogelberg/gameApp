@@ -15,6 +15,7 @@ meteor --settings settings.json
 To deploy on Meteor
 meteor deploy --settings settings.json
 
+```
 {
 	"api_key": "YOUR_API_KEY
 	"api_secret": "YOUR_API_SECRET",
@@ -25,6 +26,7 @@ meteor deploy --settings settings.json
 		"image_root": "https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/w_180/"
 	}
 }
+```
 
 ##2. Picking random questions
 Randomizing questions doesn't work with so few questions in the Db. There should be at least 50 or so per category.
