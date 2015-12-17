@@ -23,7 +23,7 @@
 									<button class='btnChildAnswer btn btn-default btn-lg {{getAnswerStatusClass isCorrectAnswer}}' disabled=true id='{{answerId}}' data-toggle="modal" data-target="#explanationModal">
 										<div class='answerImage'>
 											{{#if image}}
-												<img class='centerImage img-responsive' src="https://res.cloudinary.com/ginkgo/image/upload/w_180/{{image}}" alt='{{title}}'>
+												<img class='centerImage img-responsive' src="{{imageRoot}}{{image}}" alt='{{title}}'>
 											{{/if}}
 										</div>
 										{{#if equals questionType 1}}

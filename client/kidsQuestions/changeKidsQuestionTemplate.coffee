@@ -5,6 +5,9 @@ images = new Array()
 @answers = new Array()
 
 Template.changeQuestionTemplate.helpers
+	thumbRoot:->
+		Session.get 'thumbRoot'
+		
 	files: ->
 		Cloudinary.collection.find()
 

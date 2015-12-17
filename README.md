@@ -1,38 +1,27 @@
 #GameApp
 
-16/12/2015 : Fix needed
-- Make the adult game stable and working (production ready) is a priority
-	-Add validation for number of question in database (modal dialog), so that we run the game without bug.
-	-Game should end on the 10th question and the last question. It should congratulate the user on completion.
-	-Explanation/reason should be modal dialog.
-	-This is really important!!!
+##ToDo before deploying to production
 
+The app uses Cloudinary for image storage
 
-- Make the kid game stable and working (production ready) is a priority
-	-Add validation for number of question in database (modal dialog), so that we run the game without bug.
-	-Game should end on the 10th question and the last question. It should congratulate the user on completion.
-	-Validate type 1 question and working.
-	-Validate type 2 question and working.
-	-Validate type 3 question and working.
-	-Validate type 4 question and working.
-	-This is really important !!!
+1. Set up an account at Cloudinary
+2. Create a folder on Cloudinary where you want to store the images
+3. Copy settings.json.copy to settings.json
+4. Edit the settings.json file
 
-- Other features/fixes/bugs (not urgent) by priority order.
-	-Stats page.
-	-Tabs acts weird on admin.
-	-Better form to add answer kids/adults on admin (probably also use modal instead).
-	-WoW factor.
+To run locally start the app with 
+meteor --settings settings.json
 
-17/12/2015 : Overview.
+To deploy on Meteor
+meteor deploy --settings settings.json
 
-- Make the adult game stable and working (production ready) is a priority. Done.
-- Make the kid game stable and working (production ready) is a priority. Done.
-
-- Make the application WoW factor (animation on game, UI placement, feedback).
-
-- Other features/fixes/bugs by priority order (TODO)
-	-- Feature : Random order when we get questions.
-	-- Feature : Stats page (look at the mock up).
-	-- Bug known: Tabs acts weird on manage question (in admin).
-	-- Fixes : Better form UI on question creation. (answers).
-	-- We good ! 
+{
+	"api_key": "YOUR_API_KEY
+	"api_secret": "YOUR_API_SECRET",
+	"public": {
+		"cloud_name": "YOUR_CLOUD_NAME",
+		"folder": "YOUR_FOLDER_NAME",
+		"thumb_root": "https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/w_90/",
+		"image_root": "https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/w_180/"
+	}
+}

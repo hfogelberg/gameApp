@@ -22,7 +22,5 @@
 @CORRECT_ANSWER = 'correctAnswer'
 @WRONG_ANSWER = 'wrongAnswer'
 
-@THUMB_ROOT = 'https://res.cloudinary.com/ginkgo/image/upload/w_90/game/'
-
 @CORRECT_ANSWER_TEXT = 'Bonne reponse !'
 @WRONG_ANSWER_TEXT = 'Mauvaise reponse !'

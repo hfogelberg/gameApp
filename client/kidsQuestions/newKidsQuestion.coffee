@@ -23,6 +23,9 @@ Template.newKidsQuestion.rendered =->
 	Session.set 'questionImageId', ''	
 
 Template.newKidsQuestion.helpers
+	thumbRoot:->
+		Session.get 'thumbRoot'
+		
 	answersList: ->
 		return answers
 
@@ -51,7 +54,7 @@ Template.newKidsQuestion.events
 				if err 
 					console.log err
 				else
-					Session.set('latesImageId', res.public_id)
+					Session.set('questionImageId', res.public_id)
 					images.push res.public_id
 					$('.btnSaveQuestion').removeAttr('disabled')
 

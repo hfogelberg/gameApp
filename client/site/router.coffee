@@ -35,7 +35,6 @@ Router.map ->
     template: 'newKidsAnswerTemplate',
     path: '/newKidsAnswer/:questionId'
     onBeforeAction: ->
-      console.log @params.questionId
       Session.set('questionId', @params.questionId)
       this.next()
     waitOn: ->
@@ -47,7 +46,6 @@ Router.map ->
     template: 'questionTemplate',
     path: '/question/:questionId'
     onBeforeAction: ->
-      console.log @params.questionId
       Session.set('questionId', @params.questionId)
       this.next()
     waitOn: ->
@@ -59,7 +57,6 @@ Router.map ->
     template: 'changeQuestionTemplate',
     path: '/changeQuestion/:questionId' 
     onBeforeAction: ->
-      console.log @params.questionId
       Session.set('questionId', @params.questionId)
       this.next()
     waitOn: ->
@@ -84,7 +81,6 @@ Router.map ->
     template: 'newAdultAnswerTemplate',
     path: '/newAdultAnswer/:questionId'
     onBeforeAction: ->
-      console.log @params.questionId
       Session.set('questionId', @params.questionId)
       this.next()
     waitOn: ->
@@ -96,7 +92,6 @@ Router.map ->
     template: 'showAdultQuestionTemplate',
     path: '/showAdultQuestion/:questionId'
     onBeforeAction: ->
-      console.log @params.questionId
       Session.set('questionId', @params.questionId)
       this.next()
     waitOn: ->
@@ -108,7 +103,6 @@ Router.map ->
     template: 'changeAdultQuestionTemplate',
     path: '/changeAdultQuestion/:questionId'
     onBeforeAction: ->
-      console.log @params.questionId
       Session.set('questionId', @params.questionId)
       this.next()
     waitOn: ->

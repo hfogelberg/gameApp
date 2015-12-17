@@ -10,6 +10,9 @@ Template.newKidsAnswerTemplate.rendered = ->
 	answerImage = ''
 
 Template.newKidsAnswerTemplate.helpers
+	thumbRoot: ->
+		Session.get 'thumbRoot'
+		
 	answerImage: ->
 		Session.get 'answerImageId'
 

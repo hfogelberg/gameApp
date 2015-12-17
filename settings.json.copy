@@ -3,6 +3,8 @@
 	"api_secret": "YOUR_SECRET_KEY",
 	"public": {
 		"cloud_name": "YOUR_BUCKET",
-		"folder": "game"
+		"folder": "game",
+		"thumb_root": "https://res.cloudinary.com/YOUR_BUCKET/image/upload/w_90/",
+		"image_root": "https://res.cloudinary.com/YOUR_BUCKET/image/upload/w_180/"
 	}
 }

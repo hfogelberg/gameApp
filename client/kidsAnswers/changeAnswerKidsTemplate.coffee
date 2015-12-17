@@ -5,8 +5,12 @@ images = new Array()
 @answers = new Array()
 
 Template.changeAnswerTemplate.helpers
+	thumbRoot: ->
+		Session.get 'thumbRoot'
+		
 	questionId: ->
 		Session.get 'questionId'
+
 	id: ->
 		Session.get 'answerId'
 

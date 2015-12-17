@@ -34,7 +34,8 @@
 						</div>
 
 						{{#if image}}
-							<img src="https://res.cloudinary.com/ginkgo/image/upload/w_90/{{image}}"><span><button class='btn btn-danger btnDeleteImage'>Delete</button></span>
+							<img src="{{thumbRoot}}{{image}}">
+							<span><button class='btn btn-danger btnDeleteImage'>Delete</button></span>
 						{{/if}}
 
 						<div class='form-group'>
@@ -42,8 +43,7 @@
 								{{#each files}}
 									<div>
 										{{#if complete}}
-											<!-- ToDo: SHOULD BE A CONSTANT -->
-											<img src="https://res.cloudinary.com/ginkgo/image/upload/w_90/{{response.public_id}}">
+											<img src="{{thumbRoot}}{{response.public_id}}">
 											<div class='deleteImage btn btn-danger'><i class='glyphicon glyphicon-trash'></i>Delete</div>
 										{{else}}
 											<div class="progress">

@@ -33,6 +33,9 @@ Template.kidsGameTemplate.created = ->
 				Session.set('questions', result)
 
 Template.kidsGameTemplate.helpers
+	imageRoot:->
+		Session.get 'imageRoot'
+
 	numQuestions: ->
 		Session.get('questions').length
 

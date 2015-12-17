@@ -1,4 +1,7 @@
 Template.questionTemplate.helpers
+	thumbRoot:->
+		Session.get 'thumbRoot'
+		
 	questionId: ->
 		Session.get('questionId')
 
