@@ -1,6 +1,5 @@
 Template.newQuestionTemplate.helpers
 	level: ->
-		#ToDo: Return default value if not set
 		Session.get('level').toLowerCase()
 
 	isKid: ->

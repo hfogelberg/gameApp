@@ -41,14 +41,11 @@ Template.adultsGameTemplate.events
 	'click #btnNextQuestion': ->
 		i = Session.get('counter') + 1
 		Session.set('counter', i)
-		console.log 'Counter: ' + i 
-		console.log 'NUm questions: ' + Session.get('questions').length
 		
 		if i >= Session.get('questions').length		
 			Router.go('/thanks')
 
 	'click .btnAnswer': (event)->
-		console.log 'btnAnswer'
 		answerId = event.currentTarget.id
 		elem = $('#explanation_' + answerId)
 		elem.removeClass('hidden')

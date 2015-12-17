@@ -4,7 +4,6 @@ timeLeft = (t)->
   if clock > 0
     clock--
     Session.set "time", clock
-    console.log clock
   else
   	#Check type of question and display divs with answer
   	questionType = Session.get('questionType')
@@ -29,7 +28,7 @@ Template.kidsGameTemplate.created = ->
 	Deps.autorun ->
 		Meteor.call 'getKidsQuestions', (error, result) ->
 			if error
-				alert 'Error'
+				console.console.log  'Error'
 			else
 				Session.set('questions', result)
 
@@ -72,8 +71,6 @@ Template.kidsGameTemplate.helpers
 		if question.showAnswerTimer
 			clock = question.showAnswerTimer
 			Meteor.setInterval(clock, 1000)
-		else
-			console.log 'No need to start timer'
 
 		return question
 

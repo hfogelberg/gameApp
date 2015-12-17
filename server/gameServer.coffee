@@ -2,24 +2,17 @@ Meteor.startup ->
 	Meteor.publish 'getStats', ->
 		Stats.find()
 
-	Meteor.publish 'getQuestionsForGame', (level, numQuestions) ->
-		console.log 'getQuestionsForGame ' + level
-		console.log 'numQuestions ' + numQuestions
+	# Meteor.publish 'getQuestionsForGame', (level, numQuestions) ->
+	# 	r = Random.fraction()
 
-		r = Random.fraction()
-		console.log 'Random number: ' + r
-		console.log 'Found ' + Questions.find({level: level, random:{$gte:r}}, {limit: numQuestions}).count()
-
-		# ToDo: Outcommented during dev
-		# Questions.find({level: level, random:{$gte:r}}, {limit: numQuestions})
-		Questions.find({level: level}, {limit: numQuestions})
+	# 	# ToDo: Outcommented during dev
+	# 	# Questions.find({level: level, random:{$gte:r}}, {limit: numQuestions})
+	# 	Questions.find({level: level}, {limit: numQuestions})
 
 	Meteor.publish 'getAnswerById', (answerId) ->
-		console.log 'getAnswerById ' + answerId
 		Questions.find({"answers.answerId": answerId})
 
 	Meteor.publish 'getQuestionById', (questionId) ->
-		console.log 'getQuestionById ' + questionId
 		Questions.find
 			_id: questionId
 			{
@@ -27,8 +20,6 @@ Meteor.startup ->
 			}
 
 	Meteor.publish	'getQuestionsTitleByLevel', (level) ->
-		console.log 'getQuestionsTitleByLevel: ' +  level
-		console.log 'Found: ' + Questions.find({level: level}).count()
 		Questions.find
 			level: level
 			{
@@ -38,35 +29,27 @@ Meteor.startup ->
 
 Meteor.methods
 	deleteQuestionWithId: (questionId) ->
-		console.log 'deleteQuestionWithId ' + questionId
 		Questions.remove
 			_id: questionId
 
 	getAdultQuestions: ->
-		console.log 'getAdultQuestions'
 		# r = Random.fraction()
 		# console.log 'Returning ' +  Questions.find({level: 'ADULT'}, {limit: 4}).count()
 		Questions.find({level: 'ADULT'}, {limit: 10}).fetch()
 
 	getKidsQuestions: ->
-		console.log 'getKidsQuestions'
 		r = Random.fraction()
 		# console.log 'Returning ' +  Questions.find({level: 'KID'}, {limit: 4}).count()
 		Questions.find({level: 'KID'}, {limit: 8}).fetch()
 
 	createStats: (props) ->
-		console.log 'Create stats'
 		Stats.insert props
 
 	getOneQuestionById: (questionId) ->
-		console.log 'getOneQuestionById ' + questionId
 		Questions.findOne
 			_id: questionId
 
 	changeAnswerToQuestion: (questionId, answerId, params) ->
-		console.log 'changeAnswerToQuestion ' + answerId
-		console.log params
-
 		Questions.update
 			_id: questionId
 			{
@@ -83,7 +66,6 @@ Meteor.methods
 			}
 
 	removeAnswer: (questionId, answerId) ->
-		console.log 'removeAnswer questionId: ' + questionId + ' answerId: ' + answerId
 		Questions.update
 			_id: questionId
 			{
@@ -93,9 +75,6 @@ Meteor.methods
 			}
 
 	changeQuestion: (questionId, props) ->
-		console.log 'changeQuestion ' + questionId
-		console.log props
-
 		Questions.update
 			_id: questionId
 			{
@@ -104,15 +83,9 @@ Meteor.methods
 			}
 
 	createQuestion: (props) ->
-		console.log 'createQuestion'
-		console.log props
-
 		Questions.insert props
 
 	addAnswerToQuestion: (questionId, params) ->
-		console.log 'addAnswerToQuestion with id ' + questionId
-		console.log params
-
 		Questions.update
 			_id: questionId
 			{
@@ -121,7 +94,6 @@ Meteor.methods
 			}
 
 	deleteImageFromQuestion: (questionId) ->
-		console.log 'deleteImageFromQuestion ' + questionId
 		Questions.update
 			_id: questionId
 			{

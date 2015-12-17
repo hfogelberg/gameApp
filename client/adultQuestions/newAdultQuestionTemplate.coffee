@@ -17,10 +17,4 @@ Template.newAdultQuestion.events
 			random: Random.fraction()
 		}
 
-		console.log props
-
 		Meteor.call 'createQuestion', props, (err) ->
-			if err
-				console.log err
-			else
-				console.log 'OK!'

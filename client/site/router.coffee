@@ -131,18 +131,10 @@ Router.map ->
   @route 'adultGame',
     template: 'adultsGameTemplate',
     route: '/adultGame'
-    # waitOn: ->
-    #   @subscribe 'getQuestionsForGame', ADULT, NUM_ADULT_QUESTIONS
-    # data: questions: ->
-    #   Questions.find()
 
   @route 'kidsGame',
     template: 'kidsGameTemplate',
     route: '/kidsGame'
-    # waitOn: ->
-    #   @subscribe 'getQuestionsForGame', KID, NUM_KIDS_QUESTIONS
-    # data: questions: ->
-    #   Questions.find()
 
   @route 'thanks',
     template: 'thanks',

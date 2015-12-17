@@ -4,7 +4,6 @@ Template.levelNavTemplate.helpers
 
 Template.levelNavTemplate.events
 	'click .kidsLevel':->
-		console.log 'kidsLevel'
 		Session.set('level', KID)
 
 		elem = $('.levelNav li')
@@ -13,7 +12,6 @@ Template.levelNavTemplate.events
 		elem.addClass('active')
 
 	'click .adultLevel':->
-		console.log 'adultLevel'
 		Session.set('level', ADULT)
 
 		elem = $('.levelNav li')

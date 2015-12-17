@@ -27,8 +27,6 @@ Template.changeQuestionTemplate.events
 				if err 
 					console.log err
 				else
-					console.log 'OK!'
-					console.log res.public_id
 					Session.set('questionImageId', res.public_id)
 					images.push res.public_id
 					$('.btnUpdateQuestion').removeAttr('disabled')
@@ -36,7 +34,6 @@ Template.changeQuestionTemplate.events
 	'click .btnDeleteImage': (template) ->
 		Cloudinary.delete this.image, (err,res) ->
 			console.log "Cloudinary Error: #{err}"
-			console.log "Cloudinary Result: #{res}"
 
 	'click .btnUpdateQuestion': (template) ->
 		template.preventDefault
@@ -62,5 +59,3 @@ Template.changeQuestionTemplate.events
 		Meteor.call 'changeQuestion', this._id, props, (err) ->
 			if err
 				console.log err
-			else
-				console.log 'OK!'

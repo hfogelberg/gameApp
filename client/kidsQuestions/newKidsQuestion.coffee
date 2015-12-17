@@ -51,8 +51,6 @@ Template.newKidsQuestion.events
 				if err 
 					console.log err
 				else
-					console.log 'OK!'
-					console.log res.public_id
 					Session.set('latesImageId', res.public_id)
 					images.push res.public_id
 					$('.btnSaveQuestion').removeAttr('disabled')
@@ -82,11 +80,7 @@ Template.newKidsQuestion.events
 			updatedDate: new Date()
 		}
 
-		console.log props
-
 		Meteor.call 'createQuestion', props, (err) ->
 			if err
 				console.log err
-			else
-				console.log 'OK!'
 

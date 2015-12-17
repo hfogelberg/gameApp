@@ -21,9 +21,7 @@ Template.changeAnswerTemplate.helpers
 
 Template.changeAnswerTemplate.events
 	'change input.answers_file_bag': (e) ->
-		console.log 'Files added'
 		files = e.currentTarget.files
-		console.log files
 		$('.btnChangeAnswer').attr('disabled', 'disabled')
 
 		Cloudinary.upload files,
@@ -32,8 +30,6 @@ Template.changeAnswerTemplate.events
 				if err 
 					console.log err
 				else
-					console.log 'OK!'
-					console.log res.public_id
 					Session.set('answerImageId', res.public_id)
 					images.push res.public_id
 					$('.btnChangeAnswer').removeAttr('disabled')
@@ -43,14 +39,10 @@ Template.changeAnswerTemplate.events
 		event.preventDefault
 
 		Cloudinary.delete this.image, (err,res) ->
-			console.log "Cloudinary Error: #{err}"
-			console.log "Cloudinary Result: #{res}"
 
 		Meteor.call 'deleteImageFromAnswer', Session.get('questionId'), Session.get('answerId'), (err) ->
 			if err
 				console.log err
-			else
-				console.log 'OK'
 
 	'click .btnChangeAnswer': (event) ->
 		event.preventDefault
@@ -67,10 +59,6 @@ Template.changeAnswerTemplate.events
 			}
 		}
 
-		console.log params
-
 		Meteor.call 'changeAnswerToQuestion', Session.get('questionId'), Session.get('answerId'), params, (err) ->
 			if err
 				console.log err
-			else
-				console.log 'OK!'

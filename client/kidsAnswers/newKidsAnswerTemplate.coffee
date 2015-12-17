@@ -24,9 +24,7 @@ Template.newKidsAnswerTemplate.helpers
 
 Template.newKidsAnswerTemplate.events
 	'change input.answers_file_bag': (e) ->
-		console.log 'Files added'
 		files = e.currentTarget.files
-		console.log files
 		$('.btnSaveAnswer').attr('disabled', 'disabled')
 
 		Cloudinary.upload files,
@@ -35,8 +33,6 @@ Template.newKidsAnswerTemplate.events
 				if err 
 					console.log err
 				else
-					console.log 'OK!'
-					console.log res.public_id
 					Session.set('answerImageId', res.public_id)
 					images.push res.public_id
 					$('.btnSaveAnswer').removeAttr('disabled')
@@ -56,12 +52,9 @@ Template.newKidsAnswerTemplate.events
 			}
 		}
 
-		console.log params
 
 		Meteor.call 'addAnswerToQuestion', this._id, params, (err) ->
 			if err
 				console.log err
-			else
-				console.log 'OK!'
 
 		$('#answerForm')[0].reset()

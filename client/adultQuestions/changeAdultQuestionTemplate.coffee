@@ -9,10 +9,4 @@ Template.changeAdultQuestionTemplate.events
 			createdDate: new Date()
 		}
 
-		console.log props
-
 		Meteor.call 'changeQuestion', this._id, props, (err) ->
-			if err
-				console.log err
-			else
-				console.log 'OK!'
