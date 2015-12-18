@@ -14,7 +14,7 @@
 								<div>
 									{{#each answers}}
 										<br>
-										<button class='btnAnswer btn btn-primary btn-lg btn-block' id='{{answerId}}' data-toggle="modal" data-target="#explanationModal">
+										<button class='btnAnswer btn btn-primary btn-lg' id='{{answerId}}' data-toggle="modal" data-target="#explanationModal">
 											{{answerTitle}}	
 										</button>
 										<br>
@@ -24,15 +24,15 @@
 						</ul>
 					</div>
 				</div>
+				<br>
+				<br>
+				<a href='/start' type='button' class='btn btn-danger btn-lg' id='btnStopQuiz'>Quitter</a>
 			</div>
 <!-- 			<br>
 			<br>
 			<br> -->
 			<!-- <button type='button' class='btn btn-success btn-lg' id='btnNextQuestion'>Question suivante</button> -->
-			<br>
-			<br>
-			<br>
-			<a href='/start' type='button' class='btn btn-danger btn-lg' id='btnStopQuiz'>Quitter</a>
+
 		</div>
 
 		</header>
@@ -47,7 +47,8 @@
 						<div class='comment'>{{explanation}}</div>
 		      </div>
 		      <div class="modal-footer">
-						<button type='button' class='btn btn-success btn-lg' id='btnNextQuestion' data-dismiss="modal">Question suivante</button>
+		      	<button type='button' class='btn btn-success btn-lg' data-dismiss="modal">Précédent</button>
+				<button type='button' class='btn btn-success btn-lg' id='btnNextQuestion' data-dismiss="modal">Question suivante</button>
 		      </div>
 		    </div>
 		  </div>
