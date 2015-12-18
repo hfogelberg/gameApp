@@ -22,5 +22,5 @@
 @CORRECT_ANSWER = 'correctAnswer'
 @WRONG_ANSWER = 'wrongAnswer'
 
-@CORRECT_ANSWER_TEXT = 'Bonne reponse !'
-@WRONG_ANSWER_TEXT = 'Mauvaise reponse !'
+@CORRECT_ANSWER_TEXT = 'Bonne réponse !'
+@WRONG_ANSWER_TEXT = 'Mauvaise réponse !'

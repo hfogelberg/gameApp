@@ -132,6 +132,36 @@ margin: 0;
 
 .oneAnswerContainer {
   text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.btn[disabled] {
+  opacity: 1;
+}
+
+#explanationModal {
+  position: absolute;
+  margin-top: -25px;
+  padding: 20px;
+  top: 30%;
+}
+
+#explanationModal .modal-title {
+  font-size: 34px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.goodAnswerColor {
+  color:green;
+}
+
+.badAnswerColor {
+  color:red;
+}
+
+.answerTitle {
   font-size: 24px;
   font-weight: bold;
 }

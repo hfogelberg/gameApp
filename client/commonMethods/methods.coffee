@@ -62,10 +62,14 @@ Meteor.methods
 			if answer.answerId is answerId
 				Session.set('explanation', answer.reason)
 				if answer.isCorrectAnswer is YES
+					$('#myModalLabel').removeClass('badAnswerColor')
+					$('#myModalLabel').addClass('goodAnswerColor')
 					Session.set('isRightAnswer', CORRECT_ANSWER_TEXT)
 					n = Session.get('correctAnswersCounter') + 1
 					Session.set('correctAnswersCounter', n)
 				else
+					$('#myModalLabel').removeClass('goodAnswerColor')
+					$('#myModalLabel').addClass('badAnswerColor')
 					Session.set('isRightAnswer', WRONG_ANSWER_TEXT)
 
 		# Time to check what kind of question it is and hide/show divs

@@ -5,16 +5,14 @@
 				<div class="container">
 					<div class="row">
 						<div>
-							
-							<p id='timer'><big>{{getCountdown}}</big> temps restants</p>
-							
 							<div class='imageContainer'>
 								{{#if image}}
-									<img class='centerImage img-responsive' src="https://res.cloudinary.com/ginkgo/image/upload/w_180/{{image}}" alt='{{title}}'>
+									<img class='centerImage img-responsive' src="{{imageRoot}}{{image}}" alt='{{title}}'>
 								{{/if}}
 							</div>
 							<h4 class='brand-heading questionTitle'>{{title}}</h4>	
 							<br>
+							<p id='timer'><big>{{getCountdown}}</big> temps restants</p>
 							<br>
 							<div class='answers evenly row-fluid'>
 								{{#each answers}}<!-- 
@@ -40,23 +38,18 @@
 							</div>
 
 							<br>
+							<br>
+							<br>
 							
 							<div class='oneAnswerContainer'>
 								{{oneAnswerText}}
 							</div>	
-
-							<br>
-							<br>
-			
-							<!-- <div class='nextQuestionContainer pull-right'> -->
-								<button type='button' class='btn btn-success btn-lg' id='btnNextQuestion' disabled=true>Question suivante</button>
-							<!-- </div> -->
 							<br>
 							<br>
 							<br>
-							<!-- <div class='stopQuizzContainer'> -->
+							<br>
 								<a href='/start' type='button' class='btn btn-danger btn-lg' id='btnStopQuiz'>Quitter</a>
-							<!-- </div> -->
+								<button type='button' class='btn btn-success btn-lg' id='btnNextQuestion' disabled=true>Question suivante</button>
 						</div>
 					</div>
 				</div>
@@ -71,7 +64,9 @@
 		      </div>
 		      <div class="modal-footer">
 		      	<!-- <div class='nextQuestionContainer pull-right'> -->
+		      			<button type='button' class='btn btn-success btn-lg' data-dismiss="modal">Précédent</button>
 						<button type='button' class='btn btn-success btn-lg' id='btnNextQuestion' data-dismiss="modal">Question suivante</button>
+
 						<!-- <button type='button' class='btn btn-success btn-lg' id='btnNextQuestion' data-dismiss="modal">Question suivante</button> -->
 		      </div>
 		    </div>
