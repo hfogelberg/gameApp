@@ -1,9 +1,12 @@
 <template name='adminTemplate'>
-	{{> adminNavTemplate}}
+	<h2 class='centerText'>Quizz Admin</h2>
+	<div class=' col-md-offset-1 col-md-10'>
+		{{> adminNavTemplate}}
 
-	{{> levelNavTemplate}}
+		{{> levelNavTemplate}}
 
-	<div>
-		{{> questionsListTemplate}}
+		<div>
+			{{> questionsListTemplate}}
+		</div>
 	</div>
 </template>

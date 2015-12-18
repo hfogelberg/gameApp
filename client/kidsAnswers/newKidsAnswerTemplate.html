@@ -57,17 +57,28 @@
 		<a href='/admin' class='btn btn-lg'>Done</a>
 
 		<div class = 'answers'>
-			<table>
+			<table class='table'> 
 				<tbody>
 					{{#each answers}}
 						<tr>
 							<td>{{answerTitle}}</td>
-							<td><button class='btn btn-danger'>Remove</button></td>
+							<td>
+								{{#if image}}
+									<img src="{{miniRoot}}{{image}}" class="img-responsive">
+								{{/if}}
+							</td>
+							<td>
+								<button class='delete'><i class="fa fa-times"></i> Delete</button>
+							</td>
 						</tr>
 					{{/each}}
 				</tbody>
 			</table>
 		</div>
 	{{/with}}
+
+
+
+
 
 </template>

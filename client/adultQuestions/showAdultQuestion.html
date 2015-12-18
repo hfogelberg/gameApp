@@ -17,14 +17,20 @@
 
 		<div class='answersAdminList'>
 			<div class = 'answers'>
-				<p><a href='/newAdultAnswer/{{questionId}}' class='pull-right'><i class="fa fa-plus"></i>New answer</a></p>
+				<p>
+					<a href='/newAdultAnswer/{{questionId}}' class='pull-right'>
+						<i class="fa fa-plus fa-2x"></i>
+					</a>
+				</p>
 				<table class='table'>
 					<tbody>
 						{{#each answers}}
 							<tr>
 								<td>{{answerTitle}}</td>
-								<td><a href='/changeAdultAnswer/{{questionId}}/{{answerId}}'>Change</a></td>
-								<td><button class='btn btn-danger'>Remove</button></td>
+								<td><a href='/changeAdultAnswer/{{questionId}}/{{answerId}}'><i class="fa fa-pencil-square-o"></i>Edit</a></td>
+								<td>
+									<a class='delete btnRemove'><i class="fa fa-times"></i> Delete</a>
+								</td>
 							</tr>
 						{{/each}}
 					</tbody>

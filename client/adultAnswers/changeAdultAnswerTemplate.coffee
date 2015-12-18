@@ -5,6 +5,9 @@ Template.changeAdultAnswerTemplate.helpers
 	questionId: ->
 		Session.get 'questionId'
 
+	thumbRoot: ->
+		Session.get 'thumbRoot'
+
 Template.changeAdultAnswerTemplate.events
 	'click .btnChangeAnswer': (event) ->
 		event.preventDefault

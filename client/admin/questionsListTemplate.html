@@ -2,8 +2,7 @@
 	<div class='questionsList'>
 		<table class="table table-striped table-hover table-questions">
 		   	<thead>
-				<tr>
-					
+				<tr>			
 					<th>Question</th>
 					<th>Date created</th>
 					<th></th>
@@ -13,18 +12,28 @@
 			<tbody>
 				{{#each questions}}
 					<tr>
-						<td>{{title}}</td>
-						<td>{{formatDate createdDate}}</td>
-						<td>
+						<td class='col-md-4'>{{title}}</td>
+							<td class='col-md-2'>
+								{{formatDate createdDate}}
+							</td>
 							{{#if equals level 'KID'}}
-							<td><a href="/question/{{_id}}"><i class="fa fa-pencil-square-o"></i>
- Edit</a></td>
+								<td class='col-md-1'>
+									<a href="/question/{{_id}}">
+										<i class="fa fa-pencil-square-o"></i>Edit
+									</a>
+								</td>
 							{{else}}
-								<td><a href="/showAdultQuestion/{{_id}}"><i class="fa fa-pencil-square-o"></i>
-Edit</a></td>
+								<td class='col-md-1'>
+									<a href="/showAdultQuestion/{{_id}}">
+										<i class="fa fa-pencil-square-o"></i>Edit
+									</a>
+								</td>
 							{{/if}}
+							<td class='col-md-1'>
+							<a href="#" class='delete'>
+								<i class="fa fa-times"></i> Delete
+							</a>
 						</td>
-						<td><a href="#" class='delete'><i class="fa fa-times"></i> Delete</a></td>
 					</tr>
 				{{/each}}
 			</tbody>

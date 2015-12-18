@@ -8,10 +8,11 @@ Template.questionTemplate.helpers
 Template.questionTemplate.events
 	'click .btnRemoveAnswer': (event) ->
 		event.preventDefault
-		answerId =  event.currentTarget.id;
 
-		Meteor.call 'removeAnswer', Session.get('questionId'), answerId, (err) ->
-			if err
-				console.log err
+		if (confirm('Are you sure you want to remove the answer?'))
+			answerId =  event.currentTarget.id
+			Meteor.call 'removeAnswer', Session.get('questionId'), answerId, (err) ->
+				if err
+					console.log err
 
 			

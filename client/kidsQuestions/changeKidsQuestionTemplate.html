@@ -25,9 +25,8 @@
 					{{#each files}}
 						<div>
 							{{#if complete}}
-								<!-- ToDo: SHOULD BE A CONSTANT -->
-								<img src="https://res.cloudinary.com/ginkgo/image/upload/w_90/{{response.public_id}}">
-								<div class='deleteImage btn btn-danger'><i class='glyphicon glyphicon-trash'></i>Delete</div>
+								<img src="{{thumbRoot}}{{response.public_id}}">
+								<div class='deleteImage'><i class="fa fa-times"></i>Delete</div>
 							{{else}}
 								<div class="progress">
 									<div class="progress-bar" role="progressbar" aria-valuenow="{{percent_uploaded}}" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">

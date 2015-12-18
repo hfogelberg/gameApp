@@ -6,9 +6,6 @@
 		{{#with question}}
 			<h2 class='questionTitle'>Question</h2>
 			<div class='well'>
-
-				<a href='/changeQuestion/{{_id}}' class='btnChangeQuestion btn btn-default pull-right'>Change question</a>
-
 				<p><label>Title: </label> {{title}}</p>
 				<p>
 					{{#if image}}
@@ -21,11 +18,18 @@
 				<p><label>Question type: </label> {{questionType}}</p>
 				<p><label>Answer: </label> {{oneAnswerText}}</p>
 				<p><label>Level: </label> {{level}}</p>
-				<p><label>Created date: </label> {{formatDate createdDate}}</p>
+				<p>
+					<label>Created date: </label> {{formatDate createdDate}}
+					<a href='/changeQuestion/{{_id}}' class='btnChangeQuestion btn btn-default pull-right'>Change question</a>
+				</p>
 			</div>
 
 			<div class='answersAdminList'>
-				<p><a href='/newKidsAnswer/{{questionId}}' class='pull-right'><i class="fa fa-plus"></i>Add new answer</a></p>
+				<p>
+					<a href='/newKidsAnswer/{{questionId}}' class='pull-right'>
+						<i class="fa fa-plus fa-2x"></i>
+					</a>
+				</p>
 				<table class='table'>
 					<tbody>
 						{{#each answers}}
@@ -37,10 +41,11 @@
 									{{/if}}
 								</td>
 								<td>
-									<a href='/changeAnswer/{{questionId}}/{{answerId}}' class='btn btnChangeAnswer' id='{{answerId}}'>Change</a>
+									<a href='/changeAnswer/{{questionId}}/{{answerId}}' class='btnChangeAnswer' id='{{answerId}}'><i class="fa fa-pencil-square-o"></i>
+Edit</a>
 								</td>
 								<td>
-									<button class='btn btn-danger btnRemoveAnswer' id='{{answerId}}'>Remove</button>
+									<a href="#" class='delete btnRemoveAnswer' id='{{answerId}}'><i class="fa fa-times"></i> Delete</a>
 								</td>
 							</tr>
 						{{/each}}
@@ -49,6 +54,6 @@
 			</div>
 		{{/with}}
 
-		<a href='/admin' class='btn btn-lg'>Done</a>
+		<a href='/admin' class='btn btn-primary btn-lg pull-right'>Done</a>
 	</div>
 </template>
