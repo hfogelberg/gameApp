@@ -4,24 +4,51 @@
 			<a href='/admin' class='btn btn-md btn-default'><i class="fa fa-chevron-left"></i>Back</a>
 		</p>
 		{{#with question}}
-			<h2 class='questionTitle'>Question</h2>
-			<div class='well'>
-				<p><label>Title: </label> {{title}}</p>
-				<p>
-					{{#if image}}
-						<img src="{{thumbRoot}}{{image}}">
-					{{/if}}
-				</p>
-				<p><label>Show answer image: </label> {{showAnswerImg}}</p>
-				<p><label>Show answer timer: </label> {{showAnswerTimer}}</p>
-				<p><label>Correct answers: </label> {{correctAnswers}}</p>
-				<p><label>Question type: </label> {{questionType}}</p>
-				<p><label>Answer: </label> {{oneAnswerText}}</p>
-				<p><label>Level: </label> {{level}}</p>
-				<p>
-					<label>Created date: </label> {{formatDate createdDate}}
-					<a href='/changeQuestion/{{_id}}' class='btnChangeQuestion btn btn-default pull-right'>Change question</a>
-				</p>
+			<div>
+				<p><h2 class='questionTitle'><bold>Title:</bold> {{title}}</h2></p>
+				<div class='row'>
+					<div class='col-sm-offset-2 col-sm-6'>
+						<table>
+							<tbody>
+ 								<tr>
+									<td class='col-sm-4'>Show answer image</td>
+									<td class='col-sm-8 questionLabel'>{{showAnswerImg}}</td>
+								</tr>
+								<tr>
+									<td class='col-sm-4'>Answer timer</td>
+									<td class='col-sm-8 questionLabel'>{{showAnswerTimer}}</td>
+								</tr>
+								<tr>
+									<td class='col-sm-4'>Correct answers</td>
+									<td class='col-sm-8 questionLabel'>{{correctAnswers}}</td>
+								</tr>
+								<tr>
+									<td class='col-sm-4'>Question type</td>
+									<td class='col-sm-8 questionLabel'>{{questionType}}</td>
+								</tr>
+								<tr>
+									<td class='col-sm-4'>Answer</td>
+									<td class='col-sm-8'>{{oneAnswerText}}</td>
+								</tr>
+								<tr>
+									<td class='col-sm-4'>Level</td>
+									<td class='col-sm-8 questionLabel'>{{level}}</td>
+								</tr>
+								<tr>
+									<td class='col-sm-4'>Created</td>
+									<td class='col-sm-8'>{{formatDate createdDate}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div class='col-sm-3'>
+						{{#if image}}
+							<img src="{{thumbRoot}}{{image}}">
+						{{/if}}
+					</div>
+					<a href='/changeQuestion/{{_id}}' class='btnChangeQuestion btn btn-warning pull-right'>Change question</a>
+				</div>
 			</div>
 
 			<div class='answersAdminList'>
@@ -30,6 +57,7 @@
 						<i class="fa fa-plus fa-2x"></i>
 					</a>
 				</p>
+
 				<table class='table'>
 					<tbody>
 						{{#each answers}}
@@ -41,8 +69,10 @@
 									{{/if}}
 								</td>
 								<td>
-									<a href='/changeAnswer/{{questionId}}/{{answerId}}' class='btnChangeAnswer' id='{{answerId}}'><i class="fa fa-pencil-square-o"></i>
-Edit</a>
+									<a href='/changeAnswer/{{questionId}}/{{answerId}}' class='btnChangeAnswer' id='{{answerId}}'>
+										<i class="fa fa-pencil-square-o"></i>
+										Edit
+									</a>
 								</td>
 								<td>
 									<a href="#" class='delete btnRemoveAnswer' id='{{answerId}}'><i class="fa fa-times"></i> Delete</a>

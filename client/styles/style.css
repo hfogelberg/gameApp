@@ -195,3 +195,11 @@ input[type=checkbox]{
   transform: scale(2);
   -webkit-transform: scale(2);
 }
+
+td.questionLabel{
+  text-transform: lowercase;
+}
+
+td.questionLabel:first-letter {
+    text-transform: uppercase;
+}
