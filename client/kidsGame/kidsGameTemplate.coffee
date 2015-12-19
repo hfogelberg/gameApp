@@ -17,7 +17,6 @@ timeLeft = (t)->
   	else if questionType == QUESTION_TYPE_4
   	 	Meteor.call 'dibtnChildAnswersplayAnswerType4', ->
 
-
 Meteor.setInterval(timeLeft, 1000)
 
 Template.kidsGameTemplate.created = ->
@@ -25,6 +24,7 @@ Template.kidsGameTemplate.created = ->
 	Session.set('time', 0)
 	Session.set('correctAnswersCounter', 0)
 
+	$('#btnPreviousQuestion').attr('disabled', 'disabled')
 	Deps.autorun ->
 		Meteor.call 'getKidsQuestions', (error, result) ->
 			if error
@@ -48,9 +48,6 @@ Template.kidsGameTemplate.helpers
 		
 	questionType: ->
 		Session.get 'questionType'
-
-	getCountdown:->
-		Session.get 'time'
 
 	answerGiven:->
 		Session.get 'answerGiven'
@@ -78,12 +75,21 @@ Template.kidsGameTemplate.helpers
 		return question
 
 Template.kidsGameTemplate.events
+	'click #btnPreviousQuestion': (event) ->
+		event.preventDefault
+
+		i = Session.get('counter') - 1
+		Session.set('counter', i)
+
 	'click #btnNextQuestion:enabled': (event) ->
 		event.preventDefault
 
 		# Meteor.clearInterval interval
 		i = Session.get('counter') + 1
 		Session.set('counter', i)
+
+		if (Session.get('counter') > 0)
+			$('#btnPreviousQuestion').removeAttr('disabled')
 
 		if i >= Session.get('questions').length		
 			Router.go('/thanks')
