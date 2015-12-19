@@ -16,20 +16,14 @@
 
 		<div class='form-group'>
 			<div class='col-sm-offset-2 col-sm-10'>
-				{{#each files}}
-					<div>
-						{{#if complete}}
-							<img src="{{thumbRoot}}{{response.public_id}}">
-							<div class='deleteImage btn btn-danger'><i class='glyphicon glyphicon-trash'></i>Delete</div>
-						{{else}}
-							<div class="progress">
-								<div class="progress-bar" role="progressbar" aria-valuenow="{{percent_uploaded}}" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
-									{{percent_uploaded}} %
-								</div>
-							</div>
-						{{/if}}
-					</div>
-				{{/each}}
+				<div>
+					{{#if questionImage}}
+						<img src="{{thumbRoot}}{{questionImage}}">
+						<span>
+							<a href="#" class='btn-unstyled deleteImage delete'><i class="fa fa-times"></i>Delete</a>
+						</span>
+					{{/if}}
+				</div>
 			</div>
 		</div>
 		
@@ -98,23 +92,8 @@
 		<div class='form-group'>
 			<div class='col-sm-offset-2 col-sm-10'>
 				<!-- <button class='btn btn-primary btnSaveQuestion'>Save</button> -->
-        <a href='/newKidsAnswer/{{questionId}}' class='btn btnSaveQuestion'>Save question</a>
+        <a href='/newKidsAnswer/{{questionId}}' class='btn btn-success btn-lg btnSaveQuestion'>Save question</a>
 			</div>
 		</div>
 	</form>
-<!-- 
-	<div>
-		<h4>Answers</h4>
-		<ul>
-			{{#each arrayObject answers}}
-			   <li>{{answerTitle}}</li>
-			{{/each}}
-		</ul>
-	</div>
-
-	<div>
-		<button class='btn' id='btnAddAnswer'>Add answer</button>
-	</div> -->
-
-
 </template>

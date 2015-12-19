@@ -1,7 +1,6 @@
 $.cloudinary.config
 	cloud_name: Meteor.settings.public.cloud_name
 
-images = new Array()
 @answers = new Array()
 
 questionId = Random.id()
@@ -12,9 +11,6 @@ Template.newKidsQuestion.helpers
 
 	answers: ->
 		return answers
-		
-	files: ->
-		Cloudinary.collection.find()
 
 	complete: ->
 		@status is "complete"
@@ -29,13 +25,13 @@ Template.newKidsQuestion.helpers
 	answersList: ->
 		return answers
 
-	files: ->
-		Cloudinary.collection.find()
-
 	questionImage: ->
 		Session.get 'questionImageId'
 
 	questionImageComplete: ->
+		@status is "complete"
+
+	complete: ->
 		@status is "complete"
 
 Template.newKidsQuestion.events
@@ -43,11 +39,9 @@ Template.newKidsQuestion.events
 		$('#kidsAnswerModal').modal()
 
 	'change input.file_bag': (e) ->
-		console.log 'Files added'
-		files = e.currentTarget.files
-		console.log files
 		$('.btnSaveQuestion').attr('disabled', 'disabled')
 
+		files = e.currentTarget.files
 		Cloudinary.upload files,
 			folder: Meteor.settings.public.folder
 			(err,res) ->
@@ -55,8 +49,11 @@ Template.newKidsQuestion.events
 					console.log err
 				else
 					Session.set('questionImageId', res.public_id)
-					images.push res.public_id
 					$('.btnSaveQuestion').removeAttr('disabled')
+
+'click .deleteImage': (template) ->
+	Cloudinary.delete this.image, (err,res) ->
+		console.log "Cloudinary Error: #{err}"
 
 Template.newKidsQuestion.events
 	'click .btnSaveQuestion': (template)->
@@ -87,3 +84,8 @@ Template.newKidsQuestion.events
 			if err
 				console.log err
 
+	'click .deleteImage': (template)->
+		template.preventDefault
+
+		Session.set('questionImageId', '')
+		Cloudinary.delete Session.get('questionImageId') ->

@@ -1,6 +1,6 @@
 <template name='changeQuestionTemplate'>
 	{{#with question}}
-		<h3>Change Question {{title}}</h3>
+		<h2 class='questionTitle'>Change Question {{title}}</h2>
 		<form class="form-horizontal">
 			<div class='form-group'>
 				<label for='title' class='col-sm-2'>Question</label>
@@ -8,10 +8,6 @@
 					<input type='text' class='form-control' id='title' value='{{title}}'/>
 				</div>
 			</div>
-
-			{{#if image}}
-				<img src="{{thumbRoot}}{{image}}"><span><button class='btn btn-danger btnDeleteImage'>Delete</button></span>
-			{{/if}}
 
 			<div class='form-group'>
 				<label for='image' class='col-sm-2'>Image</label>
@@ -22,20 +18,16 @@
 
 			<div class='form-group'>
 				<div class='col-sm-offset-2 col-sm-10'>
-					{{#each files}}
-						<div>
-							{{#if complete}}
-								<img src="{{thumbRoot}}{{response.public_id}}">
-								<div class='deleteImage'><i class="fa fa-times"></i>Delete</div>
-							{{else}}
-								<div class="progress">
-									<div class="progress-bar" role="progressbar" aria-valuenow="{{percent_uploaded}}" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
-										{{percent_uploaded}} %
-									</div>
-								</div>
-							{{/if}}
-						</div>
-					{{/each}}
+					<div>
+						{{#if questionImage}}
+							<div>
+								<img src="{{thumbRoot}}{{questionImage}}">
+								<span>
+									<a href="#" class='deleteImage'><i class="fa fa-times"></i>Delete</a>
+								</span>
+							</div>
+						{{/if}}
+					</div>
 				</div>
 			</div>
 			
@@ -139,7 +131,10 @@
 
 			<div class='form-group'>
 				<div class='col-sm-offset-2 col-sm-10'>
-					<a href='/question/{{_id}}' class='btn btn-primary btnUpdateQuestion'>Save</a>
+					<a href='/question/{{_id}}' class='btn btn-default btnCancel'>Cancel</a> 
+					<span>
+						<a href='/question/{{_id}}' class='btn btn-primary btnUpdateQuestion'>Save</a>
+					</span>
 				</div>
 			</div>
 		</form>

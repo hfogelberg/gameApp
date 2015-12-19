@@ -1,13 +1,8 @@
 $.cloudinary.config
 	cloud_name: Meteor.settings.public.cloud_name
 
-images = new Array()
-answerImage = ''
-
 Template.newKidsAnswerTemplate.rendered = ->
-	Session.set 'answerImageId', ''	
-	answerImages = null
-	answerImage = ''
+	Session.set('answerImageId', '')
 
 Template.newKidsAnswerTemplate.helpers
 	thumbRoot: ->
@@ -15,12 +10,6 @@ Template.newKidsAnswerTemplate.helpers
 		
 	answerImage: ->
 		Session.get 'answerImageId'
-
-	answerImages: ->
-		Cloudinary.collection.find()
-
-	files: ->
-		Cloudinary.collection.find()
 
 	complete: ->
 		@status is "complete"
@@ -37,8 +26,24 @@ Template.newKidsAnswerTemplate.events
 					console.log err
 				else
 					Session.set('answerImageId', res.public_id)
-					images.push res.public_id
 					$('.btnSaveAnswer').removeAttr('disabled')
+
+	'click .btnDeleteImage': (event) ->
+		event.preventDefault
+		Cloudinary.delete this.image, (err,res) ->
+			if err
+				console.log "Cloudinary Error: #{err}"
+			else
+				Session.set('answerImageId', '')
+
+	'click .btnDeleteAnswer': (event) ->
+		event.preventDefault
+
+		if (confirm('Are you sure you want to remove the answer?'))
+			answerId =  event.currentTarget.id
+			Meteor.call 'removeAnswer', this._id, answerId, (err) ->
+				if err
+					console.log err
 
 	'click .btnSaveAnswer': (event) ->
 		event.preventDefault
@@ -54,7 +59,6 @@ Template.newKidsAnswerTemplate.events
 				answerId : Random.id()
 			}
 		}
-
 
 		Meteor.call 'addAnswerToQuestion', this._id, params, (err) ->
 			if err

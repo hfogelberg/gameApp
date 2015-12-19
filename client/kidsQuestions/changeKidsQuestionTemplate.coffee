@@ -1,40 +1,40 @@
 $.cloudinary.config
 	cloud_name: Meteor.settings.public.cloud_name
 
-images = new Array()
 @answers = new Array()
+
+Template.changeQuestionTemplate.rendered =->
 
 Template.changeQuestionTemplate.helpers
 	thumbRoot:->
 		Session.get 'thumbRoot'
-		
-	files: ->
-		Cloudinary.collection.find()
 
 	questionImage: ->
-		Session.get 'questionImageId'
-
+		if Session.get 'questionImageId'
+			return Session.get 'questionImageId'
+		else
+			return this.image
+	
 	complete: ->
 		@status is "complete"
 
 Template.changeQuestionTemplate.events
 	'change input.file_bag': (e) ->
-		console.log 'Files added'
-		files = e.currentTarget.files
-		console.log files
 		$('.btnUpdateQuestion').attr('disabled', 'disabled')
 
-		Cloudinary.upload files,
-			folder: Meteor.settings.public.folder
+		Cloudinary.upload e.currentTarget.files,
+			folder: Meteor.settings.public.folder 
 			(err,res) ->
 				if err 
+					alert err
 					console.log err
 				else
 					Session.set('questionImageId', res.public_id)
-					images.push res.public_id
 					$('.btnUpdateQuestion').removeAttr('disabled')
 
-	'click .btnDeleteImage': (template) ->
+	'click .deleteImage': (template) ->
+		this.image =''
+		Session.set('questionImageId', '')
 		Cloudinary.delete this.image, (err,res) ->
 			console.log "Cloudinary Error: #{err}"
 
@@ -62,3 +62,5 @@ Template.changeQuestionTemplate.events
 		Meteor.call 'changeQuestion', this._id, props, (err) ->
 			if err
 				console.log err
+			else
+				Session.set('questionImageId', '')
