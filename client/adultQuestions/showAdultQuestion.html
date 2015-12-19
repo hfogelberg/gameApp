@@ -1,41 +1,36 @@
 <template name='showAdultQuestionTemplate'>
 	{{#with question}}
-		<p>
-			<a href='/admin' class='btn btn-md btn-default'><i class="fa fa-chevron-left"></i>Back</a>
-		</p>
-		
-
-		<h2 class='questionTitle'>Question</h2>
-		<div class='well'>
-
-			<a href='/changeAdultQuestion/{{_id}}' class='btnChangeQuestion btn btn-default pull-right'>Change</a>
-			<p><label>Title: </label> {{title}}</p>
-<!-- 			<p><label>Explanation: </label> {{explanation}}</p>
-			<p><label>Reason: </label>{{reason}}</p> -->
-			<p><label>Created date: </label>{{formatDate createdDate}}</p>
+		<div class='showAdultQuestion'>
+			<h2 class='questionTitle'>{{title}}</h2>
+			<p>
+				<label class='createdDateLabel'>Created date: </label>{{formatDate createdDate}}
+			</p>
+			<a href='/changeAdultQuestion/{{_id}}' class='btnChangeQuestion btn btn-warning pull-right'>Change</a>
 		</div>
 
-		<div class='answersAdminList'>
-			<div class = 'answers'>
-				<p>
-					<a href='/newAdultAnswer/{{questionId}}' class='pull-right'>
-						<i class="fa fa-plus fa-2x"></i>
-					</a>
-				</p>
-				<table class='table'>
-					<tbody>
-						{{#each answers}}
-							<tr>
-								<td>{{answerTitle}}</td>
-								<td><a href='/changeAdultAnswer/{{questionId}}/{{answerId}}'><i class="fa fa-pencil-square-o"></i>Edit</a></td>
-								<td>
-									<a class='delete btnRemove'><i class="fa fa-times"></i> Delete</a>
-								</td>
-							</tr>
-						{{/each}}
-					</tbody>
-				</table>
-			</div>
+		<div class = 'answers'>
+			<p>
+				<a href='/newAdultAnswer/{{questionId}}' class='pull-right'>
+					<i class="fa fa-plus fa-2x"></i>
+				</a>
+			</p>
+
+			<table class='table'>
+				<tbody>
+					{{#each answers}}
+						<tr>
+							<td>{{answerTitle}}</td>
+							<td><a href='/changeAdultAnswer/{{questionId}}/{{answerId}}'><i class="fa fa-pencil-square-o"></i>Edit</a></td>
+							<td>
+								<a class='delete btnRemove'><i class="fa fa-times"></i> Delete</a>
+							</td>
+						</tr>
+					{{/each}}
+				</tbody>
+			</table>
+
+			<a href='/admin' class='btn btn-primary btn-lg pull-right'>Done</a>
+
 		</div>
 	{{/with}}
 </template>
