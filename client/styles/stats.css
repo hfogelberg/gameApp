@@ -71,3 +71,9 @@ h3.answersHeader {
 	padding-left: 80px;
 	font-size: 12px;
 }
+
+.square {
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+}
