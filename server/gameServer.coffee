@@ -9,11 +9,6 @@ Meteor.startup ->
 	Meteor.publish 'getAnswerById', (answerId) ->
 		Questions.find({"answers.answerId": answerId})
 
-	Meteor.publish 'getStats', ->
-		console.log 'getStats'
-		console.log Stats.find().count()
-		Stats.find()
-
 	Meteor.publish 'getQuestionById', (questionId) ->
 		Questions.find
 			_id: questionId
@@ -104,3 +99,24 @@ Meteor.methods
 				$set:
 					image: ''
 			}
+
+	getGamesCountByLevel: (level)->
+		console.log 'getGamesCountByLevel ' + level
+		console.log Stats.find({level: level}).count()
+		Stats.find({level: level}).count()
+
+	getCorrectAnswersCount: (level)->
+		console.log 'getCorrectAnswersCount ' + level
+		total = 0
+		Stats.find({level: level}).map (doc) ->
+			total = total + doc.correctAnswers  
+		console.log 'correctAnswers count ' + total
+		return total
+
+	getWrongAnswersCount: (level)->
+		console.log 'getWrongAnswersCount ' + level
+		total = 0
+		Stats.find({level: level}).map (doc) ->
+		  total = total + doc.wrongAnswers  
+		console.log 'wrongAnswers count ' + total
+		return total

@@ -22,10 +22,6 @@ Router.map ->
   @route 'stats',
     template: 'statsTemplate',
     route: '/admin/stats'
-    waitOn: ->
-      @subscribe 'getStats'
-    data: stats:->
-      Stats.find()
 
   @route 'newQuestion',
     template: 'newQuestionTemplate',

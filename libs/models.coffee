@@ -1,2 +1,2 @@
 @Questions = new Meteor.Collection('questions')
-@Stats = new Meteor.Collection('stats')
+@Stats = new Meteor.Collection('gameStats')
