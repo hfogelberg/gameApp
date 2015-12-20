@@ -1,4 +1,5 @@
 Template.adultsGameTemplate.created = ->
+	$('#btnPreviousQuestion').attr('disabled', 'disabled')
 	Session.set('counter', 0)
 	Session.set('correctAnswersCounter', 0)
 
@@ -8,6 +9,8 @@ Template.adultsGameTemplate.created = ->
 				alert 'Error'
 			else
 				Session.set('questions', result)
+
+			$('#btnPreviousQuestion').attr('disabled', 'disabled')
 
 Template.adultsGameTemplate.helpers
 	numQuestions: ->
@@ -30,10 +33,17 @@ Template.adultsGameTemplate.helpers
 		Session.get('time')
 		
 	question:->
+		if Session.get('counter') == 0
+			$('#btnPreviousQuestion').attr('disabled', 'disabled')
+
 		questions = Session.get('questions')
 		question = questions[Session.get('counter')]
 
 Template.adultsGameTemplate.events
+	'click #btnPreviousQuestion':->
+		i = Session.get('counter') - 1
+		Session.set('counter', i)
+
 	'click .btnEndGame': ->
 		$('#explanationModal').on('hidden.bs.modal').modal('hide')
 		Router.go('/')
@@ -41,6 +51,9 @@ Template.adultsGameTemplate.events
 	'click #btnNextQuestion': ->
 		i = Session.get('counter') + 1
 		Session.set('counter', i)
+
+		if (Session.get('counter') > 0)
+			$('#btnPreviousQuestion').removeAttr('disabled')
 		
 		if i >= Session.get('questions').length		
 			props = {

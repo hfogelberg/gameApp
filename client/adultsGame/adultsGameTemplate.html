@@ -5,7 +5,6 @@
 			<div class="container">
 				<div class="row">
 					<div>
-				<!-- 	<p class='correctAnswersCounter'>Correct answers: {{correctAnswers}}</p> -->
 						<ul class='questionair' style='list-style-type: none;'>
 							<li class='question'>
 								<h4 class='brand-heading questionTitle'>{{title}}</h4>
@@ -26,50 +25,30 @@
 				</div>
 				<br>
 				<br>
-				<a href='/start' type='button' class='btn btn-danger btn-lg' id='btnStopQuiz'>Quitter</a>
+				<div class='buttonRow'>
+	      	<button type='button' class='btn btn-success btn-lg' data-dismiss="modal" id='btnPreviousQuestion'>Précédent</button>
+					<a href='/start' type='button' class='btn btn-danger btn-lg' id='btnStopQuiz'>Quitter</a>
+				</div>
 			</div>
-<!-- 			<br>
-			<br>
-			<br> -->
-			<!-- <button type='button' class='btn btn-success btn-lg' id='btnNextQuestion'>Question suivante</button> -->
-
 		</div>
+	</header>
 
-		</header>
+	<div class="modal fade" tabindex="-1" role="dialog" id='explanationModal'>
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	    	<div class="modal-header">
+      		<h4 class="modal-title" id="myModalLabel">{{isRightAnswer}}</h4>
+    		</div>
+	      <div class="modal-body">
+					<div class='comment'>{{explanation}}</div>
+	      </div>
+	      <div class="modal-footer">
+	      	<button type='button' class='btn btn-success btn-lg' data-dismiss="modal">Précédent</button>
+			<button type='button' class='btn btn-success btn-lg' id='btnNextQuestion' data-dismiss="modal">Question suivante</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 
-		<div class="modal fade" tabindex="-1" role="dialog" id='explanationModal'>
-		  <div class="modal-dialog">
-		    <div class="modal-content">
-		    	<div class="modal-header">
-        		<h4 class="modal-title" id="myModalLabel">{{isRightAnswer}}</h4>
-      		</div>
-		      <div class="modal-body">
-						<div class='comment'>{{explanation}}</div>
-		      </div>
-		      <div class="modal-footer">
-		      	<button type='button' class='btn btn-success btn-lg' data-dismiss="modal">Précédent</button>
-				<button type='button' class='btn btn-success btn-lg' id='btnNextQuestion' data-dismiss="modal">Question suivante</button>
-		      </div>
-		    </div>
-		  </div>
-		</div>
-
-<!-- 		<div class="modal fade" tabindex="-1" role="dialog" id='thankYouModal'>
-		  <div class="modal-dialog">
-		    <div class="modal-content">
-		    	<div class="modal-header">
-        		<h4 class="modal-title" id="myModalLabel">Thanks for doing the quiz!</h4>
-      		</div>
-		      <div class="modal-body">
-						<div class='modalText'>You had {{correctAnswers}} out of {{numQuestions}} </div>
-		      </div>
-		      <div class="modal-footer">
-        		<a href='/' type="button" class="btnEndGame btn btn-default" data-dismiss="modal">Close</a>
-		      </div>
-		    </div>
-		  </div>
-		</div> -->
-
-
-	{{/with}}
+{{/with}}
 </template>

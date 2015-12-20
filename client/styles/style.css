@@ -191,6 +191,8 @@ margin: 0;
 }
 
 .buttonRow {
+  margin-left: 0 auto;
+  margin-right: 0 auto;
   margin-bottom: 20px;
 }
 
