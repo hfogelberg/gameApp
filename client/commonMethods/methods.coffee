@@ -71,6 +71,8 @@ Meteor.methods
 					$('#myModalLabel').removeClass('goodAnswerColor')
 					$('#myModalLabel').addClass('badAnswerColor')
 					Session.set('isRightAnswer', WRONG_ANSWER_TEXT)
+					n = Session.get('wrongAnswersCounter') + 1
+					Session.set('wrongAnswersCounter', n)
 
 		# Time to check what kind of question it is and hide/show divs
 	'findQuestionType': ->

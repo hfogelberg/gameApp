@@ -1,0 +1,69 @@
+h2.statsTitle {
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+.border {
+	border-style: solid;
+	border-color: black;
+	border-width: 3px;
+	border-radius: 12px;
+	padding-top: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 20px;
+}
+
+h3.statsHeader {
+	margin-top: 10px;
+}
+
+.totalLabel {
+	text-align: center;
+	font-size: 30px;
+}
+
+.totalNumber {
+	font-size: 30px;
+	color: green;
+}
+
+.participants {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.levelLabel {
+	font-size: 20px;
+}
+
+.levelNumber {
+	font-size: 24px;
+	color: green;
+}
+
+h3.answersHeader {
+	margin-top: 5px;
+	margin-left: -35px;
+}
+
+.totalLabel {
+	font-size: 24px;
+	margin-top: 20px;
+	margin-left: -35px;
+}
+
+.chartConainer {
+}
+
+.centerChart {
+	margin-left: 0 auto;
+	margin-right: 0 auto;
+	padding-top: 40px;
+}
+
+.chartLabel{
+	float: left;
+	font-size: 22px;
+}
+

@@ -1,7 +1,4 @@
 Meteor.startup ->
-	Meteor.publish 'getStats', ->
-		Stats.find()
-
 	# Meteor.publish 'getQuestionsForGame', (level, numQuestions) ->
 	# 	r = Random.fraction()
 
@@ -11,6 +8,11 @@ Meteor.startup ->
 
 	Meteor.publish 'getAnswerById', (answerId) ->
 		Questions.find({"answers.answerId": answerId})
+
+	Meteor.publish 'getStats', ->
+		console.log 'getStats'
+		console.log Stats.find().count()
+		Stats.find()
 
 	Meteor.publish 'getQuestionById', (questionId) ->
 		Questions.find

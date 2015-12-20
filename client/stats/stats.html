@@ -1,19 +1,76 @@
 <template name='statsTemplate'>
 
-	{{> adminNavTemplate}}
+		{{> adminNavTemplate}}
 
-	<h2>Statistiques</h2>
+	<h2 class='statsTitle'>Statistiques</h2>
 
-	<table class='table'>
-		<tbody>
-			{{#each stats}}
-				<tr>
-					<td>{{correctAnswers}}</td>
-					<td>{{level}}</td>
-					<td>{{formatDate createdDate}}</td>
-				</tr>
-			{{/each}}
-		</tbody>
-	</table>
+	<div class='statsSummary border col-sm-offset-2 col-sm-10'>
+		<div class='row'>
+			<div class='col-sm-4'>
+				<h3 class='statsHeader'>Participants</h3>
+			</div>
 
+			<div class='col-sm-8'>
+				<div class='totalLabel'>
+					Total 
+					<span class='totalNumber'>72</span>
+				</div>
+				<div class='row'>
+					<div class='participants col-sm-6'>
+						<div class='levelLabel'>
+							Kids 
+							<span class='levelNumber'>24</span>
+						</div>
+					</div>
+					<div class='participants col-sm-6'>
+						<span>
+							<div class='levelLabel'>
+								Adults
+								<span class='levelNumber'>24</span>
+							</div>
+						</span>
+					</div>
+				</div>
+			</div>				<!-- Row -->
+		</div>					<!-- Row -->
+	</div>
+
+
+
+	<div class='answers border  col-sm-offset-2 col-sm-10'>
+		<h3 class='answersHeader'>Answers</h3>
+		<div class='row'>
+			<div class='col-sm-4'>
+				<div class='row'>
+					<div class='col-sm-4'>
+						<div class='totalLabel'>Total</div>
+					</div>
+					<div class='col-sm-8'>
+    				<canvas id="myChart" width="100" height="100"></canvas>
+					</div>
+				</div>			<!-- Row -->
+			</div>
+			
+			<div class='col-sm-4'>
+				<div class='centerChart'>
+    			<canvas id="myChart2" width="80" height="80"></canvas>
+    		</div>
+			</div>
+
+			<div class='col-sm-2'>
+				<div class='centerChart'>
+    			<canvas id="myChart3" width="80" height="80"></canvas>
+    		</div>
+			</div>
+		</div>
+		<div class='row'>
+			<div class='col-sm-offset-4 col-sm-4 chartConainer'>
+				<div class='chartLabel'>Kids</div>
+			</div>
+
+			<div class='col-sm-2 chartConainer'>
+				<div class='chartLabel'>Adults</div>
+			</div>
+		</div>
+	</div>
 </template>

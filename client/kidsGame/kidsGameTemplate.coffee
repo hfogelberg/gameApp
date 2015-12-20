@@ -91,7 +91,14 @@ Template.kidsGameTemplate.events
 		if (Session.get('counter') > 0)
 			$('#btnPreviousQuestion').removeAttr('disabled')
 
-		if i >= Session.get('questions').length		
+		if i >= Session.get('questions').length
+			props = {
+				correctAnswers: Session.get('correctAnswersCounter')
+				wrongAnswers: Session.get('wrongAnswersCounter')
+				level: KID
+				createdDate: new Date()
+			}
+			Meteor.call 'createStats', props, (err) ->
 			Router.go('/thanks')
 
 	'click .btnChildAnswer:enabled': (event)->

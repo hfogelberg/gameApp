@@ -76,7 +76,7 @@ h4.questionTitle {
 }
 
 .btnChildAnswer {
-  border: none;
+  /*border: none;*/
 }
 
 .btnAnswer {
@@ -86,6 +86,7 @@ h4.questionTitle {
 button.btnChildAnswer:disabled {
   cursor: default !important;
   pointer-events:none;
+  vertical-align: bottom;
 }
 
 .comment {
@@ -167,7 +168,7 @@ margin: 0;
 }
 
 .answerTitle {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: bold;
 }
 

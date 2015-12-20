@@ -28,8 +28,6 @@ Template.newAdultAnswerTemplate.events
 			}
 		}
 
-		console.log params
-
 		Meteor.call 'addAnswerToQuestion', this._id, params, (err) ->
 			if err
 				console.log err
