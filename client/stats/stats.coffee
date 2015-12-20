@@ -1,7 +1,3 @@
-random = ->
-  Math.floor Math.random() * 100 + 1
-
-
 Template.statsTemplate.created =->
   Deps.autorun ->
     Meteor.call 'getGamesCountByLevel', KID, (error, result) ->
@@ -47,34 +43,39 @@ Template.statsTemplate.helpers
   totalPercentTrue: ->
     correct = Session.get('kidsCorrectAnswers') + Session.get('adultsCorrectAnswers')
     total = correct + Session.get('kidsWrongAnswers') + Session.get('adultsWrongAnswers')
-    return correct/total * 100
+    return Math.round(correct/total * 100)
 
   kidsPercentTrue: ->
     correct = Session.get('kidsCorrectAnswers')
     total = correct + Session.get('kidsWrongAnswers')
-    return correct/total * 100
+    return Math.round(correct/total * 100)
 
   adultPercentTrue: ->
     correct = Session.get('adultsCorrectAnswers')
     total = correct +  Session.get('adultsWrongAnswers')
-    return correct/total * 100
+    return Math.round(correct/total * 100)
 
   totalPercentFalse: ->
     wrong = Session.get('kidsWrongAnswers') + Session.get('adultsWrongAnswers')
     total = wrong + Session.get('kidsCorrectAnswers') + Session.get('adultsCorrectAnswers')
-    return wrong/total * 100
+    return Math.round(wrong/total * 100)
 
   kidsPercentFalse: ->
     wrong = Session.get('kidsWrongAnswers')
     total = wrong + Session.get('kidsCorrectAnswers')
-    return wrong/total * 100
+    return Math.round(wrong/total * 100)
 
   adultPercentFalse: ->
     wrong = Session.get('adultsWrongAnswers')
     total = wrong + Session.get('adultsCorrectAnswers')
-    return wrong/total * 100
+    return Math.round(wrong/total * 100)
 
 Template.statsTemplate.onRendered ->
+  elem = $('.adminNav li')
+  elem.removeClass('active')
+  elem = $('.stats')
+  elem.addClass('active')
+    
   ctxTotals = document.getElementById('totalsChart').getContext('2d')
   ctxKids = document.getElementById('kidsChart').getContext('2d')
   ctxAdults = document.getElementById('adultsChart').getContext('2d')
