@@ -43,6 +43,14 @@ Template.adultsGameTemplate.events
 		Session.set('counter', i)
 		
 		if i >= Session.get('questions').length		
+			props = {
+				correctAnswers: Session.get('correctAnswersCounter')
+				wrongAnswers: Session.get('wrongAnswersCounter')
+				level: KID
+				createdDate: new Date()
+			}
+			Meteor.call 'createStats', props, (err) ->
+			Router.go('/thanks')
 			Router.go('/thanks')
 
 	'click .btnAnswer': (event)->
