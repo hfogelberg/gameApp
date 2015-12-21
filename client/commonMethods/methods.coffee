@@ -12,6 +12,7 @@ Meteor.methods
 		$('#btnNextQuestion').attr('disabled', true)
 		$('#btnNextQuestion').removeClass('invisible')
 		$('#timer').removeClass('invisible')
+		$('#btnSkipClock').removeClass('invisible')
 
 	'setupQuestionType2': ()->
 		$('.oneAnswerContainer').addClass('invisible')
@@ -19,18 +20,21 @@ Meteor.methods
 		$('#btnNextQuestion').attr('disabled', true)
 		$('#btnNextQuestion').removeClass('invisible')
 		$('#timer').removeClass('invisible')
+		$('#btnSkipClock').removeClass('invisible')
 
 	'setupQuestionType3': ()->
 		$('.btnChildAnswer').attr('disabled', true)
 		$('#btnNextQuestion').attr('disabled', true)
 		$('#btnNextQuestion').removeClass('invisible')
 		$('#timer').removeClass('invisible')
+		$('#btnSkipClock').removeClass('invisible')
 
 	'setupQuestionType4': ()->
 		$('.btnChildAnswer').attr('disabled', false)
 		$('#btnNextQuestion').addClass('invisible')
 		$('#btnNextQuestion').attr('disabled', true)
 		$('#timer').addClass('invisible')
+		$('#btnSkipClock').addClass('invisible')
 
 	'displayAnswerType1': ()->
 		$('.answerTitle').removeClass('invisible')

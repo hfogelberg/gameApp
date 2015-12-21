@@ -1,6 +1,6 @@
 <template name='changeQuestionTemplate'>
 	{{#with question}}
-		<h2 class='questionTitle'>Change Question {{title}}</h2>
+		<h2 class='questionTitle'>Modifier la question : {{title}}</h2>
 		<form class="form-horizontal">
 			<div class='form-group'>
 				<label for='title' class='col-sm-2'>Question</label>
@@ -23,7 +23,7 @@
 							<div>
 								<img src="{{thumbRoot}}{{questionImage}}">
 								<span>
-									<a href="#" class='deleteImage'><i class="fa fa-times"></i>Delete</a>
+									<a href="#" class='deleteImage'><i class="fa fa-times"></i>Supprimer</a>
 								</span>
 							</div>
 						{{/if}}
@@ -32,98 +32,98 @@
 			</div>
 			
 			<div class='form-group'>
-				<label for='showAnswerImg' class='col-sm-2'>Show answers image</label>
+				<label for='showAnswerImg' class='col-sm-2'> Afficher les images des réponses</label>
 				<div class='col-sm-10'>
 					{{#if equals showAnswerImg "YES"}}
 						<label class='radio-inline'>
-							<input type='radio' value='YES' name='showAnswerImg' checked>Yes
+							<input type='radio' value='YES' name='showAnswerImg' checked>Oui
 						</label>
 						<label class='radio-inline'>
-							<input type='radio' value='NO' id='showImageNo' name='showAnswerImg'>No
+							<input type='radio' value='NO' id='showImageNo' name='showAnswerImg'>Non
 						</label>
 					{{else}}
 						<label class='radio-inline'>
-							<input type='radio' value='YES' name='showAnswerImg'>Yes
+							<input type='radio' value='YES' name='showAnswerImg'>Oui
 						</label>
 						<label class='radio-inline'>
-							<input type='radio' value='NO' id='showImageNo' name='showAnswerImg' checked>No
+							<input type='radio' value='NO' id='showImageNo' name='showAnswerImg' checked>Non
 						</label>
 						{{/if}}
 				</div>
 			</div>
 
 			<div class='form-group'>
-				<label for='showAnswer' class='col-sm-2'>Show answers</label>
+				<label for='showAnswer' class='col-sm-2'> Afficher les réponses</label>
 				<div class='col-sm-10'>
 					{{#if equals showAnswer "YES"}}
 						<label class='radio-inline'>
-							<input type='radio' value='YES' name='showAnswer' checked>Yes
+							<input type='radio' value='YES' name='showAnswer' checked>Oui
 						</label>
 						<label class='radio-inline'>
-							<input type='radio' value='NO' name='showAnswer'>No
+							<input type='radio' value='NO' name='showAnswer'>Non
 						</label>
 					{{else}}
 						<label class='radio-inline'>
-							<input type='radio' value='YES' name='showAnswer'>Yes
+							<input type='radio' value='YES' name='showAnswer'>Oui
 						</label>
 						<label class='radio-inline'>
-							<input type='radio' value='NO' name='showAnswer' checked>No
+							<input type='radio' value='NO' name='showAnswer' checked>Non
 						</label>
 					{{/if}}
 				</div>
 			</div>
 
 			<div class='form-group'>
-				<label for='questionType' class='col-sm-2'>Question type</label>
+				<label for='questionType' class='col-sm-2'>Type de question</label>
 				<div class='col-sm-10'>
 					{{#if equals questionType CHOOSE}}
 						<label class='radio-inline'>
-							<input type='radio' value='CHOOSE' name='questionType' checked>Choose
+							<input type='radio' value='CHOOSE' name='questionType' checked>Choisir
 						</label>
 						<label class='radio-inline'>
-							<input type='radio' value='SHOW' name='questionType'>Show
+							<input type='radio' value='SHOW' name='questionType'>Afficher
 						</label>
 					{{else}}
 						<label class='radio-inline'>
-							<input type='radio' value='CHOOSE' name='questionType'>Choose
+							<input type='radio' value='CHOOSE' name='questionType'>Choisir
 						</label>
 						<label class='radio-inline'>
-							<input type='radio' value='SHOW' name='questionType' checked>Show
+							<input type='radio' value='SHOW' name='questionType' checked>Afficher
 						</label>
 					{{/if}}
 				</div>
 			</div>
 
 			<div class='form-group'>
-				<label for='showTimer' class='col-sm-2'>Show timer</label>
+				<label for='showTimer' class='col-sm-2'>Temps avant affichage</label>
 				<div class='col-sm-10'>
 					<input type='number' class='form-control' id='showTimer' value='{{showAnswerTimer}}'/>
 				</div>
 			</div>
 
 			<div class='form-group'>
-				<label for='correctAnswers' class='col-sm-2'>Correct answers</label>
+				<label for='correctAnswers' class='col-sm-2'> Nombre de bonnes réponses</label>
 				<div class='col-sm-10'>
 					{{#if equals correctAnswers "ONE"}}
 						<label class='radio-inline'>
-							<input type='radio' value='ONE' name='correctAnswers' checked>One
+							<input type='radio' value='ONE' name='correctAnswers' checked>Une
 						</label>
 						<label class='radio-inline'>
-							<input type='radio' value='ALL' name='correctAnswers'>All
+							<input type='radio' value='ALL' name='correctAnswers'>Tous
 						</label>
 					{{else}}
 						<label class='radio-inline'>
-							<input type='radio' value='ONE' name='correctAnswers'>One
+							<input type='radio' value='ONE' name='correctAnswers'>Une
 						</label>
 						<label class='radio-inline'>
-							<input type='radio' value='ALL' name='correctAnswers' checked>All
+							<input type='radio' value='ALL' name='correctAnswers' checked>Tous
 						</label>
 					{{/if}}
 				</div>
 			</div>
 
 			<div class='form-group'>
-				<label for='oneAnswerText' class='col-sm-2'>Answer</label>
+				<label for='oneAnswerText' class='col-sm-2'>Réponse</label>
 				<div class='col-sm-10'>
 					<input type='text' class='form-control' id='oneAnswerText' placeholder='When same answer for all alternatives' value='{{oneAnswerText}}'/>
 				</div>
@@ -131,9 +131,9 @@
 
 			<div class='form-group'>
 				<div class='col-sm-offset-2 col-sm-10'>
-					<a href='/question/{{_id}}' class='btn btn-default btnCancel'>Cancel</a> 
+					<a href='/question/{{_id}}' class='btn btn-default btnCancel'>Annuler</a> 
 					<span>
-						<a href='/question/{{_id}}' class='btn btn-primary btnUpdateQuestion'>Save</a>
+						<a href='/question/{{_id}}' class='btn btn-primary btnUpdateQuestion'>Sauvegarder</a>
 					</span>
 				</div>
 			</div>
