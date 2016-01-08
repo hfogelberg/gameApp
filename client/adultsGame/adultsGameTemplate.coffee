@@ -2,6 +2,7 @@ Template.adultsGameTemplate.created = ->
 	$('#btnPreviousQuestion').attr('disabled', 'disabled')
 	Session.set('counter', 0)
 	Session.set('correctAnswersCounter', 0)
+	Session.set('adultprogressvalue', 0)
 
 	Deps.autorun ->
 		Meteor.call 'getAdultQuestions', (error, result) ->
@@ -44,6 +45,10 @@ Template.adultsGameTemplate.events
 		i = Session.get('counter') - 1
 		Session.set('counter', i)
 
+		value = Session.get('adultprogressvalue') - 10
+		Session.set('adultprogressvalue', value)
+		$("#adultprogress-bar").css("width", value + "%").attr("aria-valuenow", value)
+
 	'click .btnEndGame': ->
 		$('#explanationModal').on('hidden.bs.modal').modal('hide')
 		Router.go('/')
@@ -51,6 +56,10 @@ Template.adultsGameTemplate.events
 	'click #btnNextQuestion': ->
 		i = Session.get('counter') + 1
 		Session.set('counter', i)
+
+		value = Session.get('adultprogressvalue') + 10
+		Session.set('adultprogressvalue', value)
+		$("#adultprogress-bar").css("width", value + "%").attr("aria-valuenow", value)
 
 		if (Session.get('counter') > 0)
 			$('#btnPreviousQuestion').removeAttr('disabled')

@@ -1,10 +1,10 @@
 <template name='newKidsAnswerTemplate'>
 	{{#with question}}
 		<div class='newAnswer'>
-			<h2 class='questionTitle'>New Answer for question {{title}}</h2>
+			<h2 class='questionTitle'>Nouvelle réponse : {{title}}</h2>
 			<form class="form-horizontal" id='answerForm'>
 				<div class='form-group'>
-					<label for='title' class='col-sm-2'>Answer</label>
+					<label for='title' class='col-sm-2'>Réponse</label>
 					<div class='col-sm-10'>
 						<input type='text' class='form-control' id='answerTitle'/>
 					</div>
@@ -14,7 +14,7 @@
 					<div class='col-sm-offset-2 col-sm-10 checkbox'>
 						<label>
 							<input type='checkbox' id='isCorrectAnswer'>
-							Correct answer
+							Bonne réponse
 						</label>
 					</div>
 				</div>
@@ -34,7 +34,7 @@
 									<img src="{{thumbRoot}}{{answerImage}}">
 									<span class='deleteImage delete'>
 										<a href="#" class='btnDeleteImage delete'>
-											<i class="fa fa-times"></i> Delete
+											<i class="fa fa-times"></i> Supprimer
 										</a>
 									</span>
 								</div>
@@ -46,8 +46,8 @@
 		</div>
 
 		<div class='col-sm-offset-2 col-sm-10 buttonRow'>
-			<button class='btn btn-primary btnSaveAnswer'>Add answer</button>
-			<a href='/admin' class='btn btn-success btn-lg pull-right'>Done</a>
+			<button class='btn btn-primary btnSaveAnswer'>Ajouter une réponse</button>
+			<a href='/admin' class='btn btn-success btn-lg pull-right'>Terminer</a>
 		</div>
 
 		<hr />
@@ -63,7 +63,7 @@
 								{{/if}}
 							</td>
 							<td>
-								<a href="#" class='delete btnDeleteAnswer'><i class="fa fa-times"></i> Delete</a>
+								<a href="#" class='delete btnDeleteAnswer'><i class="fa fa-times"></i> Supprimer</a>
 							</td>
 						</tr>
 					{{/each}}

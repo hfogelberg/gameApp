@@ -21,6 +21,7 @@ Meteor.setInterval(timeLeft, 1000)
 
 Template.kidsGameTemplate.created = ->
 	Session.set('counter', 0)
+	Session.set('kidprogressvalue', 0)
 	Session.set('time', 0)
 	Session.set('correctAnswersCounter', 0)
 
@@ -78,11 +79,25 @@ Template.kidsGameTemplate.events
 	'click #btnPreviousQuestion': (event) ->
 		event.preventDefault
 
+		value = Session.get('kidprogressvalue') - 10
+		Session.set('kidprogressvalue', value)
+		$("#kidprogress-bar").css("width", value + "%").attr("aria-valuenow", value)
+
 		i = Session.get('counter') - 1
 		Session.set('counter', i)
 
+	'click #btnSkipClock': (event) ->
+		event.preventDefault
+
+		clock = 0
+		Session.set "time", clock
+
 	'click #btnNextQuestion:enabled': (event) ->
 		event.preventDefault
+
+		value = Session.get('kidprogressvalue') + 10
+		Session.set('kidprogressvalue', value)
+		$("#kidprogress-bar").css("width", value + "%").attr("aria-valuenow", value)
 
 		# Meteor.clearInterval interval
 		i = Session.get('counter') + 1

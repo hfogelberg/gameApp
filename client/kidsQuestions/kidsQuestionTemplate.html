@@ -2,37 +2,37 @@
 	<div class='adminQuestionContainer'>
 		{{#with question}}
 			<div>
-				<p><h2 class='questionTitle'><bold>Title:</bold> {{title}}</h2></p>
+				<p><h2 class='questionTitle'><bold>Question:</bold> {{title}}</h2></p>
 				<div class='row'>
 					<div class='col-sm-offset-2 col-sm-6'>
 						<table>
 							<tbody>
  								<tr>
-									<td class='col-sm-4'>Show answer image</td>
+									<td class='col-sm-4'>Afficher les images des réponses</td>
 									<td class='col-sm-8 questionLabel'>{{showAnswerImg}}</td>
 								</tr>
 								<tr>
-									<td class='col-sm-4'>Answer timer</td>
+									<td class='col-sm-4'>Temps avant affichage</td>
 									<td class='col-sm-8 questionLabel'>{{showAnswerTimer}}</td>
 								</tr>
 								<tr>
-									<td class='col-sm-4'>Correct answers</td>
+									<td class='col-sm-4'>Nombre de bonnes réponses</td>
 									<td class='col-sm-8 questionLabel'>{{correctAnswers}}</td>
 								</tr>
 								<tr>
-									<td class='col-sm-4'>Question type</td>
+									<td class='col-sm-4'>Type de question</td>
 									<td class='col-sm-8 questionLabel'>{{questionType}}</td>
 								</tr>
 								<tr>
-									<td class='col-sm-4'>Answer</td>
+									<td class='col-sm-4'>Réponses</td>
 									<td class='col-sm-8'>{{oneAnswerText}}</td>
 								</tr>
 								<tr>
-									<td class='col-sm-4'>Level</td>
+									<td class='col-sm-4'>Question pour</td>
 									<td class='col-sm-8 questionLabel'>{{level}}</td>
 								</tr>
 								<tr>
-									<td class='col-sm-4'>Created</td>
+									<td class='col-sm-4'>Date</td>
 									<td class='col-sm-8'>{{formatDate createdDate}}</td>
 								</tr>
 							</tbody>
@@ -44,7 +44,7 @@
 							<img src="{{thumbRoot}}{{image}}">
 						{{/if}}
 					</div>
-					<a href='/changeQuestion/{{_id}}' class='btnChangeQuestion btn btn-warning pull-right'>Change question</a>
+					<a href='/changeQuestion/{{_id}}' class='btnChangeQuestion btn btn-warning pull-right'>Modifier la question</a>
 				</div>
 			</div>
 
@@ -68,11 +68,11 @@
 								<td>
 									<a href='/changeAnswer/{{questionId}}/{{answerId}}' class='btnChangeAnswer' id='{{answerId}}'>
 										<i class="fa fa-pencil-square-o"></i>
-										Edit
+										Modifier
 									</a>
 								</td>
 								<td>
-									<a href="#" class='delete btnRemoveAnswer' id='{{answerId}}'><i class="fa fa-times"></i> Delete</a>
+									<a href="#" class='delete btnRemoveAnswer' id='{{answerId}}'><i class="fa fa-times"></i> Supprimer</a>
 								</td>
 							</tr>
 						{{/each}}
@@ -81,6 +81,6 @@
 			</div>
 		{{/with}}
 
-		<a href='/admin' class='btn btn-primary btn-lg pull-right'>Done</a>
+		<a href='/admin' class='btn btn-primary btn-lg pull-right'>Terminer</a>
 	</div>
 </template>

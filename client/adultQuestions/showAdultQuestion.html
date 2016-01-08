@@ -3,9 +3,9 @@
 		<div class='showAdultQuestion'>
 			<h2 class='questionTitle'>{{title}}</h2>
 			<p>
-				<label class='createdDateLabel'>Created date: </label>{{formatDate createdDate}}
+				<label class='createdDateLabel'>Date de creation: </label>{{formatDate createdDate}}
 			</p>
-			<a href='/changeAdultQuestion/{{_id}}' class='btnChangeQuestion btn btn-warning pull-right'>Change</a>
+			<a href='/changeAdultQuestion/{{_id}}' class='btnChangeQuestion btn btn-warning pull-right'>Modifier</a>
 		</div>
 
 		<div class = 'answers'>
@@ -20,16 +20,16 @@
 					{{#each answers}}
 						<tr>
 							<td>{{answerTitle}}</td>
-							<td><a href='/changeAdultAnswer/{{questionId}}/{{answerId}}'><i class="fa fa-pencil-square-o"></i>Edit</a></td>
+							<td><a href='/changeAdultAnswer/{{questionId}}/{{answerId}}'><i class="fa fa-pencil-square-o"></i>Modifier</a></td>
 							<td>
-								<a class='delete btnRemove'><i class="fa fa-times"></i> Delete</a>
+								<a class='delete btnRemove'><i class="fa fa-times"></i> Supprimer</a>
 							</td>
 						</tr>
 					{{/each}}
 				</tbody>
 			</table>
 
-			<a href='/admin' class='btn btn-primary btn-lg pull-right'>Done</a>
+			<a href='/admin' class='btn btn-primary btn-lg pull-right'>Terminer</a>
 
 		</div>
 	{{/with}}
