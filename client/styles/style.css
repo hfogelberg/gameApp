@@ -83,14 +83,8 @@ h4.questionTitle {
   border: none;
 }
 
-button.btnChildAnswer:disabled {
-  cursor: default !important;
-  pointer-events:none;
-  vertical-align: bottom;
-}
-
 .comment {
-  text-align: center;
+  text-align: left;
   font-size: 200%;
 }
 
