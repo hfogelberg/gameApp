@@ -117,23 +117,8 @@ Meteor.methods
 
 	getWrongAnswersCount: (level)->
 		console.log 'getWrongAnswersCount ' + level
-		totalWrong = 0
-		Stats.find(level: level).forEach (obj) ->
-			totalWrong = totalWrong + obj.wrongAnswers
-
-		console.log 'wrongAnswers count for ' + level + ' ' + totalWrong
-		return totalWrong
-
-
-
-		# Stats.find({level: level}).map (doc) ->
-		# 	totalWrong = totalWrong + doc.wrongAnswers  
-		# console.log 'wrongAnswers count for ' + level + ' ' + totalWrong
-		# return totalWrong
-
-		# console.log 'getWrongAnswersCount ' + level
-		# total = 0
-		# Stats.find({level: level}).fetch().map (doc) ->
-		#   total = total + doc.wrongAnswers  
-		# console.log 'wrongAnswers count for '+ level + ': ' + total
-		# return total
+		total = 0
+		Stats.find({level: level}).fetch().map (doc) ->
+		  total = total + doc.wrongAnswers  
+		console.log 'wrongAnswers count for '+ level + ': ' + total
+		return total
