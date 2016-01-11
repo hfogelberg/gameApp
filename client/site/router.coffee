@@ -31,6 +31,7 @@ Router.map ->
     template: 'newKidsAnswerTemplate',
     path: '/newKidsAnswer/:questionId'
     onBeforeAction: ->
+      console.log @params.questionId
       Session.set('questionId', @params.questionId)
       this.next()
     waitOn: ->

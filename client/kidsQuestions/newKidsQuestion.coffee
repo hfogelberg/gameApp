@@ -3,11 +3,10 @@ $.cloudinary.config
 
 @answers = new Array()
 
-questionId = Random.id()
 
 Template.newKidsQuestion.helpers
 	questionId: ->
-		return questionId
+		Session.get('questionId')
 
 	answers: ->
 		return answers
@@ -16,6 +15,7 @@ Template.newKidsQuestion.helpers
 		@status is "complete"
 
 Template.newKidsQuestion.rendered =->
+	Session.set('questionId', Random.id())
 	Session.set 'questionImageId', ''	
 
 Template.newKidsQuestion.helpers
@@ -65,7 +65,7 @@ Template.newKidsQuestion.events
 		questionTypeElem = $('input:radio[name=questionType]:checked')
 
 		props = {
-			_id: questionId
+			_id: Session.get('q')
 			title: $('#title').val()
 			image: Session.get('questionImageId')
 			showAnswerImg: $(showAnswerImgElem).val()
