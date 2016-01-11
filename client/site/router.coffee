@@ -3,13 +3,9 @@ Router.configure
   notFoundTemplate: 'not-found'
 
 Router.map ->
-  @route 'home',
-    template: 'homeTemplate',
-    path: '/'
-
   @route 'start',
     template: 'startTemplate',
-    path: '/start'
+    path: '/'
 
   @route 'admin',
     template: 'adminTemplate',
@@ -126,7 +122,3 @@ Router.map ->
   @route 'kidsGame',
     template: 'kidsGameTemplate',
     route: '/kidsGame'
-
-  @route 'thanks',
-    template: 'thanks',
-    route: '/thanks'

@@ -72,8 +72,7 @@ Template.adultsGameTemplate.events
 				createdDate: new Date()
 			}
 			Meteor.call 'createStats', props, (err) ->
-			Router.go('/thanks')
-			Router.go('/thanks')
+			Router.go('/')
 
 	'click .btnAnswer': (event)->
 		answerId = event.currentTarget.id

@@ -86,12 +86,6 @@ Template.kidsGameTemplate.events
 		i = Session.get('counter') - 1
 		Session.set('counter', i)
 
-	'click #btnSkipClock': (event) ->
-		event.preventDefault
-
-		clock = 0
-		Session.set "time", clock
-
 	'click #btnNextQuestion:enabled': (event) ->
 		event.preventDefault
 
@@ -114,13 +108,21 @@ Template.kidsGameTemplate.events
 				createdDate: new Date()
 			}
 			Meteor.call 'createStats', props, (err) ->
-			Router.go('/thanks')
+			Router.go('/')
 
-	'click .btnChildAnswer:enabled': (event)->
+	'click .btnChildAnswer': (event)->
 		answerId = event.currentTarget.id
 		Meteor.call 'countScores', (answerId), ->
 
-		if Session.get 'questionType' == QUESTION_TYPE_3
-  		Meteor.call 'displayAnswerType3', ->
+		clock = 0
+		Session.set "time", clock
+
+		if Session.get('questionType') == QUESTION_TYPE_4
+  	 		$('#explanationModal').modal()
+
+		if Session.get('questionType') == QUESTION_TYPE_3
+  			Meteor.call 'displayAnswerType3', ->
+	  		
+
 
  
