@@ -1,91 +1,89 @@
 <template name='statsTemplate'>
 	<h2 class='centerText'>Gestionnaire du questionnaire</h2>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
 	<div class=' col-md-offset-1 col-md-10'>
-
 		{{> adminNavTemplate}}
 
-	<h2 class='statsTitle'>Statistiques</h2>
+		<h2 class='statsTitle'>Statistiques</h2>
 
-	<div class='statsSummary border col-sm-offset-2 col-sm-10'>
-		<div class='row'>
-			<div class='col-sm-4'>
-				<h3 class='statsHeader'>Participants</h3>
-			</div>
-
-			<div class='col-sm-8'>
-				<div class='totalLabel'>
-					Total 
-					<span class='totalNumber'>{{totalGameCount}}</span>
+		<div class='statsSummary border col-sm-offset-2 col-sm-10'>
+			<div class='row'>
+				<div class='col-sm-4'>
+					<h3 class='statsHeader'>Participants</h3>
 				</div>
-				<div class='row'>
-					<div class='participants col-sm-6'>
-						<div class='levelLabel'>
-							Enfants 
-							<span class='levelNumber'>{{kidsGameCount}}</span>
+
+				<div class='col-sm-8'>
+					<div class='totalLabel'>
+						Total 
+						<span class='totalNumber'>{{totalGameCount}}</span>
+					</div>
+					<div class='row'>
+						<div class='participants col-sm-6'>
+							<div class='levelLabel'>
+								Enfants 
+								<span class='levelNumber'>{{kidsGameCount}}</span>
+							</div>
+						</div>
+						<div class='participants col-sm-6'>
+							<span>
+								<div class='levelLabel'>
+									Adultes
+									<span class='levelNumber'>{{adultsGameCount}}</span>
+								</div>
+							</span>
 						</div>
 					</div>
-					<div class='participants col-sm-6'>
-						<span>
-							<div class='levelLabel'>
-								Adultes
-								<span class='levelNumber'>{{adultsGameCount}}</span>
-							</div>
-						</span>
-					</div>
+				</div>				<!-- Row -->
+			</div>					<!-- Row -->
+		</div>
+
+
+		<div class='answers border  col-sm-offset-2 col-sm-10'>
+			<h3 class='answersHeader'>Reponses</h3>
+			<div class='row'>
+				<div class='col-sm-4'>
+					<div class='row'>
+						<div class='col-sm-4'>
+							<div class='totalLabel'>Total</div>
+						</div>
+						<div class='col-sm-8'>
+	    				<canvas id="totalsChart" width="120" height="120"></canvas>
+	    				<ul class='legend list-unstyled'>
+	    					<li>{{totalPercentTrue}} % Bonne</li>
+	    					<li>{{totalPercentFalse}} % Mauvaise</li>
+	    				</ul>
+	  				</div>
+					</div>			<!-- Row -->
 				</div>
-			</div>				<!-- Row -->
-		</div>					<!-- Row -->
-	</div>
+				
+				<div class='col-sm-4'>
+					<div class='centerChart'>
+	    			<canvas id="kidsChart" width="80" height="80"></canvas>    				
+	    			<ul class='legend list-unstyled'>
+	  					<li>{{kidsPercentTrue}} % Bonne</li>
+	  					<li>{{kidsPercentFalse}} % Mauvaise</li>
+	    				</ul>
+	    		</div>
+				</div>
 
-
-	<div class='answers border  col-sm-offset-2 col-sm-10'>
-		<h3 class='answersHeader'>Reponses</h3>
-		<div class='row'>
-			<div class='col-sm-4'>
-				<div class='row'>
-					<div class='col-sm-4'>
-						<div class='totalLabel'>Total</div>
-					</div>
-					<div class='col-sm-8'>
-    				<canvas id="totalsChart" width="120" height="120"></canvas>
-    				<ul class='legend list-unstyled'>
-    					<li>{{totalPercentTrue}} % Bonne</li>
-    					<li>{{totalPercentFalse}} % Mauvaise</li>
-    				</ul>
-  				</div>
-				</div>			<!-- Row -->
+				<div class='col-sm-4'>
+					<div class='centerChart'>
+	    			<canvas id="adultsChart" width="80" height="80"></canvas>
+	    			<ul class='legend list-unstyled'>
+	  					<li>{{adultPercentTrue}} % Bonne</li>
+	  					<li>{{adultPercentFalse}} % Mauvaise</li>
+	    			</ul>
+	    		</div>
+				</div>
 			</div>
-			
-			<div class='col-sm-4'>
-				<div class='centerChart'>
-    			<canvas id="kidsChart" width="80" height="80"></canvas>    				
-    			<ul class='legend list-unstyled'>
-  					<li>{{kidsPercentTrue}} % Bonne</li>
-  					<li>{{kidsPercentFalse}} % Mauvaise</li>
-    				</ul>
-    		</div>
-			</div>
+			<div class='row'>
+				<div class='col-sm-offset-4 col-sm-4 chartConainer'>
+					<div class='chartLabel'>Enfants</div>
+				</div>
 
-			<div class='col-sm-4'>
-				<div class='centerChart'>
-    			<canvas id="adultsChart" width="80" height="80"></canvas>
-    			<ul class='legend list-unstyled'>
-  					<li>{{adultPercentTrue}} % Bonne</li>
-  					<li>{{adultPercentFalse}} % Mauvaise</li>
-    			</ul>
-    		</div>
+				<div class='col-sm-4 chartConainer'>
+					<div class='chartLabel'>Adults</div>
+				</div>
 			</div>
 		</div>
-		<div class='row'>
-			<div class='col-sm-offset-4 col-sm-4 chartConainer'>
-				<div class='chartLabel'>Enfants</div>
-			</div>
-
-			<div class='col-sm-4 chartConainer'>
-				<div class='chartLabel'>Adults</div>
-			</div>
-		</div>
-	</div>
 	</div>
 </template>
