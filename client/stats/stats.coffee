@@ -48,7 +48,7 @@ Template.statsTemplate.helpers
   kidsPercentTrue: ->
     correct = Session.get('kidsCorrectAnswers')
     total = correct + Session.get('kidsWrongAnswers')
-    return Math.round(correct/total * 100)
+    return  Math.round(correct/total * 100)
 
   adultPercentTrue: ->
     correct = Session.get('adultsCorrectAnswers')

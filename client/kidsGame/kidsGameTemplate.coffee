@@ -24,6 +24,7 @@ Template.kidsGameTemplate.created = ->
 	Session.set('kidprogressvalue', 0)
 	Session.set('time', 0)
 	Session.set('correctAnswersCounter', 0)
+	Session.set('wrongAnswersCounter', 0)
 
 	$('#btnPreviousQuestion').attr('disabled', 'disabled')
 	Deps.autorun ->

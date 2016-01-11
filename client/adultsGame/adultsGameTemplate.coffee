@@ -2,6 +2,7 @@ Template.adultsGameTemplate.created = ->
 	$('#btnPreviousQuestion').attr('disabled', 'disabled')
 	Session.set('counter', 0)
 	Session.set('correctAnswersCounter', 0)
+	Session.set('wrongAnswersCounter', 0)
 	Session.set('adultprogressvalue', 0)
 
 	Deps.autorun ->

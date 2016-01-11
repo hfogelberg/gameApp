@@ -42,6 +42,8 @@ Meteor.methods
 		Questions.find({level: 'KID'}, {limit: 8}).fetch()
 
 	createStats: (props) ->
+		console.log 'Create stats'
+		console.log props
 		Stats.insert props
 
 	getOneQuestionById: (questionId) ->
@@ -110,13 +112,28 @@ Meteor.methods
 		total = 0
 		Stats.find({level: level}).map (doc) ->
 			total = total + doc.correctAnswers  
-		console.log 'correctAnswers count ' + total
+		console.log 'correctAnswers count for ' + level + ' ' + total
 		return total
 
 	getWrongAnswersCount: (level)->
 		console.log 'getWrongAnswersCount ' + level
-		total = 0
-		Stats.find({level: level}).map (doc) ->
-		  total = total + doc.wrongAnswers  
-		console.log 'wrongAnswers count ' + total
-		return total
+		totalWrong = 0
+		Stats.find(level: level).forEach (obj) ->
+			totalWrong = totalWrong + obj.wrongAnswers
+
+		console.log 'wrongAnswers count for ' + level + ' ' + totalWrong
+		return totalWrong
+
+
+
+		# Stats.find({level: level}).map (doc) ->
+		# 	totalWrong = totalWrong + doc.wrongAnswers  
+		# console.log 'wrongAnswers count for ' + level + ' ' + totalWrong
+		# return totalWrong
+
+		# console.log 'getWrongAnswersCount ' + level
+		# total = 0
+		# Stats.find({level: level}).fetch().map (doc) ->
+		#   total = total + doc.wrongAnswers  
+		# console.log 'wrongAnswers count for '+ level + ': ' + total
+		# return total
