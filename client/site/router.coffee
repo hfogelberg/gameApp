@@ -7,6 +7,10 @@ Router.map ->
     template: 'startTemplate',
     path: '/'
 
+  @route 'idle',
+    template: 'idleTemplate',
+    path: '/idle'
+
   @route 'admin',
     template: 'adminTemplate',
     path: '/admin'

@@ -36,6 +36,9 @@ Meteor.methods
 		$('#timer').addClass('invisible')
 		#$('#btnSkipClock').addClass('invisible')
 
+	'setupQuestionType5': ()->
+		$('.answerTitle').addClass('invisible')
+
 	'displayAnswerType1': ()->
 		$('.answerTitle').removeClass('invisible')
 		#$('.btnChildAnswer').attr('disabled', true)
@@ -78,38 +81,49 @@ Meteor.methods
 					n = Session.get('wrongAnswersCounter') + 1
 					Session.set('wrongAnswersCounter', n)
 
-		# Time to check what kind of question it is and hide/show divs
+	# Time to check what kind of question it is and hide/show divs
 	'findQuestionType': ->
 		questions = Session.get('questions')
 		question = questions[Session.get('counter')]
 
 		len = question.oneAnswerText.length
 
-		Session.set('questionType', QUESTION_TYPE_4)
+		Session.set('questionType', QUESTION_TYPE_5)
+		console.log question.showAnswer
+		console.log question.questionType
+		console.log question.correctAnswers
+		console.log question.oneAnswerText.length
 
-		# Type 1
 		if question.showAnswer is NO
 			if question.questionType is SHOW
 				if question.oneAnswerText.length == 0
 					if question.correctAnswers is ALL
 						Session.set('questionType', QUESTION_TYPE_1)
-
+						console.log "hello1"
 		#Type 2
 		if question.questionType is SHOW
 			if question.oneAnswerText.length > 0
 				if question.correctAnswers is ALL
 					Session.set('questionType', QUESTION_TYPE_2)
-
+					console.log "hello2"
 		#Type 3
 		if question.questionType is SHOW
 			if question.showAnswerTimer.length > 0
 				if question.correctAnswers is ONE
 					Session.set('questionType', QUESTION_TYPE_3)
+					console.log "hello3"
+		#Type 4
+		if question.questionType is CHOOSE
+			if question.correctAnswers is ONE
+				Session.set('questionType', QUESTION_TYPE_4)
+				console.log "hello4"
 
-		# #Type 4
-	 	if question.questionType is CHOOSE
-	 		if question.correctAnswers is ONE
-	 			Session.set('questionType', QUESTION_TYPE_4)	
+		if question.questionType is CHOOSE
+			if question.correctAnswers is ALL
+				Session.set('questionType', QUESTION_TYPE_5)
+				console.log "hello5"
+
+		console.log Session.get('questionType')
 
 		if Session.get('questionType') is QUESTION_TYPE_1
 			Meteor.call 'setupQuestionType1', () ->
@@ -119,4 +133,6 @@ Meteor.methods
 			Meteor.call 'setupQuestionType3', () ->
 		if Session.get('questionType') is QUESTION_TYPE_4
 			Meteor.call 'setupQuestionType4', () ->
+		if Session.get('questionType') is QUESTION_TYPE_5
+			Meteor.call 'setupQuestionType5', () ->
 
