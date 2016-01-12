@@ -1,13 +1,6 @@
 #GameApp
 
-##1. Seed
-Important!!
-
-Remove the file seedchart.coffee before deploying to production.
- Otherwise the game stats will be full of dummy data.
-
-
-##2. Cloudinary
+## Cloudinary
 
 The app uses Cloudinary for image storage
 
@@ -34,11 +27,3 @@ meteor deploy --settings settings.json
 	}
 }
 ```
-
-##3. Picking random questions
-Randomizing questions doesn't work with so few questions in the Db. There should be at least 50 or so per category.
-The functions 	getAdultQuestions and getKidsQuestions in gameServer.coffee should be changed when enough questions have been added. See the outcommented code.
-
-It could also be a good idea with a loop to check than enough questions are fetched? Unfortunately Meteor/Mongo doesn't have a good method to fetch random posts yet.
-
-
