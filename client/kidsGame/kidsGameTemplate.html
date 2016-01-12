@@ -36,9 +36,15 @@
 												{{answerTitle}}	
 											</div>
 										{{else}}
+											{{#if equals questionType 5}}
+											<div class='answerTitle invisible'>
+												{{answerTitle}}	
+											</div>
+											{{else}}
 											<div class='answerTitle'>
 												{{answerTitle}}	
 											</div>
+											{{/if}}
 										{{/if}}
 									</button>
 								{{/each}}	

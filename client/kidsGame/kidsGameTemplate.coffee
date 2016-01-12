@@ -15,7 +15,7 @@ timeLeft = (t)->
   	else if questionType == QUESTION_TYPE_3
   		Meteor.call 'displayAnswerType3', ->
   	else if questionType == QUESTION_TYPE_4
-  	 	Meteor.call 'dibtnChildAnswersplayAnswerType4', ->
+  	 	Meteor.call 'displayAnswerType4', ->
 
 Meteor.setInterval(timeLeft, 1000)
 
@@ -30,7 +30,7 @@ Template.kidsGameTemplate.created = ->
 	Deps.autorun ->
 		Meteor.call 'getKidsQuestions', (error, result) ->
 			if error
-				console.console.log  'Error'
+				console.log  'Error'
 			else
 				Session.set('questions', result)
 
@@ -115,14 +115,20 @@ Template.kidsGameTemplate.events
 		answerId = event.currentTarget.id
 		Meteor.call 'countScores', (answerId), ->
 
+		answerTitleTarget = '#' + answerId + ' .answerTitle'
+
+		console.log answerId
+
 		clock = 0
 		Session.set "time", clock
 
 		if Session.get('questionType') == QUESTION_TYPE_4
   	 		$('#explanationModal').modal()
-
+		if Session.get('questionType') == QUESTION_TYPE_5
+			$(answerTitleTarget).removeClass('invisible')
+			console.log answerTitleTarget
 		if Session.get('questionType') == QUESTION_TYPE_3
-  			Meteor.call 'displayAnswerType3', ->
+			Meteor.call 'displayAnswerType3', ->
 	  		
 
 
