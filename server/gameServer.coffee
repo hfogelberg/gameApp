@@ -122,3 +122,7 @@ Meteor.methods
 		  total = total + doc.wrongAnswers  
 		console.log 'wrongAnswers count for '+ level + ': ' + total
 		return total
+
+	resetStats: ->
+		console.log 'resetStats'
+		Stats.remove({})

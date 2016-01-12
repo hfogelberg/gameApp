@@ -18,6 +18,34 @@ Template.statsTemplate.created =->
     Meteor.call 'getWrongAnswersCount', ADULT, (error, result) ->
       Session.set('adultsWrongAnswers', result)
 
+Template.statsTemplate.events
+  'click .btnResetStats':(event)->
+    event.preventDefault
+    
+    if confirm 'Are you sure you want to reset the statistics?'
+      Meteor.call 'resetStats', (err) ->
+        if err
+          console.log err
+        else
+          Meteor.call 'getGamesCountByLevel', KID, (error, result) ->
+            Session.set('kidsGameCount', result)
+
+          Meteor.call 'getGamesCountByLevel', ADULT, (error, result) ->
+            Session.set('adultsGameCount', result)
+
+          Meteor.call 'getCorrectAnswersCount', KID, (error, result) ->
+            Session.set('kidsCorrectAnswers', result)
+          
+          Meteor.call 'getCorrectAnswersCount', ADULT, (error, result) ->
+            Session.set('adultsCorrectAnswers', result)
+
+          Meteor.call 'getWrongAnswersCount', KID, (error, result) ->
+            Session.set('kidsWrongAnswers', result)
+          
+          Meteor.call 'getWrongAnswersCount', ADULT, (error, result) ->
+            Session.set('adultsWrongAnswers', result)
+
+
 Template.statsTemplate.helpers
   totalGameCount: ->
     Session.get('kidsGameCount') + Session.get('adultsGameCount')
@@ -43,32 +71,50 @@ Template.statsTemplate.helpers
   totalPercentTrue: ->
     correct = Session.get('kidsCorrectAnswers') + Session.get('adultsCorrectAnswers')
     total = correct + Session.get('kidsWrongAnswers') + Session.get('adultsWrongAnswers')
-    return Math.round(correct/total * 100)
+    if total > 0
+      return Math.round(correct/total * 100)
+    else
+      return 0
 
   kidsPercentTrue: ->
     correct = Session.get('kidsCorrectAnswers')
     total = correct + Session.get('kidsWrongAnswers')
-    return  Math.round(correct/total * 100)
+    if total > 0
+      return  Math.round(correct/total * 100)
+    else
+      return 0
 
   adultPercentTrue: ->
     correct = Session.get('adultsCorrectAnswers')
     total = correct +  Session.get('adultsWrongAnswers')
-    return Math.round(correct/total * 100)
+    if total > 0
+      return Math.round(correct/total * 100)
+    else
+      return 0
 
   totalPercentFalse: ->
     wrong = Session.get('kidsWrongAnswers') + Session.get('adultsWrongAnswers')
     total = wrong + Session.get('kidsCorrectAnswers') + Session.get('adultsCorrectAnswers')
-    return Math.round(wrong/total * 100)
+    if total > 0
+      return Math.round(wrong/total * 100)
+    else
+      return 0
 
   kidsPercentFalse: ->
     wrong = Session.get('kidsWrongAnswers')
     total = wrong + Session.get('kidsCorrectAnswers')
-    return Math.round(wrong/total * 100)
+    if total > 0
+      return Math.round(wrong/total * 100)
+    else
+      return 0
 
   adultPercentFalse: ->
     wrong = Session.get('adultsWrongAnswers')
     total = wrong + Session.get('adultsCorrectAnswers')
-    return Math.round(wrong/total * 100)
+    if total > 0
+      return Math.round(wrong/total * 100)
+    else
+      return 0
 
 Template.statsTemplate.onRendered ->
   elem = $('.adminNav li')
