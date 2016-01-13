@@ -26,13 +26,14 @@ Template.kidsGameTemplate.created = ->
 	Session.set('correctAnswersCounter', 0)
 	Session.set('wrongAnswersCounter', 0)
 
-	$('#btnPreviousQuestion').attr('disabled', 'disabled')
 	Deps.autorun ->
 		Meteor.call 'getKidsQuestions', (error, result) ->
 			if error
 				console.log  'Error'
 			else
 				Session.set('questions', result)
+
+			$('#btnPreviousQuestion').attr('disabled', 'disabled')
 
 Template.kidsGameTemplate.helpers
 	imageRoot:->
