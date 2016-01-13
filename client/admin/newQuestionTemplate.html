@@ -1,12 +1,9 @@
 <template name='newQuestionTemplate'>
-	{{#if equals level 'KID'}}
-		<h2 class='questionTitle'>Créer une question pour enfant</h2>
-	{{else}}
-		<h2 class='questionTitle'>Créer une question pour adulte</h2>
-	{{/if}}
 	{{#if isKid}}
+		<h2 class='questionTitle'>Créer une question pour enfant</h2>
 		{{> newKidsQuestion}}
 	{{else}}
+		<h2 class='questionTitle'>Créer une question pour adulte</h2>
 		{{> newAdultQuestion}}
 	{{/if}}
 </template>
