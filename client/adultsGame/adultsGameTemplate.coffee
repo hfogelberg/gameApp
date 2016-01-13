@@ -69,7 +69,7 @@ Template.adultsGameTemplate.events
 			props = {
 				correctAnswers: Session.get('correctAnswersCounter')
 				wrongAnswers: Session.get('wrongAnswersCounter')
-				level: KID
+				level: ADULT
 				createdDate: new Date()
 			}
 			Meteor.call 'createStats', props, (err) ->
