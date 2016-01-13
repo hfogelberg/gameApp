@@ -1,15 +1,12 @@
 idleTime = 0
 
 timerIncrement = ->
+
   idleTime = idleTime + 1
-  if idleTime > 60
+  if idleTime > IDLE_TIME
     routeName = Router.current().route.getName()
     if routeName not in ['stats', 'admin', 'newQuestion', 'newKidsAnswer', 'newAdultAnswer']
-      console.log 'idle'
       Router.go('/idle')
-    else
-      console.log 'Admin page. No idling'
-  return
 
 $(document).ready ->
   #Increment the idle time counter every minute.
@@ -22,6 +19,9 @@ $(document).ready ->
     idleTime = 0
   
   return
+
+Template.startTemplate.rendered = ->
+  $( ".modal-backdrop" ).remove()
 
 Meteor.startup ->
 	Session.set 'level', KID

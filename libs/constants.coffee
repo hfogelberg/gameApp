@@ -9,7 +9,6 @@
 @YES = 'YES'
 @NO = 'NO'
 
-# Question types
 @ONE = 'ONE'
 @ALL = 'ALL'
 @SHOW = 'SHOW'
@@ -25,3 +24,5 @@
 
 @CORRECT_ANSWER_TEXT = 'Bonne réponse !'
 @WRONG_ANSWER_TEXT = 'Mauvaise réponse !'
+
+@IDLE_TIME = 240
