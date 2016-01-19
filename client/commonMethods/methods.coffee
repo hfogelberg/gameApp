@@ -93,6 +93,12 @@ Meteor.methods
 		console.log question.questionType
 		console.log question.correctAnswers
 		console.log question.oneAnswerText.length
+		console.log question.image
+
+		$('.intro-body .container').addClass('centered')
+
+		if question.image
+			$('.intro-body .container').removeClass('centered')
 
 		if question.showAnswer is NO
 			if question.questionType is SHOW
