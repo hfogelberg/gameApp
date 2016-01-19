@@ -75,6 +75,11 @@ Template.kidsGameTemplate.helpers
 			clock = question.showAnswerTimer
 			Meteor.setInterval(clock, 1000)
 
+		$('.intro-body .container').addClass('centered')
+
+		if question.image
+			$('.intro-body .container').removeClass('centered')
+
 		return question
 
 Template.kidsGameTemplate.events
