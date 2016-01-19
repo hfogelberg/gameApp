@@ -2,6 +2,8 @@
 
 ## Cloudinary
 
+The app is deployed to https://laitquestionnaire.herokuapp.com.
+
 The app uses Cloudinary for image storage
 
 1. Set up an account at Cloudinary
